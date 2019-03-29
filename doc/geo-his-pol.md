@@ -186,5 +186,137 @@ page_offset：从0开始的页数偏移量，0代表第一页
 
 ## 历史部分
 
+### 获取知识点
+
+> 获取知识点，可指定必修几, 可指定每页返回多少组数据，页数偏移量
+
+#### url
+
+/history/knowledge/get/{openid}/{which}/{number_every_page}/{page_offset}
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+openid：用户唯一表识
+
+which: 1-必修一 2-必修二
+
+number_every_page：每页多少组内容
+
+page_offset：从0开始的页数偏移量，0代表第一页
+
+#### 返回参数
+
+```json
+{
+    "code": 0,                                            // 0-成功 其他表示失败，错误码对应具体错误
+    "data": [
+        {
+            "id": 1,
+            "title": "张澜",
+            "content": "..."
+        },
+        {
+            "id": 2,
+            "title": "苏维埃",
+            "content": "..."
+        },
+        ...
+    ]
+
+}
+```
+
+
 
 ## 政治部分
+
+### 获取知识点
+
+> 获取知识点，可指定教材, 可指定每页返回多少组数据，页数偏移量
+
+#### url
+
+/political/knowledge/get/{openid}/{which}/{number_every_page}/{page_offset}
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+openid：用户唯一表识
+
+which: 1-必修一 2-必修二 3-必修三 4-必修四 5-选修三 6-选修四
+
+number_every_page：每页多少组内容
+
+page_offset：从0开始的页数偏移量，0代表第一页
+
+#### 返回参数
+
+```json
+{
+    "code": 0,                                            // 0-成功 其他表示失败，错误码对应具体错误
+    "data": [
+        {
+            "id": 1,
+            "title": "类比推理",
+            "content": "..."
+        },
+        {
+            "id": 2,
+            "title": "辩证思维",
+            "content": "..."
+        },
+        ...
+    ]
+
+}
+```
+
+### 获取知识点
+
+> 获取归纳总结，可指定每页返回多少组数据，页数偏移量
+
+#### url
+
+/political/summary/get/{openid}/{number_every_page}/{page_offset}
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+openid：用户唯一表识
+
+number_every_page：每页多少组内容
+
+page_offset：从0开始的页数偏移量，0代表第一页
+
+#### 返回参数
+
+```json
+{
+    "code": 0,                                            // 0-成功 其他表示失败，错误码对应具体错误
+    "data": [
+        {
+            "id": 1,
+            "title": "14、坚持对人民负责原则",
+            "content": "..."
+        },
+        {
+            "id": 2,
+            "title": "19、权利和义务的关系",
+            "content": "..."
+        },
+        ...
+    ]
+
+}
+```
+
