@@ -469,7 +469,7 @@ GET
 > 获取实验知识点，可指定具体的实验，每页几行，页数偏移
 
 #### URL
-/biology/knowledge/experiment/get/
+/physics/knowledge/experiment/get/
 
 #### 接口方法
 GET
