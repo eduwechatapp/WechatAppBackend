@@ -18,4 +18,12 @@ public interface HighSchoolPoliticalRepository extends JpaRepository<HighSchoolP
      * @return Page&lt;HighSchoolBiological&gt;
      */
     Page<BaseEntity> findByErji(String erji, Pageable pageable);
+
+    /**
+     * 根据二级标题分页查找
+     * @param yiji 二级标题
+     * @param pageable 分页接口
+     * @return Page&lt;HighSchoolBiological&gt;
+     */
+    Page<BaseEntity> findByYiji(String yiji, Pageable pageable);
 }

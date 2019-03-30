@@ -17,4 +17,6 @@ public interface HighSchoolHistoryRepository extends JpaRepository<HighSchoolHis
      * @return Page&lt;HighSchoolBiological&gt;
      */
     Page<BaseEntity> findByErji(String erji, Pageable pageable);
+
+
 }
