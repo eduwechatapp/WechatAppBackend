@@ -196,7 +196,7 @@ GET
 
 openid：用户唯一表识
 
-which: 1-必修一 2-必修二
+which: 1-必修一 2-必修二 3-必修三 4-选修一 5-选修四
 
 number_every_page：每页多少组内容
 
