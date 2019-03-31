@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Api(description = "数学接口")
@@ -20,7 +19,7 @@ import java.util.Map;
 public class MathController extends CommonController {
 
     @Autowired
-    HighSchoolBiologicalService service;
+    HighSchoolMathService service;
 
     @ApiOperation(value = "获取理科、文科数学知识点" ,  notes="指定文理科类型和章节获取数学知识点")
     @ResponseBody

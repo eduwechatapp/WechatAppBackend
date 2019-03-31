@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HighSchoolChineseRepository extends JpaRepository<HighSchoolEnglish, Integer> {
+public interface HighSchoolChineseRepository extends JpaRepository<HighSchoolChinese, Integer> {
     /**
      * 根据二级标题分页查找
      * @param erji 二级标题

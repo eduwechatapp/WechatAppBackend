@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.Map;
+
 
 @Api(description = "物理接口")
 @Controller
@@ -20,7 +20,7 @@ import java.util.Map;
 public class PhysicsController extends CommonController {
 
     @Autowired
-    HighSchoolBiologicalService service;
+    HighSchoolPhysicsService service;
 
     @ApiOperation(value = "获取物理知识点" ,  notes="指定必修选修知识点")
     @ResponseBody

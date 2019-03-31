@@ -20,7 +20,7 @@ import java.util.Map;
 public class ChineseController extends CommonController {
 
     @Autowired
-    private HighSchoolEnglishService highSchoolEnglishService;
+    private HighSchoolChineseService highSchoolEnglishService;
 
     @ApiOperation(value = "获取语文知识点" ,  notes="指定分页获取语文知识点")
     @ResponseBody

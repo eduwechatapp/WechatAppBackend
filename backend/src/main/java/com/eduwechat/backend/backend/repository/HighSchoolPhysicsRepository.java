@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HighSchoolPhysicsRepository extends JpaRepository<HighSchoolBiological, Integer> {
+public interface HighSchoolPhysicsRepository extends JpaRepository<HighSchoolPhysics, Integer> {
 
     /**
      * 根据二级标题分页查找

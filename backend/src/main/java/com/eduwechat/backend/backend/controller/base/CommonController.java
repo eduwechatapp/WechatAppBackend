@@ -1,9 +1,8 @@
 package com.eduwechat.backend.backend.controller.base;
 
-import com.eduwechat.backend.backend.service.base.BaseService;
+
 import com.eduwechat.backend.backend.service.base.CommonService;
 import com.eduwechat.backend.backend.service.base.Content;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.HashMap;
 import java.util.List;

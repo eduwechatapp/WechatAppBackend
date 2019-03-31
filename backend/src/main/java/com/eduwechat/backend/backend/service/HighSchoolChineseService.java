@@ -1,9 +1,7 @@
 package com.eduwechat.backend.backend.service;
 
-import com.eduwechat.backend.backend.entity.HighSchoolChinese;
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
 import com.eduwechat.backend.backend.repository.HighSchoolChineseRepository;
-import com.eduwechat.backend.backend.service.base.BaseService;
 import com.eduwechat.backend.backend.service.base.CommonService;
 import com.eduwechat.backend.backend.service.base.Content;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -80,14 +77,14 @@ public class HighSchoolChineseService extends CommonService {
             case 2:
                 return "高考常见易错字型";
             case 3:
-                return "高考作文高频易错字词"
+                return "高考作文高频易错字词";
             default:
                 return null;
         }
     }
 
     @Autowired
-    private HighSchoolEnglishRepository repository;
+    private HighSchoolChineseRepository repository;
 
     /**
      * 分页获取知识点
