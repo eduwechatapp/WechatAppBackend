@@ -52,4 +52,11 @@ public class EnglishController extends CommonController {
         return this.innerCommonFromListGetMap(this.highSchoolEnglishService.getSummary(which, number_every_page, page_offset));
     }
 
+    @ApiOperation(value = "获取英语知识点次级标题与which映射" ,  notes="获取英语知识点次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(highSchoolEnglishService);
+    }
+
 }

@@ -41,4 +41,11 @@ public class ChemistryController extends CommonController {
                                             @PathVariable Integer page_offset) {
         return this.innerCommonFromListGetMap(this.service.getTemplate(which, number_every_page, page_offset));
     }
+
+    @ApiOperation(value = "获取化学知识点次级标题与which映射" ,  notes="获取化学知识点次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service);
+    }
 }

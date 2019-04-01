@@ -57,7 +57,7 @@ public class KnowledgeTitleListUtil {
     }
 
     private  static List<TitleListMapping> getMathTitleList(List<String> list) {
-        return startFromOne(list);
+        return startFromZero(list);
     }
     private static List<TitleListMapping> getBiologicalTitleList(List<String> list) {
         return startFromZero(list);

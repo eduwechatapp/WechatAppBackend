@@ -29,6 +29,11 @@ public class PhysicsController extends CommonController {
         return this.innerGetKnowledge(this.service, which, number_every_page, page_offset);
     }
 
-
+    @ApiOperation(value = "获取物理知识点次级标题与which映射" ,  notes="获取物理知识点次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service);
+    }
 
 }

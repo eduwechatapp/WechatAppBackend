@@ -20,7 +20,7 @@ import java.util.Map;
 public class ChineseController extends CommonController {
 
     @Autowired
-    private HighSchoolChineseService highSchoolEnglishService;
+    private HighSchoolChineseService highSchoolChineseService;
 
     @ApiOperation(value = "获取语文知识点" ,  notes="指定分页获取语文知识点")
     @ResponseBody
@@ -29,7 +29,7 @@ public class ChineseController extends CommonController {
                                             @PathVariable Integer which,
                                             @PathVariable Integer number_every_page,
                                             @PathVariable Integer page_offset) {
-        return this.innerGetKnowledge(this.highSchoolEnglishService, which, number_every_page, page_offset);
+        return this.innerGetKnowledge(this.highSchoolChineseService, which, number_every_page, page_offset);
     }
 
     @ApiOperation(value = "获取语文专题" ,  notes="指定分页获取语文专题")
@@ -39,7 +39,7 @@ public class ChineseController extends CommonController {
                                         @PathVariable Integer which,
                                         @PathVariable Integer number_every_page,
                                         @PathVariable Integer page_offset) {
-        return this.innerCommonFromListGetMap(this.highSchoolEnglishService.getTopic(which, number_every_page, page_offset));
+        return this.innerCommonFromListGetMap(this.highSchoolChineseService.getTopic(which, number_every_page, page_offset));
     }
 
     @ApiOperation(value = "获取语文归纳总结" ,  notes="指定分页获取语文归纳总结")
@@ -49,7 +49,14 @@ public class ChineseController extends CommonController {
                                         @PathVariable Integer which,
                                         @PathVariable Integer number_every_page,
                                         @PathVariable Integer page_offset) {
-        return this.innerCommonFromListGetMap(this.highSchoolEnglishService.getSummary(which, number_every_page, page_offset));
+        return this.innerCommonFromListGetMap(this.highSchoolChineseService.getSummary(which, number_every_page, page_offset));
     }
 
+
+    @ApiOperation(value = "获取语文知识点次级标题与which映射" ,  notes="获取语文知识点次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(highSchoolChineseService);
+    }
 }
