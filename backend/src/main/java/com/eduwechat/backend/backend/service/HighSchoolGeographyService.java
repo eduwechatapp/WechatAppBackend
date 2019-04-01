@@ -3,7 +3,8 @@ package com.eduwechat.backend.backend.service;
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
 import com.eduwechat.backend.backend.repository.HighSchoolGeographyRepository;
 import com.eduwechat.backend.backend.service.base.CommonService;
-import com.eduwechat.backend.backend.service.base.Content;
+import com.eduwechat.backend.backend.service.base.inner.Content;
+import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -235,4 +236,10 @@ public class HighSchoolGeographyService extends CommonService {
         Page<BaseEntity> pages = repository.findByErji(fromWhichGetTemplateErji(which), PageRequest.of(page, size));
         return this.fromPageGetList(pages);
     }
+
+    @Override
+    public List<TitleListMapping> getTitleList() {
+        return this.innerGetTitleList(repository.findByTitleList("知识点"), "dl");
+    }
+
 }

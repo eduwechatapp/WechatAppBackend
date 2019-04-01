@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.base;
 
 
 import com.eduwechat.backend.backend.service.base.CommonService;
-import com.eduwechat.backend.backend.service.base.Content;
+import com.eduwechat.backend.backend.service.base.inner.Content;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +35,21 @@ public class CommonController {
      */
     protected Map<String, Object> innerGetKnowledge(CommonService service, Integer which, Integer number_every_page, Integer page_offset) {
         return this.innerCommonFromListGetMap(service.getKnowledge(which, number_every_page, page_offset));
+    }
+
+    /**
+     * 处理TitleMappingList情况List->data->mapping
+     * @param service CommonService
+     * @return Map&lt;String, Object&gt;
+     */
+    protected Map<String, Object> innerGetTitleMappingFromListGetMap(CommonService service) {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("code", 0);
+
+        map.put("data", service.getTitleList());
+
+        return map;
     }
 
 }

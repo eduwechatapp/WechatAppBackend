@@ -1,16 +1,15 @@
 package com.eduwechat.backend.backend.service;
 
-import com.eduwechat.backend.backend.entity.HighSchoolMath;
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
 import com.eduwechat.backend.backend.repository.HighSchoolMathRepository;
 import com.eduwechat.backend.backend.service.base.CommonService;
-import com.eduwechat.backend.backend.service.base.Content;
+import com.eduwechat.backend.backend.service.base.inner.Content;
+import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -71,6 +70,10 @@ public class HighSchoolMathService extends CommonService {
         return this.fromPageGetList(pages);
     }
 
+    @Override
+    public List<TitleListMapping> getTitleList() {
+        return this.innerGetTitleList(repository.findByTitleList("知识点"), "sx");
+    }
 
 
 }

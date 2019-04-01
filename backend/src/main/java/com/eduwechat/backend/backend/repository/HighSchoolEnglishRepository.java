@@ -5,7 +5,11 @@ import com.eduwechat.backend.backend.entity.base.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface HighSchoolEnglishRepository extends JpaRepository<HighSchoolEnglish, Integer> {
@@ -16,4 +20,7 @@ public interface HighSchoolEnglishRepository extends JpaRepository<HighSchoolEng
      * @return Page&lt;HighSchoolBiological&gt;
      */
     Page<BaseEntity> findByErji(String erji, Pageable pageable);
+
+    @Query(value = "select erji from gzyy where yiji = :yiji group by erji", nativeQuery = true)
+    List<String> findByTitleList(@Param("yiji") String yiji);
 }
