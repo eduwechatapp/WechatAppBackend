@@ -22,6 +22,6 @@ public interface HighSchoolMathRepository extends JpaRepository<HighSchoolMath, 
      */
     Page<BaseEntity> findByErji(String erji, Pageable pageable);
 
-    @Query(value = "select erji from gzsx where yiji = :yiji group by erji", nativeQuery = true)
+    @Query(value = "select erji from gzsx where yiji = :yiji group by erji order by id", nativeQuery = true)
     List<String> findByTitleList(@Param("yiji") String yiji);
 }

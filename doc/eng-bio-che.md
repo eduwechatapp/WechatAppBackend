@@ -163,27 +163,27 @@ None
       "which": 1
     },
     {
-      "titleName": "必修三词汇表与重点语法",
+      "titleName": "必修二词汇表与重点语法",
       "which": 2
     },
     {
-      "titleName": "必修二词汇表与重点语法",
+      "titleName": "必修三词汇表与重点语法",
       "which": 3
     },
     {
-      "titleName": "必修五词汇表与重点语法",
+      "titleName": "必修四词汇表与重点语法",
       "which": 4
     },
     {
-      "titleName": "必修四词汇表与重点语法",
+      "titleName": "必修五词汇表与重点语法",
       "which": 5
     },
     {
-      "titleName": "选修七词汇表与重点语法",
+      "titleName": "选修六词汇表与重点语法",
       "which": 6
     },
     {
-      "titleName": "选修九词汇表与重点语法",
+      "titleName": "选修七词汇表与重点语法",
       "which": 7
     },
     {
@@ -191,15 +191,15 @@ None
       "which": 8
     },
     {
-      "titleName": "选修六词汇表与重点语法",
+      "titleName": "选修九词汇表与重点语法",
       "which": 9
     },
     {
-      "titleName": "选修十一词汇表",
+      "titleName": "选修十词汇表与重点语法",
       "which": 10
     },
     {
-      "titleName": "选修十词汇表与重点语法",
+      "titleName": "选修十一词汇表",
       "which": 11
     }
   ]
