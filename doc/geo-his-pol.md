@@ -789,48 +789,6 @@ None
 ```json
 {
   "code": 0,
-  "data": [
-    {
-      "titleName": "必修一",
-      "which": 1
-    },
-    {
-      "titleName": "必修二",
-      "which": 2
-    },
-    {
-      "titleName": "必修三",
-      "which": 3
-    },
-    {
-      "titleName": "必修四",
-      "which": 4
-    },
-    {
-      "titleName": "必修一（旧教材）",
-      "which": 5
-    },
-    {
-      "titleName": "必修二（旧教材）",
-      "which": 6
-    },
-    {
-      "titleName": "必修三（旧教材）",
-      "which": 7
-    },
-    {
-      "titleName": "必修四（旧教材）",
-      "which": 8
-    },
-    {
-      "titleName": "选修三（旧教材）",
-      "which": 9
-    },
-    {
-      "titleName": "选修四（旧教材）",
-      "which": 10
-    }
-  ],
   "data": "高中政治常识主要原理归纳总结"
 }
 ```
