@@ -140,7 +140,7 @@ page_offset：从0开始的页数偏移量，0代表第一页
 
 #### url
 
-/geography/topic/get/{openid}/{which}/number_every_page}/{page_offset}
+/geography/template/get/{openid}/{which}/number_every_page}/{page_offset}
 
 #### 接口方法
 
@@ -180,7 +180,7 @@ page_offset：从0开始的页数偏移量，0代表第一页
 
 ### 获取知识点二级标题
 
-> 可以指定获取高考知识点或核心单词, 可指定每页返回多少组数据，页数偏移量
+> 可以指定获取高考地理知识点二级标题映射
 
 #### url
 
@@ -201,68 +201,322 @@ None
   "code": 0,
   "data": [
     {
-      "titleName": "第10讲《工业》",
+      "titleName": "第1讲《地球》",
       "which": 1
     },
     {
-      "titleName": "第11讲《交通》",
+      "titleName": "第2讲《地图》",
       "which": 2
     },
     {
-      "titleName": "第12讲《人口》",
+      "titleName": "第3讲《地球上的大气》",
       "which": 3
     },
     {
-      "titleName": "第13讲《城市》",
+      "titleName": "第4讲《地球上的水》",
       "which": 4
     },
     {
-      "titleName": "第14讲《人类与地理环境的协调发展》",
+      "titleName": "第5讲《地表形态的塑造》",
       "which": 5
     },
     {
-      "titleName": "第15讲《区域治理与可持续发展》",
+      "titleName": "第6讲《自然环境的整体性和差异性》",
       "which": 6
     },
     {
-      "titleName": "第16讲《地理信息技术的应用》",
+      "titleName": "第7讲《关于季节的知识专题》",
       "which": 7
     },
     {
-      "titleName": "第1讲《地球》",
+      "titleName": "第8讲《自然资源与自然灾害》",
       "which": 8
     },
     {
-      "titleName": "第2讲《地图》",
+      "titleName": "第9讲《农业》",
       "which": 9
     },
     {
-      "titleName": "第3讲《地球上的大气》",
+      "titleName": "第10讲《工业》",
       "which": 10
     },
     {
-      "titleName": "第4讲《地球上的水》",
+      "titleName": "第11讲《交通》",
       "which": 11
     },
     {
-      "titleName": "第5讲《地表形态的塑造》",
+      "titleName": "第12讲《人口》",
       "which": 12
     },
     {
-      "titleName": "第6讲《自然环境的整体性和差异性》",
+      "titleName": "第13讲《城市》",
       "which": 13
     },
     {
-      "titleName": "第7讲《关于季节的知识专题》",
+      "titleName": "第14讲《人类与地理环境的协调发展》",
       "which": 14
     },
     {
-      "titleName": "第8讲《自然资源与自然灾害》",
+      "titleName": "第15讲《区域治理与可持续发展》",
       "which": 15
     },
     {
-      "titleName": "第9讲《农业》",
+      "titleName": "第16讲《地理信息技术的应用》",
       "which": 16
+    }
+  ]
+}
+```
+
+### 获取归纳总结二级标题映射
+
+> 可以指定获取高考地理归纳总结二级标题映射
+
+#### url
+
+/geography/summary/mapping/get
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "世界区域地理",
+      "which": 1
+    },
+    {
+      "titleName": "中国自然地理",
+      "which": 2
+    },
+    {
+      "titleName": "中国人文地理",
+      "which": 3
+    },
+    {
+      "titleName": "中国农业地理的综合分析",
+      "which": 4
+    },
+    {
+      "titleName": "中国区域地理与区域差异",
+      "which": 5
+    },
+    {
+      "titleName": "中国国土整治与开发",
+      "which": 6
+    }
+  ]
+}
+```
+
+### 获取答题模板二级标题映射
+
+> 可以指定获取高考地理答题模板二级标题映射
+
+#### url
+
+/geography/template/mapping/get
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "自然地理部分大题答题模板",
+      "which": 0
+    },
+    {
+      "titleName": "社会人文地理部分大题答题模板",
+      "which": 1
+    },
+    {
+      "titleName": "区位选择类问题大题答题模板",
+      "which": 2
+    },
+    {
+      "titleName": "原因分析类问题大题答题模板",
+      "which": 3
+    },
+    {
+      "titleName": "意义影响类问题大题答题模板",
+      "which": 4
+    },
+    {
+      "titleName": "价值作用类问题大题答题模板",
+      "which": 5
+    },
+    {
+      "titleName": "方法措施类问题大题答题模板",
+      "which": 6
+    }
+  ]
+}
+```
+
+### 获取答题专题二级标题映射
+
+> 可以指定获取高考地理专题二级标题映射
+
+#### url
+
+/geography/topic/mapping/get
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "地理计算专题",
+      "which": 0
+    },
+    {
+      "titleName": "地质地形专题",
+      "which": 1
+    },
+    {
+      "titleName": "能源专题",
+      "which": 2
+    },
+    {
+      "titleName": "气候与自然带专题",
+      "which": 3
+    },
+    {
+      "titleName": "干旱专题",
+      "which": 4
+    },
+    {
+      "titleName": "洪涝专题",
+      "which": 5
+    },
+    {
+      "titleName": "河流专题",
+      "which": 6
+    },
+    {
+      "titleName": "海洋专题",
+      "which": 7
+    },
+    {
+      "titleName": "农业专题",
+      "which": 8
+    },
+    {
+      "titleName": "工业专题",
+      "which": 9
+    },
+    {
+      "titleName": "旅游专题",
+      "which": 10
+    },
+    {
+      "titleName": "人口专题",
+      "which": 11
+    },
+    {
+      "titleName": "城市专题",
+      "which": 12
+    },
+    {
+      "titleName": "交通专题",
+      "which": 13
+    },
+    {
+      "titleName": "生态环境问题专题",
+      "which": 14
+    },
+    {
+      "titleName": "重要地理界线专题",
+      "which": 15
+    },
+    {
+      "titleName": "特征问题答题方法",
+      "which": 16
+    },
+    {
+      "titleName": "等高线地形图专题",
+      "which": 17
+    },
+    {
+      "titleName": "海洋资源专题",
+      "which": 18
+    },
+    {
+      "titleName": "盐度和洋流专题",
+      "which": 19
+    },
+    {
+      "titleName": "河流及交通专题",
+      "which": 20
+    },
+    {
+      "titleName": "人口数量、分布专题",
+      "which": 21
+    },
+    {
+      "titleName": "人口迁移专题",
+      "which": 22
+    },
+    {
+      "titleName": "兰州问题",
+      "which": 23
+    },
+    {
+      "titleName": "文化专题",
+      "which": 24
+    },
+    {
+      "titleName": "黄山与庐山旅游问题",
+      "which": 25
+    },
+    {
+      "titleName": "政治经济地理格局专题",
+      "which": 26
+    },
+    {
+      "titleName": "港口的建设：上海、纽约、天津等",
+      "which": 27
+    },
+    {
+      "titleName": "三峡工程专题",
+      "which": 28
+    },
+    {
+      "titleName": "商业贸易与金融专题",
+      "which": 29
+    },
+    {
+      "titleName": "第7讲《关于季节的知识专题》",
+      "which": 30
     }
   ]
 }
@@ -316,7 +570,7 @@ page_offset：从0开始的页数偏移量，0代表第一页
 
 ### 获取知识点二级标题
 
-> 可以指定获取高考知识点或核心单词, 可指定每页返回多少组数据，页数偏移量
+> 可以指定获取高考历史二级标题映射
 
 #### url
 
@@ -341,11 +595,11 @@ None
       "which": 1
     },
     {
-      "titleName": "必修三",
+      "titleName": "必修二",
       "which": 2
     },
     {
-      "titleName": "必修二",
+      "titleName": "必修三",
       "which": 3
     },
     {
@@ -450,7 +704,7 @@ page_offset：从0开始的页数偏移量，0代表第一页
 
 ### 获取知识点二级标题
 
-> 可以指定获取高考知识点或核心单词, 可指定每页返回多少组数据，页数偏移量
+> 可以指定获取高考知识点二级标题映射
 
 #### url
 
@@ -475,7 +729,7 @@ None
       "which": 1
     },
     {
-      "titleName": "必修一（旧教材）",
+      "titleName": "必修二",
       "which": 2
     },
     {
@@ -483,11 +737,11 @@ None
       "which": 3
     },
     {
-      "titleName": "必修三（旧教材）",
+      "titleName": "必修四",
       "which": 4
     },
     {
-      "titleName": "必修二",
+      "titleName": "必修一（旧教材）",
       "which": 5
     },
     {
@@ -495,7 +749,73 @@ None
       "which": 6
     },
     {
+      "titleName": "必修三（旧教材）",
+      "which": 7
+    },
+    {
+      "titleName": "必修四（旧教材）",
+      "which": 8
+    },
+    {
+      "titleName": "选修三（旧教材）",
+      "which": 9
+    },
+    {
+      "titleName": "选修四（旧教材）",
+      "which": 10
+    }
+  ]
+}
+```
+
+### 获取归纳总结二级标题
+
+> 可以指定获取高考知识点二级标题映射
+
+#### url
+
+/political/summary/mapping/get
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "必修一",
+      "which": 1
+    },
+    {
+      "titleName": "必修二",
+      "which": 2
+    },
+    {
+      "titleName": "必修三",
+      "which": 3
+    },
+    {
       "titleName": "必修四",
+      "which": 4
+    },
+    {
+      "titleName": "必修一（旧教材）",
+      "which": 5
+    },
+    {
+      "titleName": "必修二（旧教材）",
+      "which": 6
+    },
+    {
+      "titleName": "必修三（旧教材）",
       "which": 7
     },
     {
