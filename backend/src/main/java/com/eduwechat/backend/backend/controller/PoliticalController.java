@@ -1,7 +1,10 @@
 package com.eduwechat.backend.backend.controller;
 
+import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
+import com.eduwechat.backend.backend.controller.base.CanGetSummaryTitleListController;
 import com.eduwechat.backend.backend.controller.base.CommonController;
 import com.eduwechat.backend.backend.service.HighSchoolPoliticalService;
+import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
 import java.util.Map;
 
 @Api(description = "政治接口")
 @Controller
 @RequestMapping(value = "/political")
-public class PoliticalController extends CommonController {
+public class PoliticalController extends CommonController implements CanGetKnowledgeTitleListController,
+        CanGetSummaryTitleListController
+{
 
     @Autowired
     private HighSchoolPoliticalService service;
@@ -40,11 +46,25 @@ public class PoliticalController extends CommonController {
         return this.innerCommonFromListGetMap(this.service.getSummary(0, number_every_page, page_offset));
     }
 
-
+    @Override
     @ApiOperation(value = "获取政治知识点次级标题与which映射" ,  notes="获取政治知识点次级标题与which映射")
     @ResponseBody
     @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
-    public Map<String, Object> getTitleList() {
-        return this.innerGetTitleMappingFromListGetMap(service);
+    public Map<String, Object> getKnowledgeTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "知识点", "knowledge", "zz");
+    }
+
+    @Override
+    @ApiOperation(value = "获取政治归纳总结次级标题与which映射" ,  notes="获取政治归纳总结次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/summary/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getSummaryTitleList() {
+        Map<String, Object> res = this.innerGetTitleMappingFromListGetMap(service,"归纳总结", "summary", "zz");
+
+        // 移除不需要which的返回map
+        TitleListMapping obj = (TitleListMapping) ((List) res.get("data")).get(0);
+        res.put("data", obj.getTitleName());
+
+        return res;
     }
 }

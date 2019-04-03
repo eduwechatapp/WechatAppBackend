@@ -1,5 +1,7 @@
 package com.eduwechat.backend.backend.controller;
 
+import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
+import com.eduwechat.backend.backend.controller.base.CanGetTemplateTitleListController;
 import com.eduwechat.backend.backend.controller.base.CommonController;
 import com.eduwechat.backend.backend.service.HighSchoolChemistryService;
 import io.swagger.annotations.Api;
@@ -16,7 +18,9 @@ import java.util.Map;
 @Api(description = "化学接口")
 @Controller
 @RequestMapping(value = "/chemistry")
-public class ChemistryController extends CommonController {
+public class ChemistryController extends CommonController implements CanGetKnowledgeTitleListController,
+        CanGetTemplateTitleListController
+{
 
     @Autowired
     HighSchoolChemistryService service;
@@ -42,10 +46,20 @@ public class ChemistryController extends CommonController {
         return this.innerCommonFromListGetMap(this.service.getTemplate(which, number_every_page, page_offset));
     }
 
+    @Override
     @ApiOperation(value = "获取化学知识点次级标题与which映射" ,  notes="获取化学知识点次级标题与which映射")
     @ResponseBody
     @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
-    public Map<String, Object> getTitleList() {
-        return this.innerGetTitleMappingFromListGetMap(service);
+    public Map<String, Object> getKnowledgeTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "知识点", "knowledge", "hx");
+    }
+
+
+    @Override
+    @ApiOperation(value = "获取化学答题模板次级标题与which映射" ,  notes="获取化学答题模板次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/template/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTemplateTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "答题模板", "template", "hx");
     }
 }

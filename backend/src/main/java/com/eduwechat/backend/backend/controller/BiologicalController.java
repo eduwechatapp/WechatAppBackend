@@ -1,6 +1,7 @@
 package com.eduwechat.backend.backend.controller;
 
 
+import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CommonController;
 import com.eduwechat.backend.backend.service.HighSchoolBiologicalService;
 import io.swagger.annotations.Api;
@@ -18,7 +19,7 @@ import java.util.Map;
 @Api(description = "生物接口")
 @Controller
 @RequestMapping(value = "/biology")
-public class BiologicalController extends CommonController {
+public class BiologicalController extends CommonController implements CanGetKnowledgeTitleListController {
 
     @Autowired
     HighSchoolBiologicalService service;
@@ -30,11 +31,12 @@ public class BiologicalController extends CommonController {
         return this.innerGetKnowledge(this.service, which, number_every_page, page_offset);
     }
 
+    @Override
     @ApiOperation(value = "获取生物知识点次级标题与which映射" ,  notes="获取生物知识点次级标题与which映射")
     @ResponseBody
     @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
-    public Map<String, Object> getTitleList() {
-        return this.innerGetTitleMappingFromListGetMap(service);
+    public Map<String, Object> getKnowledgeTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "知识点", "knowledge", "sw");
     }
 
 }

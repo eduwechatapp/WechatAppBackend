@@ -1,5 +1,6 @@
 package com.eduwechat.backend.backend.controller;
 
+import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CommonController;
 import com.eduwechat.backend.backend.service.HighSchoolPhysicsService;
 import io.swagger.annotations.Api;
@@ -17,7 +18,7 @@ import java.util.Map;
 @Api(description = "物理接口")
 @Controller
 @RequestMapping(value = "/physics")
-public class PhysicsController extends CommonController {
+public class PhysicsController extends CommonController implements CanGetKnowledgeTitleListController {
 
     @Autowired
     HighSchoolPhysicsService service;
@@ -29,11 +30,11 @@ public class PhysicsController extends CommonController {
         return this.innerGetKnowledge(this.service, which, number_every_page, page_offset);
     }
 
+    @Override
     @ApiOperation(value = "获取物理知识点次级标题与which映射" ,  notes="获取物理知识点次级标题与which映射")
     @ResponseBody
     @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
-    public Map<String, Object> getTitleList() {
-        return this.innerGetTitleMappingFromListGetMap(service);
+    public Map<String, Object> getKnowledgeTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "知识点", "knowledge", "wl");
     }
-
 }

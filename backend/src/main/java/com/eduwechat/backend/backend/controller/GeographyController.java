@@ -1,7 +1,7 @@
 package com.eduwechat.backend.backend.controller;
 
 
-import com.eduwechat.backend.backend.controller.base.CommonController;
+import com.eduwechat.backend.backend.controller.base.*;
 import com.eduwechat.backend.backend.service.HighSchoolGeographyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,7 +17,11 @@ import java.util.Map;
 @Api(description = "地理接口")
 @Controller
 @RequestMapping(value = "/geography")
-public class GeographyController extends CommonController {
+public class GeographyController extends CommonController implements CanGetKnowledgeTitleListController,
+        CanGetTemplateTitleListController,
+        CanGetSummaryTitleListController,
+        CanGetTopicTitleListController
+{
 
     @Autowired
     private HighSchoolGeographyService service;
@@ -63,11 +67,36 @@ public class GeographyController extends CommonController {
         return this.innerCommonFromListGetMap(this.service.getTemplate(which, number_every_page, page_offset));
     }
 
+    @Override
     @ApiOperation(value = "获取地理知识点次级标题与which映射" ,  notes="获取地理知识点次级标题与which映射")
     @ResponseBody
     @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
-    public Map<String, Object> getTitleList() {
-        return this.innerGetTitleMappingFromListGetMap(service);
+    public Map<String, Object> getKnowledgeTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "知识点", "knowledge", "dl");
+    }
+
+    @Override
+    @ApiOperation(value = "获取地理归纳总结次级标题与which映射" ,  notes="获取地理归纳总结次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/summary/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getSummaryTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "归纳总结", "summary", "dl");
+    }
+
+    @Override
+    @ApiOperation(value = "获取地理答题模板次级标题与which映射" ,  notes="获取地理答题模板次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/template/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTemplateTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "答题模板", "template", "dl");
+    }
+
+    @Override
+    @ApiOperation(value = "获取地理专题次级标题与which映射" ,  notes="获取地理专题次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/topic/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTopicTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(service, "专题", "topic", "dl");
     }
 }
 

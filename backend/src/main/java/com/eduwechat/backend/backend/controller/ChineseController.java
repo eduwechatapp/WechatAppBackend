@@ -1,6 +1,9 @@
 package com.eduwechat.backend.backend.controller;
 
 
+import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
+import com.eduwechat.backend.backend.controller.base.CanGetSummaryTitleListController;
+import com.eduwechat.backend.backend.controller.base.CanGetTopicTitleListController;
 import com.eduwechat.backend.backend.controller.base.CommonController;
 import com.eduwechat.backend.backend.service.HighSchoolChineseService;
 import io.swagger.annotations.Api;
@@ -17,7 +20,10 @@ import java.util.Map;
 @Api(description = "语文接口")
 @Controller
 @RequestMapping(value = "/chinese")
-public class ChineseController extends CommonController {
+public class ChineseController extends CommonController implements CanGetKnowledgeTitleListController,
+        CanGetTopicTitleListController,
+        CanGetSummaryTitleListController
+{
 
     @Autowired
     private HighSchoolChineseService highSchoolChineseService;
@@ -52,11 +58,27 @@ public class ChineseController extends CommonController {
         return this.innerCommonFromListGetMap(this.highSchoolChineseService.getSummary(which, number_every_page, page_offset));
     }
 
-
+    @Override
     @ApiOperation(value = "获取语文知识点次级标题与which映射" ,  notes="获取语文知识点次级标题与which映射")
     @ResponseBody
     @RequestMapping(value = "/knowledge/mapping/get", method = RequestMethod.GET)
-    public Map<String, Object> getTitleList() {
-        return this.innerGetTitleMappingFromListGetMap(highSchoolChineseService);
+    public Map<String, Object> getKnowledgeTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(highSchoolChineseService, "知识点", "knowledge", "yw");
+    }
+
+    @Override
+    @ApiOperation(value = "获取语文归纳总结次级标题与which映射" ,  notes="获取语文归纳总结次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/summary/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getSummaryTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(highSchoolChineseService, "归纳总结", "summary", "yw");
+    }
+
+    @Override
+    @ApiOperation(value = "获取语文专题次级标题与which映射" ,  notes="获取语文专题次级标题与which映射")
+    @ResponseBody
+    @RequestMapping(value = "/topic/mapping/get", method = RequestMethod.GET)
+    public Map<String, Object> getTopicTitleList() {
+        return this.innerGetTitleMappingFromListGetMap(highSchoolChineseService, "专题", "topic", "yw");
     }
 }

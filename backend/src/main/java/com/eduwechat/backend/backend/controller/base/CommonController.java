@@ -1,8 +1,10 @@
 package com.eduwechat.backend.backend.controller.base;
 
 
+import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
 import com.eduwechat.backend.backend.service.base.CommonService;
 import com.eduwechat.backend.backend.service.base.inner.Content;
+import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
 
 import java.util.HashMap;
 import java.util.List;
@@ -39,15 +41,36 @@ public class CommonController {
 
     /**
      * 处理TitleMappingList情况List->data->mapping
-     * @param service CommonService
+     * @param service CommonService 通用服务层对象
+     * @param yijiString String 数据库中一级标题字段名称
+     * @param yijiType String 一级类型 knowledge topic summary template
+     * @param subjectType String 学科类型 zz hx yy yw sx ls dl sw wl
      * @return Map&lt;String, Object&gt;
      */
-    protected Map<String, Object> innerGetTitleMappingFromListGetMap(CommonService service) {
+    protected Map<String, Object> innerGetTitleMappingFromListGetMap(CommonService service,
+                                                                     String yijiString,
+                                                                     String yijiType,
+                                                                     String subjectType) {
         Map<String, Object> map = new HashMap<>();
 
-        map.put("code", 0);
-
-        map.put("data", service.getTitleList());
+        try {
+            List<TitleListMapping> list = service.getTitleList(yijiString, yijiType, subjectType);
+            map.put("data", list);
+            map.put("code", 0);
+        }
+        catch (TypeNotMatchException e) {
+            switch (e.getWhichType()) {
+                case SUBJECT:
+                    map.put("data", "不存在此学科");
+                    map.put("code", 1);
+                case YIJI:
+                    map.put("data", "此学科不存在" + e.getMissingType() + "类型的一级标题");
+                    map.put("code", 2);
+                default:
+                    map.put("data", "unknow error");
+                    map.put("code", 3);
+            }
+        }
 
         return map;
     }

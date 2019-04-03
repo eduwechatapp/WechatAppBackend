@@ -1,6 +1,7 @@
 package com.eduwechat.backend.backend.service;
 
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
+import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
 import com.eduwechat.backend.backend.repository.HighSchoolMathRepository;
 import com.eduwechat.backend.backend.service.base.CommonService;
 import com.eduwechat.backend.backend.service.base.inner.Content;
@@ -70,9 +71,17 @@ public class HighSchoolMathService extends CommonService {
         return this.fromPageGetList(pages);
     }
 
+    /**
+     * 通用获取二级标题列表接口
+     * @param yijiString String 数据库中一级标题字段名称
+     * @param yijiType String 一级类型 knowledge topic summary template
+     * @param subjectType String 学科类型 zz hx yy yw sx ls dl sw wl
+     * @throws TypeNotMatchException 一级类型或学科类型未匹配
+     * @return List&lt;TitleListMapping&gt; 映射后标题列表
+     */
     @Override
-    public List<TitleListMapping> getTitleList() {
-        return this.innerGetTitleList(repository.findByTitleList("知识点"), "sx");
+    public List<TitleListMapping> getTitleList(String yijiString, String yijiType, String subjectType) throws TypeNotMatchException {
+        return this.innerGetTitleList(repository.findByTitleList(yijiString), yijiType, subjectType);
     }
 
 
