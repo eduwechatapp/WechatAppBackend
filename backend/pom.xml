@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.eduwechat.backend</groupId>
 	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-DEV</version>
 	<name>backend</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -55,8 +55,8 @@
 		<!--jta-->
 		<dependency>
 			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-			<version>1.1</version>
+			<artifactId>javax.transaction-api</artifactId>
+			<version>1.2</version>
 		</dependency>
 
 		<!--test-->
