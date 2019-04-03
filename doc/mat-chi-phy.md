@@ -3,12 +3,12 @@
 ## 数学
 ### 获取理科、文科数学知识点
 > 获取高中数学知识点，可指定文章的页数，0代表第一页
-### URL
-/math/knowledge/get
-### 接口方法
+#### URL
+/math/knowledge/get/{openid}/{which}/number_every_page}/{page_offset}
+#### 接口方法
 GET
 
-### 传入参数
+#### 传入参数
 >openid: 用户唯一标识ID  
 >which：
 > + 0-必修一
@@ -25,7 +25,7 @@ GET
 >
 > number_every_page：每页多少行  
 > page_offset：从0开始的页数偏移量，0代表第一页  
-### 示例
+#### 示例
 
 ```json
 {
@@ -36,7 +36,7 @@ GET
 }
 ```
 
-### 返回参数
+#### 返回参数
 
 ```json
 {
@@ -57,15 +57,81 @@ GET
 }
 ```
 
+### 获取知识点二级标题
+> 可以指定获取高考数学知识点二级标题映射
+
+#### url
+/math/knowledge/mapping/get
+
+#### 接口方法
+GET
+
+#### 传入参数
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "必修一",
+      "which": 0
+    },
+    {
+      "titleName": "必修二",
+      "which": 1
+    },
+    {
+      "titleName": "必修三",
+      "which": 2
+    },
+    {
+      "titleName": "必修四",
+      "which": 3
+    },
+    {
+      "titleName": "必修五",
+      "which": 4
+    },
+    {
+      "titleName": "选修2-1",
+      "which": 5
+    },
+    {
+      "titleName": "选修2-2",
+      "which": 6
+    },
+    {
+      "titleName": "选修2-3",
+      "which": 7
+    },
+    {
+      "titleName": "选修4-2",
+      "which": 8
+    },
+    {
+      "titleName": "选修4-4",
+      "which": 9
+    },
+    {
+      "titleName": "选修4-5",
+      "which": 10
+    }
+  ]
+}
+```
+
 
 ## 语文
 ### 获取知识点
 > 可以指定每页容纳多少组内容，并且是第几页，0代表第一页
-### URL
-/chinese/knowledge/get
-### 接口方法
+#### URL
+/chinese/knowledge/get/{openid}/{which}/number_every_page}/{page_offset}
+#### 接口方法
 GET
-### 传入参数
+#### 传入参数
 >openid: 用户唯一标识ID  
 >which：
 > + 0-必修一
@@ -78,7 +144,7 @@ GET
 > number_every_page：每页多少行  
 > page_offset：从0开始的页数偏移量，0代表第一页  
 
-### 示例
+#### 示例
 
 ```json
 {
@@ -89,7 +155,7 @@ GET
 }
 ```
 
-### 返回参数
+#### 返回参数
 
 ```json
 {
@@ -112,11 +178,11 @@ GET
 
 ### 获取归纳总结
 > 可以指定每页容纳多少组内容，并且是第几页，0代表第一页
-### URL
-/chinese/summary/get
-### 接口方法
+#### URL
+/chinese/summary/get/{openid}/{which}/number_every_page}/{page_offset}
+#### 接口方法
 GET
-### 传入参数
+#### 传入参数
 >openid: 用户唯一标识ID  
 >which：
 > + 0-高考常见易错成语
@@ -127,7 +193,7 @@ GET
 > number_every_page：每页多少行  
 > page_offset：从0开始的页数偏移量，0代表第一页  
 
-### 示例
+#### 示例
 
 ```json
 {
@@ -138,7 +204,7 @@ GET
 }
 ```
 
-### 返回参数
+#### 返回参数
 
 ```json
 {
@@ -161,11 +227,11 @@ GET
 
 ### 获取专题
 > 可以指定每页容纳多少组内容，并且是第几页，0代表第一页
-### URL
-/chinese/topic/get
-### 接口方法
+#### URL
+/chinese/topic/get/{openid}/{which}/number_every_page}/{page_offset}
+#### 接口方法
 GET
-### 传入参数
+#### 传入参数
 >openid: 用户唯一标识ID  
 >which：
 > + 0-作文素材
@@ -176,7 +242,7 @@ GET
 > number_every_page：每页多少行  
 > page_offset：从0开始的页数偏移量，0代表第一页  
 
-### 示例
+#### 示例
 
 ```json
 {
@@ -187,7 +253,7 @@ GET
 }
 ```
 
-### 返回参数
+#### 返回参数
 
 ```json
 {
@@ -208,12 +274,137 @@ GET
 }
 ```
 
+### 获取知识点二级标题映射
+> 可以指定获取高考语文知识点二级标题映射
+
+#### url
+
+/chinese/knowledge/mapping/get
+
+#### 接口方法
+GET
+
+#### 传入参数
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "必修一",
+      "which": 0
+    },
+    {
+      "titleName": "必修二",
+      "which": 1
+    },
+    {
+      "titleName": "必修三",
+      "which": 2
+    },
+    {
+      "titleName": "必修四",
+      "which": 3
+    },
+    {
+      "titleName": "必修五",
+      "which": 4
+    },
+    {
+      "titleName": "中国古代诗歌散文欣赏欣赏（选修）",
+      "which": 5
+    }
+  ]
+}
+```
+
+### 获取归纳总结二级标题映射
+> 可以指定获取高考语文归纳总结二级标题映射
+
+#### url
+/chinese/summary/mapping/get
+
+#### 接口方法
+GET
+
+#### 传入参数
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "高考常见易错成语",
+      "which": 0
+    },
+    {
+      "titleName": "高考常见易错熟语",
+      "which": 1
+    },
+    {
+      "titleName": "高考常见易错字型",
+      "which": 2
+    },
+    {
+      "titleName": "高考作文高频易错字词",
+      "which": 3
+    }
+  ]
+}
+```
+
+
+### 获取专题二级标题映射
+> 可以指定获取高考语文专题二级标题映射
+
+#### url
+/chinese/topic/mapping/get
+
+#### 接口方法
+GET
+
+#### 传入参数
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "作文素材",
+      "which": 0
+    },
+    {
+      "titleName": "作文万能议论素材",
+      "which": 1
+    },
+    {
+      "titleName": "作文题材通用例文",
+      "which": 2
+    },
+    {
+      "titleName": "高考建议背诵篇目",
+      "which": 3
+    }
+  ]
+}
+```
+
+
 ## 物理
 ### 获取知识点
 > 获取必修、选修知识点，每页几行，页数偏移
 
 #### URL
-/physics/knowledge/get/
+/physics/knowledge/get/{openid}/{which}/number_every_page}/{page_offset}
 
 #### 接口方法
 GET
@@ -228,7 +419,7 @@ GET
 >number_every_page：每页多少行  
 >page_offset：从0开始的页数偏移量，0代表第一页  
 
-### 示例
+#### 示例
 
 ```json
 {
@@ -259,6 +450,40 @@ GET
     ]
 }
 ```
+
+### 获取知识点二级标题映射
+> 可以指定获取高考物理知识点二级标题映射
+
+#### url
+
+/physics/knowledge/mapping/get
+
+#### 接口方法
+GET
+
+#### 传入参数
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "必修部分",
+      "which": 0
+    },
+    {
+      "titleName": "必修部分",
+      "which": 1
+    }
+  ]
+}
+```
+
+
+
 
 <!-- ### 获取实验知识点
 > 获取实验知识点，可指定具体的实验，每页几行，页数偏移
