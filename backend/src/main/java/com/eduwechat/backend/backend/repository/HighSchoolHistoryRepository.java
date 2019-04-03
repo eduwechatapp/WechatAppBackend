@@ -22,7 +22,7 @@ public interface HighSchoolHistoryRepository extends JpaRepository<HighSchoolHis
      */
     Page<BaseEntity> findByErji(String erji, Pageable pageable);
 
-    @Query(value = "select erji from gzls where yiji = :yiji group by erji", nativeQuery = true)
+    @Query(value = "select erji from gzls where yiji = :yiji group by erji order by id", nativeQuery = true)
     List<String> findByTitleList(@Param("yiji") String yiji);
 
 

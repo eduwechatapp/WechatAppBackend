@@ -31,17 +31,17 @@ public class HighSchoolPoliticalService extends CommonService {
             case 1:
                 return "必修一";
             case 2:
-                return "必修一（旧教材）";
-            case 3:
                 return "必修二";
-            case 4:
-                return "必修二（旧教材）";
-            case 5:
+            case 3:
                 return "必修三";
-            case 6:
-                return "必修三（旧教材）";
-            case 7:
+            case 4:
                 return "必修四";
+            case 5:
+                return "必修一（旧教材）";
+            case 6:
+                return "必修二（旧教材）";
+            case 7:
+                return "必修三（旧教材）";
             case 8:
                 return "必修四（旧教材）";
             case 9:
