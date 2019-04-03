@@ -136,6 +136,76 @@ page_offset：从0开始的页数偏移量，0代表第一页
 }
 ```
 
+### 获取知识点二级标题
+
+> 可以指定获取高考知识点或核心单词, 可指定每页返回多少组数据，页数偏移量
+
+#### url
+
+/english/knowledge/mapping/get
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "必修一词汇表与重点语法",
+      "which": 1
+    },
+    {
+      "titleName": "必修三词汇表与重点语法",
+      "which": 2
+    },
+    {
+      "titleName": "必修二词汇表与重点语法",
+      "which": 3
+    },
+    {
+      "titleName": "必修五词汇表与重点语法",
+      "which": 4
+    },
+    {
+      "titleName": "必修四词汇表与重点语法",
+      "which": 5
+    },
+    {
+      "titleName": "选修七词汇表与重点语法",
+      "which": 6
+    },
+    {
+      "titleName": "选修九词汇表与重点语法",
+      "which": 7
+    },
+    {
+      "titleName": "选修八词汇表与重点语法",
+      "which": 8
+    },
+    {
+      "titleName": "选修六词汇表与重点语法",
+      "which": 9
+    },
+    {
+      "titleName": "选修十一词汇表",
+      "which": 10
+    },
+    {
+      "titleName": "选修十词汇表与重点语法",
+      "which": 11
+    }
+  ]
+}
+```
+
 ## 生物部分
 
 ### 获取知识点
@@ -179,6 +249,56 @@ page_offset：从0开始的页数偏移量，0代表第一页
         ...
     ]
 
+}
+```
+
+### 获取知识点二级标题
+
+> 可以指定获取高考知识点或核心单词, 可指定每页返回多少组数据，页数偏移量
+
+#### url
+
+/biology/knowledge/mapping/get
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "分子与细胞",
+      "which": 0
+    },
+    {
+      "titleName": "初高中知识对接",
+      "which": 1
+    },
+    {
+      "titleName": "现代生物技术专题",
+      "which": 2
+    },
+    {
+      "titleName": "生物技术与实践",
+      "which": 3
+    },
+    {
+      "titleName": "稳态与环境",
+      "which": 4
+    },
+    {
+      "titleName": "遗传与进化",
+      "which": 5
+    }
+  ]
 }
 ```
 
@@ -279,5 +399,55 @@ page_offset：从0开始的页数偏移量，0代表第一页
         ...
     ]
 
+}
+```
+
+### 获取知识点二级标题
+
+> 可以指定获取高考知识点或核心单词, 可指定每页返回多少组数据，页数偏移量
+
+#### url
+
+/chemistry/knowledge/mapping/get
+
+#### 接口方法
+
+GET
+
+#### 传入参数
+
+None
+
+#### 返回参数
+
+```json
+{
+  "code": 0,
+  "data": [
+    {
+      "titleName": "化学基本概念和理论",
+      "which": 0
+    },
+    {
+      "titleName": "化学实验基础",
+      "which": 1
+    },
+    {
+      "titleName": "必修一：元素及其化合物",
+      "which": 2
+    },
+    {
+      "titleName": "有机化学基础",
+      "which": 3
+    },
+    {
+      "titleName": "物质结构与性质",
+      "which": 4
+    },
+    {
+      "titleName": "选修一：化学与生活",
+      "which": 5
+    }
+  ]
 }
 ```
