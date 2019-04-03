@@ -770,7 +770,6 @@ None
     },
     {
       "titleName": "必修三（旧教材）",
-<<<<<<< HEAD
       "which": 7
     },
     {
@@ -791,7 +790,7 @@ None
 
 ### 获取归纳总结二级标题
 
-> 可以指定获取高考知识点二级标题映射
+> 可以指定获取高考归纳总结二级标题映射
 
 #### url
 
@@ -810,49 +809,6 @@ None
 ```json
 {
   "code": 0,
-  "data": [
-    {
-      "titleName": "必修一",
-      "which": 1
-    },
-    {
-      "titleName": "必修二",
-      "which": 2
-    },
-    {
-      "titleName": "必修三",
-      "which": 3
-    },
-    {
-      "titleName": "必修四",
-      "which": 4
-    },
-    {
-      "titleName": "必修一（旧教材）",
-      "which": 5
-    },
-    {
-      "titleName": "必修二（旧教材）",
-      "which": 6
-    },
-    {
-      "titleName": "必修三（旧教材）",
-=======
->>>>>>> 8cc255770a66192a17bd10569a75977ef350f6be
-      "which": 7
-    },
-    {
-      "titleName": "必修四（旧教材）",
-      "which": 8
-    },
-    {
-      "titleName": "选修三（旧教材）",
-      "which": 9
-    },
-    {
-      "titleName": "选修四（旧教材）",
-      "which": 10
-    }
-  ]
+  "data": "高中政治常识主要原理归纳总结"
 }
 ```
