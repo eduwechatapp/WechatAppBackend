@@ -5,11 +5,12 @@ def change(s):
     return re.subn("\[\d{2}:\d{2}\.\d{2}\]", "", s)[0]
     pass
 
+pswd = input("please input database pasword:")
 
 connection = pymysql.connect(host='localhost',
                              port=3306,
                              user='root',
-                             password='0000',
+                             password=pswd,
                              db='edu',
                              charset='utf8')
 
