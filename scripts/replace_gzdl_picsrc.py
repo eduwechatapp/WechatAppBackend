@@ -39,16 +39,16 @@ for r in res:
 
     sql = 'update `gzdl` set content="%s" where id=%d' % (new_content, _id)
     
-    print("00000000")
-    print(new_content)
-    print("00000000")
-    #cursor.execute(sql)
+    #print("00000000")
+    #print(new_content)
+    #print("00000000")
+    cursor.execute(sql)
 
     pass
 
 
 
-#connection.commit()
+connection.commit()
 
 cursor.close()
 
