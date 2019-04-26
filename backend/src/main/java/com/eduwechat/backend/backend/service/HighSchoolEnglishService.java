@@ -24,27 +24,27 @@ public class HighSchoolEnglishService extends CommonService {
     private static String fromWhichGetKnowledgeErji(Integer which) {
 
         switch (which) {
-            case 1:
+            case 0:
                 return "必修一词汇表与重点语法";
-            case 2:
+            case 1:
                 return "必修二词汇表与重点语法";
-            case 3:
+            case 2:
                 return "必修三词汇表与重点语法";
-            case 4:
+            case 3:
                 return "必修四词汇表与重点语法";
-            case 5:
+            case 4:
                 return "必修五词汇表与重点语法";
-            case 6:
+            case 5:
                 return "选修六词汇表与重点语法";
-            case 7:
+            case 6:
                 return "选修七词汇表与重点语法";
-            case 8:
+            case 7:
                 return "选修八词汇表与重点语法";
-            case 9:
+            case 8:
                 return "选修九词汇表与重点语法";
-            case 10:
+            case 9:
                 return "选修十词汇表与重点语法";
-            case 11:
+            case 10:
                 return "选修十一词汇表";
             default:
                 return null;

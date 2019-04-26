@@ -85,17 +85,17 @@ public class KnowledgeTitleListUtil extends BaseGetTitleListUtil implements
 
     @Override
     public List<TitleListMapping> getEnglishTitleList(List<String> list) {
-        return startFromOne(list);
+        return startFromZero(list);
     }
 
     @Override
     public List<TitleListMapping> getGeographyTitleList(List<String> list) {
-        return startFromOne(list);
+        return startFromZero(list);
     }
 
     @Override
     public List<TitleListMapping> getHistoryTitleList(List<String> list) {
-        return startFromOne(list);
+        return startFromZero(list);
     }
 
     @Override
@@ -105,7 +105,7 @@ public class KnowledgeTitleListUtil extends BaseGetTitleListUtil implements
 
     @Override
     public List<TitleListMapping> getPoliticalTitleList(List<String> list) {
-        return startFromOne(list);
+        return startFromZero(list);
     }
 
 }

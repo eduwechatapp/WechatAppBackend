@@ -202,67 +202,67 @@ None
   "data": [
     {
       "titleName": "第1讲《地球》",
-      "which": 1
+      "which": 0
     },
     {
       "titleName": "第2讲《地图》",
-      "which": 2
+      "which": 1
     },
     {
       "titleName": "第3讲《地球上的大气》",
-      "which": 3
+      "which": 2
     },
     {
       "titleName": "第4讲《地球上的水》",
-      "which": 4
+      "which": 3
     },
     {
       "titleName": "第5讲《地表形态的塑造》",
-      "which": 5
+      "which": 4
     },
     {
       "titleName": "第6讲《自然环境的整体性和差异性》",
-      "which": 6
+      "which": 5
     },
     {
       "titleName": "第7讲《关于季节的知识专题》",
-      "which": 7
+      "which": 6
     },
     {
       "titleName": "第8讲《自然资源与自然灾害》",
-      "which": 8
+      "which": 7
     },
     {
       "titleName": "第9讲《农业》",
-      "which": 9
+      "which": 8
     },
     {
       "titleName": "第10讲《工业》",
-      "which": 10
+      "which": 9
     },
     {
       "titleName": "第11讲《交通》",
-      "which": 11
+      "which": 10
     },
     {
       "titleName": "第12讲《人口》",
-      "which": 12
+      "which": 11
     },
     {
       "titleName": "第13讲《城市》",
-      "which": 13
+      "which": 12
     },
     {
       "titleName": "第14讲《人类与地理环境的协调发展》",
-      "which": 14
+      "which": 13
     },
     {
       "titleName": "第15讲《区域治理与可持续发展》",
-      "which": 15
+      "which": 14
     },
     {
       "titleName": "第16讲《地理信息技术的应用》",
-      "which": 16
+      "which": 15
     }
   ]
 }
@@ -292,27 +292,27 @@ None
   "data": [
     {
       "titleName": "世界区域地理",
-      "which": 1
+      "which": 0
     },
     {
       "titleName": "中国自然地理",
-      "which": 2
+      "which": 1
     },
     {
       "titleName": "中国人文地理",
-      "which": 3
+      "which": 2
     },
     {
       "titleName": "中国农业地理的综合分析",
-      "which": 4
+      "which": 3
     },
     {
       "titleName": "中国区域地理与区域差异",
-      "which": 5
+      "which": 4
     },
     {
       "titleName": "中国国土整治与开发",
-      "which": 6
+      "which": 5
     }
   ]
 }
@@ -592,23 +592,23 @@ None
   "data": [
     {
       "titleName": "必修一",
-      "which": 1
+      "which": 0
     },
     {
       "titleName": "必修二",
-      "which": 2
+      "which": 1
     },
     {
       "titleName": "必修三",
-      "which": 3
+      "which": 2
     },
     {
       "titleName": "选修一",
-      "which": 4
+      "which": 3
     },
     {
       "titleName": "选修四",
-      "which": 5
+      "which": 4
     }
   ]
 }
@@ -634,25 +634,25 @@ openid：用户唯一表识
 
 which:
 
-1-必修一
+0-必修一
 
-2-必修二 
+1-必修二 
 
-3-必修三 
+2-必修三 
 
-4-必修四 
+3-必修四 
 
-5-必修一（旧教材） 
+4-必修一（旧教材） 
 
-6-必修二（旧教材） 
+5-必修二（旧教材） 
 
-7-必修三（旧教材） 
+6-必修三（旧教材） 
 
-8-必修四（旧教材） 
+7-必修四（旧教材） 
 
-9-选修三（旧教材） 
+8-选修三（旧教材） 
 
-10-选修四（旧教材）
+9-选修四（旧教材）
 
 number_every_page：每页多少组内容
 
@@ -746,43 +746,43 @@ None
   "data": [
     {
       "titleName": "必修一",
-      "which": 1
+      "which": 0
     },
     {
       "titleName": "必修二",
-      "which": 2
+      "which": 1
     },
     {
       "titleName": "必修三",
-      "which": 3
+      "which": 2
     },
     {
       "titleName": "必修四",
-      "which": 4
+      "which": 3
     },
     {
       "titleName": "必修一（旧教材）",
-      "which": 5
+      "which": 4
     },
     {
       "titleName": "必修二（旧教材）",
-      "which": 6
+      "which": 5
     },
     {
       "titleName": "必修三（旧教材）",
-      "which": 7
+      "which": 6
     },
     {
       "titleName": "必修四（旧教材）",
-      "which": 8
+      "which": 7
     },
     {
       "titleName": "选修三（旧教材）",
-      "which": 9
+      "which": 8
     },
     {
       "titleName": "选修四（旧教材）",
-      "which": 10
+      "which": 9
     }
   ]
 }

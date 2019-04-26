@@ -24,17 +24,17 @@ public class HighSchoolChineseService extends CommonService {
     private static String fromWhichGetKnowledgeErji(Integer which) {
 
         switch (which) {
-            case 1:
+            case 0:
                 return "必修一";
-            case 2:
+            case 1:
                 return "必修二";
-            case 3:
+            case 2:
                 return "必修三";
-            case 4:
+            case 3:
                 return "必修四";
-            case 5:
+            case 4:
                 return "必修五";
-            case 6:
+            case 5:
                 return "中国古代诗歌散文欣赏欣赏（选修）";
             default:
                 return null;

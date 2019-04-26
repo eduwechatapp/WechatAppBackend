@@ -38,6 +38,7 @@ public abstract class BaseGetTitleListUtil {
      * @param list 待映射 List&lt;String&gt;
      * @return List&lt;TitleListMapping&gt;
      */
+    @Deprecated
     protected static List<TitleListMapping> startFromOne(List<String> list) {
         List<TitleListMapping> res = new ArrayList<>(list.size());
 

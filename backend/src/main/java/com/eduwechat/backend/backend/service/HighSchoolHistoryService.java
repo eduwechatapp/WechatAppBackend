@@ -27,15 +27,15 @@ public class HighSchoolHistoryService extends CommonService {
      */
     private static String fromWhichGetKnowledgeErji(Integer which) {
         switch (which) {
-            case 1:
+            case 0:
                 return "必修一";
-            case 2:
+            case 1:
                 return "必修二";
-            case 3:
+            case 2:
                 return "必修三";
-            case 4:
+            case 3:
                 return "选修一";
-            case 5:
+            case 4:
                 return "选修四";
         }
 

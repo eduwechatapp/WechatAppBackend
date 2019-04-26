@@ -39,11 +39,12 @@ public class PoliticalController extends CommonController implements CanGetKnowl
 
     @ApiOperation(value = "获取政治归纳总结" ,  notes="指定分页获取政治归纳总结")
     @ResponseBody
-    @RequestMapping(value = "/summary/get/{openid}/{number_every_page}/{page_offset}", method = RequestMethod.GET)
+    @RequestMapping(value = "/summary/get/{openid}/{which}/{number_every_page}/{page_offset}", method = RequestMethod.GET)
     public Map<String, Object> getSummary(@PathVariable String openid,
+                                          @PathVariable Integer which,
                                           @PathVariable Integer number_every_page,
                                           @PathVariable Integer page_offset) {
-        return this.innerCommonFromListGetMap(this.service.getSummary(0, number_every_page, page_offset));
+        return this.innerCommonFromListGetMap(this.service.getSummary(which, number_every_page, page_offset));
     }
 
     @Override
@@ -59,12 +60,7 @@ public class PoliticalController extends CommonController implements CanGetKnowl
     @ResponseBody
     @RequestMapping(value = "/summary/mapping/get", method = RequestMethod.GET)
     public Map<String, Object> getSummaryTitleList() {
-        Map<String, Object> res = this.innerGetTitleMappingFromListGetMap(service,"归纳总结", "summary", "zz");
 
-        // 移除不需要which的返回map
-        TitleListMapping obj = (TitleListMapping) ((List) res.get("data")).get(0);
-        res.put("data", obj.getTitleName());
-
-        return res;
+        return this.innerGetTitleMappingFromListGetMap(service,"归纳总结", "summary", "zz");
     }
 }

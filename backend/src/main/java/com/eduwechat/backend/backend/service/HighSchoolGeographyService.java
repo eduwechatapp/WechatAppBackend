@@ -27,37 +27,37 @@ public class HighSchoolGeographyService extends CommonService {
     private static String fromWhichGetKnowledgeErji(Integer which) {
 
         switch (which) {
-            case 1:
+            case 0:
                 return "第1讲《地球》";
-            case 2:
+            case 1:
                 return "第2讲《地图》";
-            case 3:
+            case 2:
                 return "第3讲《地球上的大气》";
-            case 4:
+            case 3:
                 return "第4讲《地球上的水》";
-            case 5:
+            case 4:
                 return "第5讲《地表形态的塑造》";
-            case 6:
+            case 5:
                 return "第6讲《自然环境的整体性和差异性》";
-            case 7:
+            case 6:
                 return "第7讲《关于季节的知识专题》";
-            case 8:
+            case 7:
                 return "第8讲《自然资源与自然灾害》";
-            case 9:
+            case 8:
                 return "第9讲《农业》";
-            case 10:
+            case 9:
                 return "第10讲《工业》";
-            case 11:
+            case 10:
                 return "第11讲《交通》";
-            case 12:
+            case 11:
                 return "第12讲《人口》";
-            case 13:
+            case 12:
                 return "第13讲《城市》";
-            case 14:
+            case 13:
                 return "第14讲《人类与地理环境的协调发展》";
-            case 15:
+            case 14:
                 return "第15讲《区域治理与可持续发展》";
-            case 16:
+            case 15:
                 return "第16讲《地理信息技术的应用》";
         }
         return null;
@@ -138,7 +138,7 @@ public class HighSchoolGeographyService extends CommonService {
     }
 
     /**
-     * 获取专题映射
+     * 获取答题模板映射
      * @param which Integer
      * @return String
      */
@@ -180,10 +180,8 @@ public class HighSchoolGeographyService extends CommonService {
             case 3:
                 return "中国农业地理的综合分析";
             case 4:
-                return "中国人文地理";
-            case 5:
                 return "中国区域地理与区域差异";
-            case 6:
+            case 5:
                 return "中国国土整治与开发";
         }
         return null;
