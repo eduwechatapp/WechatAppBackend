@@ -1,23 +1,31 @@
 package com.eduwechat.backend.backend.service;
 
+import com.eduwechat.backend.backend.entity.HighSchoolBiological;
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
 import com.eduwechat.backend.backend.repository.HighSchoolBiologicalRepository;
+import com.eduwechat.backend.backend.repository.search.HighSchoolBiologicalSearchDao;
 import com.eduwechat.backend.backend.service.base.CommonService;
-import com.eduwechat.backend.backend.service.base.inner.Content;
-import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
+import com.eduwechat.backend.backend.service.base.inner.common.Content;
+import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
+import com.eduwechat.backend.backend.service.base.inner.search.SearchItem;
+import com.eduwechat.backend.backend.service.base.inner.search.SearchResult;
+import com.eduwechat.backend.backend.service.base.search.FullSearchable;
+import com.eduwechat.backend.backend.utils.titlelist.KnowledgeTitleListUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class HighSchoolBiologicalService extends CommonService {
+public class HighSchoolBiologicalService extends CommonService implements FullSearchable {
 
-
+    @Autowired
+    private HighSchoolBiologicalSearchDao searchEngine;
 
     /**
      * which映射二级标题字符串
@@ -74,6 +82,7 @@ public class HighSchoolBiologicalService extends CommonService {
     public List<TitleListMapping> getTitleList(String yijiString, String yijiType, String subjectType) throws TypeNotMatchException {
         return this.innerGetTitleList(repository.findByTitleList(yijiString), yijiType, subjectType);
     }
+
 
 
 }

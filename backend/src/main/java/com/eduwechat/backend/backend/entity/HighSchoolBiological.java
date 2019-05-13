@@ -2,11 +2,13 @@ package com.eduwechat.backend.backend.entity;
 
 
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "gzsw")
+@Document(indexName = "edu",type = "gzsw")
 public class HighSchoolBiological implements BaseEntity {
 
     @Id
@@ -59,6 +61,7 @@ public class HighSchoolBiological implements BaseEntity {
         this.id = id;
     }
 
+    @Override
     public String getYiji() {
         return yiji;
     }
@@ -67,6 +70,7 @@ public class HighSchoolBiological implements BaseEntity {
         this.yiji = yiji;
     }
 
+    @Override
     public String getErji() {
         return erji;
     }

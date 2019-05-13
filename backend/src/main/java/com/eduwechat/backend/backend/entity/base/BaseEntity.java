@@ -10,4 +10,8 @@ public  interface BaseEntity {
     String getTitle();
 
     String getContent();
+
+    String getErji();
+
+    String getYiji();
 }

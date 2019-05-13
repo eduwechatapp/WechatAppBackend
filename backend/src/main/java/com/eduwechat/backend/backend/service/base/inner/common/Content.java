@@ -1,4 +1,4 @@
-package com.eduwechat.backend.backend.service.base.inner;
+package com.eduwechat.backend.backend.service.base.inner.common;
 
 
 public class Content {

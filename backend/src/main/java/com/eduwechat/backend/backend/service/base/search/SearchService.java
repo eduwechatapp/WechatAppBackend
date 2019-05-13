@@ -1,4 +1,4 @@
-package com.eduwechat.backend.backend.service.base;
+package com.eduwechat.backend.backend.service.base.search;
 
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
 import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
@@ -17,7 +17,7 @@ import java.util.List;
  * @create: 2019/5/13 6:01 PM
  **/
 
-public class SearchService {
+class SearchService implements FullSearchable {
 
     @Override
     public SearchResult fullSearch(String erji, String titleKeyWord, String contentKeyWord, boolean fullText, Integer size, Integer page, String subject) {

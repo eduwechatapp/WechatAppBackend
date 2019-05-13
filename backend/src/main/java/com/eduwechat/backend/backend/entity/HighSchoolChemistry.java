@@ -58,6 +58,7 @@ public class HighSchoolChemistry implements BaseEntity {
         this.id = id;
     }
 
+    @Override
     public String getYiji() {
         return yiji;
     }
@@ -66,6 +67,7 @@ public class HighSchoolChemistry implements BaseEntity {
         this.yiji = yiji;
     }
 
+    @Override
     public String getErji() {
         return erji;
     }

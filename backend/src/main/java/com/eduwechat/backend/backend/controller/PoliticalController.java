@@ -4,7 +4,6 @@ import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListCon
 import com.eduwechat.backend.backend.controller.base.CanGetSummaryTitleListController;
 import com.eduwechat.backend.backend.controller.base.CommonController;
 import com.eduwechat.backend.backend.service.HighSchoolPoliticalService;
-import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 import java.util.Map;
 
 @Api(description = "政治接口")

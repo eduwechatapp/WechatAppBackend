@@ -1,7 +1,7 @@
 package com.eduwechat.backend.backend.utils.base;
 
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
-import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
+import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
 
 import java.util.ArrayList;
 import java.util.List;

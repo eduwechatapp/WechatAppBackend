@@ -1,8 +1,8 @@
 package com.eduwechat.backend.backend.service.base;
 
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
-import com.eduwechat.backend.backend.service.base.inner.Content;
-import com.eduwechat.backend.backend.service.base.inner.TitleListMapping;
+import com.eduwechat.backend.backend.service.base.inner.common.Content;
+import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
 import com.eduwechat.backend.backend.utils.titlelist.KnowledgeTitleListUtil;
 import com.eduwechat.backend.backend.utils.titlelist.SummaryTitleListUtil;
 import com.eduwechat.backend.backend.utils.titlelist.TemplateTitleListUtil;

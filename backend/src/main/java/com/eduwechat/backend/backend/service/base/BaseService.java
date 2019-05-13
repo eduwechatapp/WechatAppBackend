@@ -1,7 +1,7 @@
 package com.eduwechat.backend.backend.service.base;
 
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
-import com.eduwechat.backend.backend.service.base.inner.Content;
+import com.eduwechat.backend.backend.service.base.inner.common.Content;
 import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
