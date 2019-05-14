@@ -15,9 +15,16 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @ToString
 public class SearchResult {
+
+    SearchResult(Integer size, Integer page, String subject, List<InnerSearchContent> dataList) {
+        this.size = size;
+        this.page = page;
+        this.subject = subject;
+        this.dataList = dataList;
+    }
+
     /**
      * 本次搜索的分页大小
      */
@@ -29,12 +36,14 @@ public class SearchResult {
     private Integer page;
 
     /**
-     * 搜索的内容是否为全部内容（或为简略内容）
+     * 所属学科 yy yw sx wl hx sw dl ls zz
      */
-    private boolean fullText;
+    private String subject;
 
     /**
-     * 承载具体数据
+     * 承载内容的list
      */
-    private List<SearchItem> data;
+    private List<InnerSearchContent> dataList;
+
+
 }

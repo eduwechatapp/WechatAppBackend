@@ -33,4 +33,16 @@ public interface HighSchoolPoliticalRepository extends JpaRepository<HighSchoolP
 
     @Query(value = "select erji from gzzz where yiji = :yiji group by erji order by id", nativeQuery = true)
     List<String> findByTitleList(@Param("yiji") String yiji);
+
+    /* search api */
+
+    Page<BaseEntity> findByTitleContainingOrContentContainingOrErjiContaining(String title, String content, String erji, Pageable pageable);
+
+    Page<BaseEntity> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
+
+    Page<BaseEntity> findByTitleContaining(String title, Pageable pageable);
+
+    Page<BaseEntity> findByContentContaining(String content, Pageable pageable);
+
+    Page<BaseEntity> findByErjiContaining(String erji, Pageable pageable);
 }
