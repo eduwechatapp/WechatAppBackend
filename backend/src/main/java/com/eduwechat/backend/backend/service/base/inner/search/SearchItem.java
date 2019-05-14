@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 /**
  * @program: backend
  * @description: SearchItem
@@ -18,29 +20,41 @@ import lombok.ToString;
 @ToString
 public class SearchItem {
 
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    class InnerSearchItem {
+        /**
+         * title 可以为简略形式（前几个字）可以为全文形式
+         */
+        private String title;
+
+        /**
+         * content 可以为简略形式（前几个字）可以为全文形式
+         */
+        private String content;
+
+        /**
+         * 二级标题 可以为简略形式（前几个字）可以为全文形式
+         */
+        private String erji;
+
+        /**
+         * 可用于定位具体文章的which
+         */
+        private Integer erjiWhich;
+    }
+
     /**
      * 所属学科 yy yw sx wl hx sw dl ls zz
      */
     private String subject;
 
     /**
-     * 可用于定位具体文章的which
+     * 承载内容的list
      */
-    private Integer erjiWhich;
+    private List<InnerSearchItem> dataList;
 
-    /**
-     * title 可以为简略形式（前几个字）可以为全文形式
-     */
-    private String title;
 
-    /**
-     * content 可以为简略形式（前几个字）可以为全文形式
-     */
-    private String content;
-
-    /**
-     * 二级标题 可以为简略形式（前几个字）可以为全文形式
-     */
-    private String erji;
 
 }

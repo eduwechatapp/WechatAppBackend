@@ -16,5 +16,5 @@ public interface FullSearchable extends TitleOrContentSearchable {
      * @param page 页数
      * @return 搜索结果对象
      */
-    SearchResult fullSearch(String erji, String titleKeyWord, String contentKeyWord, boolean fullText, Integer size, Integer page, String subject);
+    SearchResult fullSearch(String erji, String titleKeyWord, String contentKeyWord, boolean fullText, Integer size, Integer page);
 }

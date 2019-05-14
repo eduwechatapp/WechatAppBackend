@@ -15,5 +15,5 @@ public interface TitleOrContentSearchable extends SingleSearchable {
      * @param page 页数量
      * @return 搜索结果
      */
-    SearchResult withTitleOrContentSearch(String titleKeyWord, String contentKeyWord, boolean fullText, Integer size, Integer page, String subject);
+    SearchResult withTitleOrContentSearch(String titleKeyWord, String contentKeyWord, boolean fullText, Integer size, Integer page);
 }

@@ -23,7 +23,7 @@ public interface SingleSearchable {
      * @param page 页数
      * @return 搜索结果对象
      */
-    SearchResult withErjiSearch(String erjiKeyWord, boolean fullText, Integer size, Integer page, String subject);
+    SearchResult withErjiSearch(String erjiKeyWord, boolean fullText, Integer size, Integer page);
 
     /**
      * 只根据标题搜索
@@ -32,7 +32,7 @@ public interface SingleSearchable {
      * @param page 页数
      * @return 搜索结果对象
      */
-    SearchResult withTitleSearch(String titleKeyWord, boolean fullText, Integer size, Integer page, String subject);
+    SearchResult withTitleSearch(String titleKeyWord, boolean fullText, Integer size, Integer page);
 
     /**
      * 只根据内容搜索
@@ -41,6 +41,6 @@ public interface SingleSearchable {
      * @param page 页数
      * @return 搜索结果对象
      */
-    SearchResult withContentSearch(String contentKeyWord, boolean fullText, Integer size, Integer page, String subject);
+    SearchResult withContentSearch(String contentKeyWord, boolean fullText, Integer size, Integer page);
 
 }
