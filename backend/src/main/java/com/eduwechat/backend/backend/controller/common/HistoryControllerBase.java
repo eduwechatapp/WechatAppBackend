@@ -1,7 +1,7 @@
 package com.eduwechat.backend.backend.controller.common;
 
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
-import com.eduwechat.backend.backend.controller.base.CommonController;
+import com.eduwechat.backend.backend.controller.base.BaseCommonController;
 import com.eduwechat.backend.backend.service.common.HighSchoolHistoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Api(description = "历史接口")
 @Controller
 @RequestMapping(value = "/history")
-public class HistoryController extends CommonController implements CanGetKnowledgeTitleListController {
+public class HistoryControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController {
 
     @Autowired
     private HighSchoolHistoryService service;

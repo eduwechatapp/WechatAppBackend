@@ -1,7 +1,7 @@
 package com.eduwechat.backend.backend.controller.common;
 
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
-import com.eduwechat.backend.backend.controller.base.CommonController;
+import com.eduwechat.backend.backend.controller.base.BaseCommonController;
 import com.eduwechat.backend.backend.service.common.HighSchoolPhysicsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Api(description = "物理接口")
 @Controller
 @RequestMapping(value = "/physics")
-public class PhysicsController extends CommonController implements CanGetKnowledgeTitleListController {
+public class PhysicsControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController {
 
     @Autowired
     HighSchoolPhysicsService service;

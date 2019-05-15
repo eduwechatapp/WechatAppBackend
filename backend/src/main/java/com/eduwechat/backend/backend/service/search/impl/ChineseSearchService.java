@@ -8,6 +8,7 @@ import com.eduwechat.backend.backend.service.search.FullSearchable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 /**
  * @program: backend
@@ -15,7 +16,7 @@ import org.springframework.data.domain.PageRequest;
  * @author: Vaskka
  * @create: 2019/5/15 3:00 AM
  **/
-
+@Service
 public class ChineseSearchService extends SearchService implements FullSearchable {
 
     @Autowired

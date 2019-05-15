@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CommonController {
+public class BaseCommonController {
 
     /**
      * 处理一般情况List->data->mapping

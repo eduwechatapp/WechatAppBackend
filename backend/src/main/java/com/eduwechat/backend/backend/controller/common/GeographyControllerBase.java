@@ -17,7 +17,7 @@ import java.util.Map;
 @Api(description = "地理接口")
 @Controller
 @RequestMapping(value = "/geography")
-public class GeographyController extends CommonController implements CanGetKnowledgeTitleListController,
+public class GeographyControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController,
         CanGetTemplateTitleListController,
         CanGetSummaryTitleListController,
         CanGetTopicTitleListController

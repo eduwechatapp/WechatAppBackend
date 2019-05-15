@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.common;
 
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetSummaryTitleListController;
-import com.eduwechat.backend.backend.controller.base.CommonController;
+import com.eduwechat.backend.backend.controller.base.BaseCommonController;
 import com.eduwechat.backend.backend.service.common.HighSchoolPoliticalService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Api(description = "政治接口")
 @Controller
 @RequestMapping(value = "/political")
-public class PoliticalController extends CommonController implements CanGetKnowledgeTitleListController,
+public class PoliticalControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController,
         CanGetSummaryTitleListController
 {
 

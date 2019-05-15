@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.common;
 
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetTemplateTitleListController;
-import com.eduwechat.backend.backend.controller.base.CommonController;
+import com.eduwechat.backend.backend.controller.base.BaseCommonController;
 import com.eduwechat.backend.backend.service.common.HighSchoolChemistryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Api(description = "化学接口")
 @Controller
 @RequestMapping(value = "/chemistry")
-public class ChemistryController extends CommonController implements CanGetKnowledgeTitleListController,
+public class ChemistryControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController,
         CanGetTemplateTitleListController
 {
 

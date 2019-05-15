@@ -4,7 +4,7 @@ package com.eduwechat.backend.backend.controller.common;
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetSummaryTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetTopicTitleListController;
-import com.eduwechat.backend.backend.controller.base.CommonController;
+import com.eduwechat.backend.backend.controller.base.BaseCommonController;
 import com.eduwechat.backend.backend.service.common.HighSchoolChineseService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,7 +20,7 @@ import java.util.Map;
 @Api(description = "语文接口")
 @Controller
 @RequestMapping(value = "/chinese")
-public class ChineseController extends CommonController implements CanGetKnowledgeTitleListController,
+public class ChineseControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController,
         CanGetTopicTitleListController,
         CanGetSummaryTitleListController
 {
