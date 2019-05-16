@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -55,8 +57,8 @@ public class SearchController extends BaseSearchController {
     @Override
     @ApiOperation(value = "单科分页搜索" ,  notes="指定分页获取单科搜索结果")
     @ResponseBody
-    @PostMapping("/{openid}/{subject}/{number_every_page}/{page_offset}")
-    public Map<String, Object> doSearch(@PathVariable String openid,
+    @PostMapping("/detail/{openid}/{subject}/{number_every_page}/{page_offset}")
+    public Map<String, Object> doDetailSearch(@PathVariable String openid,
                                         @RequestBody JSONObject jsonObject,
                                         @PathVariable(value = "subject") String subject,
                                         @PathVariable(value = "number_every_page") Integer size,
@@ -121,4 +123,35 @@ public class SearchController extends BaseSearchController {
 
         return map;
     }
+
+    @Override
+    @ApiOperation(value = "简单搜索" ,  notes="根据分页关键字确定simple搜素结果")
+    @ResponseBody
+    @PostMapping("/simple/{openid}/{keyWord}/{number_every_page}/{page_offset}")
+    public Map<String, Object> doSimpleSearch(@PathVariable(value = "openid") String openid,
+                                              @PathVariable(value = "keyWord") String keyWord,
+                                              @PathVariable(value = "number_every_page") Integer size,
+                                              @PathVariable(value = "page_offset") Integer page) {
+
+        Map<String, Object> map = new HashMap<>();
+        List<SearchResult> dataList = new ArrayList<>();
+
+        dataList.add(mathSearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(chineseSearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(englishSearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(physicsSearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(chemistrySearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(biologicalSearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(geographySearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(historySearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+        dataList.add(politicalSearchService.fullSearch(keyWord, keyWord, keyWord, size, page));
+
+        map.put("code", 0);
+        map.put("msg", "success");
+        map.put("data", dataList);
+
+        return map;
+    }
+
+
 }

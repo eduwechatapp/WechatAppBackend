@@ -1,14 +1,10 @@
 package com.eduwechat.backend.backend.controller.base;
 
 import com.eduwechat.backend.backend.exceptions.search.SearchParamMissingException;
-import com.eduwechat.backend.backend.service.base.SearchService;
 import com.eduwechat.backend.backend.service.base.inner.search.SearchResult;
 import com.eduwechat.backend.backend.service.search.impl.*;
 import net.minidev.json.JSONObject;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -29,8 +25,18 @@ public abstract class BaseSearchController {
      * @param page 页偏移
      * @return 可序列化为Json对象的Map对象
      */
-    public abstract Map<String, Object> doSearch(String openid, JSONObject jsonObject, String subject, Integer size, Integer page);
+    public abstract Map<String, Object> doDetailSearch(String openid, JSONObject jsonObject, String subject, Integer size, Integer page);
 
+
+    /**
+     * 简单查询
+     * @param openid openid
+     * @param size size
+     * @param page page
+     * @param keyWord 关键字
+     * @return 可序列化为Json对象的Map对象
+     */
+    public abstract Map<String, Object> doSimpleSearch(String openid, String keyWord, Integer size, Integer page);
 
     /* 2019-05-15 ==== 9科的内部查询接口，代码过于冗余后续一定要重构（搜索模块服务层设计不合理)  */
 

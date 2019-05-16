@@ -2,7 +2,150 @@
 
 > 2019-05-15
 
-## 分科定制搜索
+## 简单搜索
+
+### 接口详情
+
+#### 功能简介
+
+只提供**openid**、**关键字**、**页大小**、**页偏移量**即可完成搜索。返回的根据关键字查找的**9科结果**。
+
+#### 接口方法
+
+POST
+
+#### URL
+
+/search/simple/{openid}/{keyWord}/{number_every_page}/{page_offset}
+
+#### 传入参数
+
+
++ **openid**：用户openid
++ **keyWord**：搜索关键字
++ **number_every_page**：分页每页的大小
++ **page_offset**：页偏移量
+
+#### 接口返回示例
+
+```json
+{
+  "msg": "success",
+  "code": 0,
+  "data": [          // 结果数组，包含九科的搜索结果
+    {
+      "size": 20,       // 每页大小
+      "page": 0,        // 页偏移量
+      "subject": "sx",  // 学科名拼音开头
+      "dataList": [
+        {
+          "title": "进位制",             // 具体搜索到的文章标题
+          "content": "<span style= ..",  // 具体搜索到的文章内容
+          "erji": "必修三"               // 具体搜索到的文章二级标题
+        },
+        {
+          "title": "伪随机数",
+          "content": "<span st...",
+          "erji": "必修三"
+        }
+      ]
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "yw",
+      "dataList": [
+        {
+          "title": "包身工  ----夏衍",
+          "content": "《包身工》...",
+          "erji": "必修一"
+        }
+      ]
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "yy",
+      "dataList": [
+        {
+          "title": "必修一重点语法Unit 1",
+          "content": "1. be good to...",
+          "erji": "必修一词汇表与重点语法"
+        },
+        {
+          "title": "必修四词汇表Unit 2",
+          "content": "必修四Unit 2词汇表...",
+          "erji": "必修四词汇表与重点语法"
+        },
+        {
+          "title": "必修五课文翻译Unit 1",
+          "content": "　　1、约翰•斯洛击败“霍乱王...",
+          "erji": "必修五词汇表与重点语法"
+        }
+      ]
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "wl",
+      "dataList": []
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "hx",
+      "dataList": [
+        {
+          "title": "有机物的命名",
+          "content": "有机物的命...",
+          "erji": "有机化学基础"
+        },
+        {
+          "title": "辨析一（78）",
+          "content": "辨析1<br/...",
+          "erji": "选修五"
+        }
+      ]
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "sw",
+      "dataList": []
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "dl",
+      "dataList": [
+        {
+          "title": "数字地球的含义",
+          "content": "（１）指数字化的地...",
+          "erji": "第16讲《地理信息技术的应用》"
+        }
+      ]
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "ls",
+      "dataList": [
+        {
+          "title": "柏林墙的建立",
+          "content": "柏林墙的建...",
+          "erji": "必修一"
+        }
+      ]
+    },
+    {
+      "size": 20,
+      "page": 0,
+      "subject": "zz",
+      "dataList": []
+    }
+  ]
+}
+```
 
 ### 接口详情
 
@@ -20,7 +163,7 @@ POST
 
 #### URL
 
-/search/{openid}/{subject}/{number_every_page}/{page_offset}
+/search/detail/{openid}/{subject}/{number_every_page}/{page_offset}
 
 #### 传入参数
 
@@ -31,7 +174,7 @@ POST
 + **number_every_page**: 分页信息，规定每页的数量
 + **page_offset**: 分页信息，页偏移量
 
-###### body
+##### body
 
 > 如果只想搜索**标题**、**内容**、**二级标题**中的**某一种**，只需要在json中传入想要查询的字段，剩下的赋值为null或不传入。
 >
