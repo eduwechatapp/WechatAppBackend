@@ -53,7 +53,7 @@ public class SearchController extends BaseSearchController {
     private HistorySearchService historySearchService;
 
     @Override
-    @ApiOperation(value = "生物类别搜索" ,  notes="指定分页获取生物搜索结果")
+    @ApiOperation(value = "单科分页搜索" ,  notes="指定分页获取单科搜索结果")
     @ResponseBody
     @PostMapping("/{openid}/{subject}/{number_every_page}/{page_offset}")
     public Map<String, Object> doSearch(@PathVariable String openid,
