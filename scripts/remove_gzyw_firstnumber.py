@@ -48,3 +48,8 @@ connection.commit()
 cursor.close()
 
 connection.close()
+<<<<<<< HEAD
+=======
+
+print("ok")
+>>>>>>> dev
