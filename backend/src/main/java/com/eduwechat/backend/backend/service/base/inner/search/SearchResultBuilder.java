@@ -2,6 +2,7 @@ package com.eduwechat.backend.backend.service.base.inner.search;
 
 import com.eduwechat.backend.backend.entity.base.BaseEntity;
 import com.eduwechat.backend.backend.exceptions.common.BuilderNotReadyException;
+import com.eduwechat.backend.backend.utils.CommonUtil;
 import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class SearchResultBuilder {
     }
 
     public SearchResultBuilder confirmSubject(String subject) {
+
+        subject = CommonUtil.fromSimpleStrGetChinese(subject);
         this.subject = subject;
 
         return this;

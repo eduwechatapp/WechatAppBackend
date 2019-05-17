@@ -2,6 +2,34 @@ package com.eduwechat.backend.backend.utils;
 
 public class CommonUtil {
 
+    public static String fromSimpleStrGetChinese(String simple) {
+
+        switch (simple) {
+
+            case "sx":
+                return "数学";
+            case "yw":
+                return "语文";
+            case "yy":
+                return "英语";
+            case "wl":
+                return "物理";
+            case "hx":
+                return "化学";
+            case "sw":
+                return "生物";
+            case "dl":
+                return "地理";
+            case "ls":
+                return "历史";
+            case "zz":
+                return "政治";
+            default:
+                return "";
+        }
+
+    }
+
     /**
      * 首页html
      */
