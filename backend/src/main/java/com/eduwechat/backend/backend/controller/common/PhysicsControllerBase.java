@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.common;
 
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.BaseCommonController;
-import com.eduwechat.backend.backend.service.common.HighSchoolPhysicsService;
+import com.eduwechat.backend.backend.service.common.HighSchoolPhysicsCommonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class PhysicsControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController {
 
     @Autowired
-    HighSchoolPhysicsService service;
+    HighSchoolPhysicsCommonService service;
 
     @ApiOperation(value = "获取物理知识点" ,  notes="指定必修选修知识点")
     @ResponseBody

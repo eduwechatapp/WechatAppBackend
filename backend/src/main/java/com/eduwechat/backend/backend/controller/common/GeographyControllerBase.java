@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.common;
 
 
 import com.eduwechat.backend.backend.controller.base.*;
-import com.eduwechat.backend.backend.service.common.HighSchoolGeographyService;
+import com.eduwechat.backend.backend.service.common.HighSchoolGeographyCommonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class GeographyControllerBase extends BaseCommonController implements Can
 {
 
     @Autowired
-    private HighSchoolGeographyService service;
+    private HighSchoolGeographyCommonService service;
 
     @ApiOperation(value = "获取地理知识点" ,  notes="指定分页获取地理知识点")
     @ResponseBody

@@ -1,12 +1,11 @@
 package com.eduwechat.backend.backend.service.base.inner.search;
 
-import com.eduwechat.backend.backend.entity.base.BaseEntity;
+import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import com.eduwechat.backend.backend.exceptions.common.BuilderNotReadyException;
 import com.eduwechat.backend.backend.utils.CommonUtil;
 import org.springframework.data.domain.Page;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -61,14 +60,14 @@ public class SearchResultBuilder {
 
     /**
      * 整理分页数据
-     * @param pageList Page&lt;BaseEntity&gt;
+     * @param pageList Page&lt;BaseCommonEntity&gt;
      * @return SearchResultBuilder
      */
-    public SearchResultBuilder confirmDataList(Page<BaseEntity> pageList) {
+    public SearchResultBuilder confirmDataList(Page<BaseCommonEntity> pageList) {
 
         List<InnerSearchContent> list = new ArrayList<>(pageList.getSize());
 
-        for (BaseEntity entity : pageList) {
+        for (BaseCommonEntity entity : pageList) {
             InnerSearchContent content = new InnerSearchContent(entity.getTitle(), entity.getContent(), entity.getErji());
 
             list.add(content);

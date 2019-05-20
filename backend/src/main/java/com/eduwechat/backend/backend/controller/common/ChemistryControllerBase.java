@@ -3,7 +3,7 @@ package com.eduwechat.backend.backend.controller.common;
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetTemplateTitleListController;
 import com.eduwechat.backend.backend.controller.base.BaseCommonController;
-import com.eduwechat.backend.backend.service.common.HighSchoolChemistryService;
+import com.eduwechat.backend.backend.service.common.HighSchoolChemistryCommonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ChemistryControllerBase extends BaseCommonController implements Can
 {
 
     @Autowired
-    HighSchoolChemistryService service;
+    HighSchoolChemistryCommonService service;
 
     @ApiOperation(value = "获取化学知识点" ,  notes="指定分页获取化学知识点")
     @ResponseBody

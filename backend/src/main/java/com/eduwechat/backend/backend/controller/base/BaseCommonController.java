@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.base;
 
 
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
-import com.eduwechat.backend.backend.service.base.CommonService;
+import com.eduwechat.backend.backend.service.base.inner.common.CommonService;
 import com.eduwechat.backend.backend.service.base.inner.common.Content;
 import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
 

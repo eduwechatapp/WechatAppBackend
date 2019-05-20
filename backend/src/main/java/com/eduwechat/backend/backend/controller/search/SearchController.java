@@ -28,31 +28,31 @@ import java.util.Map;
 public class SearchController extends BaseSearchController {
 
     @Autowired
-    private BiologicalSearchService biologicalSearchService;
+    private BiologicalBaseSearchService biologicalSearchService;
 
     @Autowired
-    private MathSearchService mathSearchService;
+    private MathBaseSearchService mathSearchService;
 
     @Autowired
-    private EnglishSearchService englishSearchService;
+    private EnglishBaseSearchService englishSearchService;
 
     @Autowired
-    private ChineseSearchService chineseSearchService;
+    private ChineseBaseSearchService chineseSearchService;
 
     @Autowired
-    private PhysicsSearchService physicsSearchService;
+    private PhysicsBaseSearchService physicsSearchService;
 
     @Autowired
-    private ChemistrySearchService chemistrySearchService;
+    private ChemistryBaseSearchService chemistrySearchService;
 
     @Autowired
-    private GeographySearchService geographySearchService;
+    private GeographyBaseSearchService geographySearchService;
 
     @Autowired
-    private PoliticalSearchService politicalSearchService;
+    private PoliticalBaseSearchService politicalSearchService;
 
     @Autowired
-    private HistorySearchService historySearchService;
+    private HistoryBaseSearchService historySearchService;
 
     @Override
     @ApiOperation(value = "单科分页搜索" ,  notes="指定分页获取单科搜索结果")

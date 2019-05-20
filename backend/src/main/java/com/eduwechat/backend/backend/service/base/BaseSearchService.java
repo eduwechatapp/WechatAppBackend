@@ -8,12 +8,12 @@ import org.springframework.data.domain.Page;
 
 /**
  * @program: backend
- * @description: SearchService 搜索服务层基类
+ * @description: BaseSearchService 搜索服务层基类
  * @author: Vaskka
  * @create: 2019/5/15 1:08 AM
  **/
 
-public class SearchService {
+public class BaseSearchService {
 
     /**
      * 根据Page信息得到SearchResult结果对象

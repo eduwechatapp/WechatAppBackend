@@ -1,13 +1,13 @@
-package com.eduwechat.backend.backend.entity;
+package com.eduwechat.backend.backend.entity.common;
 
-import com.eduwechat.backend.backend.entity.base.BaseEntity;
+import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 
 import javax.persistence.*;
 
 
 @Table(name = "gzyw")
 @Entity
-public class HighSchoolChinese implements BaseEntity {
+public class HighSchoolChinese implements BaseCommonEntity {
 
 
     @Id

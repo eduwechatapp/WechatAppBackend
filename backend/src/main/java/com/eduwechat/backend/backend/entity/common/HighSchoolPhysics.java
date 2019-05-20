@@ -1,13 +1,13 @@
-package com.eduwechat.backend.backend.entity;
+package com.eduwechat.backend.backend.entity.common;
 
 
-import com.eduwechat.backend.backend.entity.base.BaseEntity;
+import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "gzwl")
-public class HighSchoolPhysics implements BaseEntity {
+public class HighSchoolPhysics implements BaseCommonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

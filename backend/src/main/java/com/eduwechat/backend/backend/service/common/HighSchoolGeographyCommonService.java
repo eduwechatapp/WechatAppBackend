@@ -3,7 +3,7 @@ package com.eduwechat.backend.backend.service.common;
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
 import com.eduwechat.backend.backend.repository.common.HighSchoolGeographyRepository;
-import com.eduwechat.backend.backend.service.base.CommonService;
+import com.eduwechat.backend.backend.service.base.inner.common.CommonService;
 import com.eduwechat.backend.backend.service.base.inner.common.Content;
 import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class HighSchoolGeographyService extends CommonService {
+public class HighSchoolGeographyCommonService extends CommonService {
 
     @Autowired
     private HighSchoolGeographyRepository repository;

@@ -1,4 +1,11 @@
 package com.eduwechat.backend.backend.entity.exercise;
 
-public class PhysicsExerciseEntity {
+import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "physics_lib")
+public class PhysicsExerciseEntity extends BaseExerciseEntity {
 }

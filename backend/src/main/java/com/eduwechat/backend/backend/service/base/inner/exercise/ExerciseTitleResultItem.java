@@ -7,11 +7,13 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @ToString
-public class ExerciseYijiResultItem {
-    
+public class ExerciseTitleResultItem extends ExerciseBaseResultItem {
+
     private String title;
 
-    private String id;
+    public ExerciseTitleResultItem(Integer id, String title) {
+        super(id);
+        this.title = title;
+    }
 }

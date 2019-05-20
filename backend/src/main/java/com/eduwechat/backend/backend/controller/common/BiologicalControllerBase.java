@@ -3,7 +3,7 @@ package com.eduwechat.backend.backend.controller.common;
 
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.BaseCommonController;
-import com.eduwechat.backend.backend.service.common.HighSchoolBiologicalService;
+import com.eduwechat.backend.backend.service.common.HighSchoolBiologicalCommonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class BiologicalControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController {
 
     @Autowired
-    HighSchoolBiologicalService service;
+    HighSchoolBiologicalCommonService service;
 
     @ApiOperation(value = "获取生物知识点" ,  notes="指定分页获取生物知识点")
     @ResponseBody

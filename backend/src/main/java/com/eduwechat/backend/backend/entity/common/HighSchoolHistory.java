@@ -1,12 +1,12 @@
-package com.eduwechat.backend.backend.entity;
+package com.eduwechat.backend.backend.entity.common;
 
-import com.eduwechat.backend.backend.entity.base.BaseEntity;
+import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import javax.persistence.*;
 
 
 @Table(name = "gzls")
 @Entity
-public class HighSchoolHistory implements BaseEntity {
+public class HighSchoolHistory implements BaseCommonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

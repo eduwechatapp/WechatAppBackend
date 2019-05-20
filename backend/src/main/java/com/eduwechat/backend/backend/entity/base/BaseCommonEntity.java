@@ -2,9 +2,9 @@ package com.eduwechat.backend.backend.entity.base;
 
 
 /**
- * 所有实体类积累
+ * 知识点等实体类积累
  */
-public  interface BaseEntity {
+public  interface BaseCommonEntity extends BaseEntity {
     Integer getId();
 
     String getTitle();

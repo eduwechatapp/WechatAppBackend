@@ -1,4 +1,4 @@
-package com.eduwechat.backend.backend.repository;
+package com.eduwechat.backend.backend.repository.common;
 
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import com.eduwechat.backend.backend.entity.common.HighSchoolHistory;

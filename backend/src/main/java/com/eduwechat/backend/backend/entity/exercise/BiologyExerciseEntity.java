@@ -1,30 +1,12 @@
 package com.eduwechat.backend.backend.entity.exercise;
 
-import com.eduwechat.backend.backend.entity.base.BaseEntity;
+import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
 
-public class BiologyExerciseEntity implements BaseEntity {
-    @Override
-    public Integer getId() {
-        return null;
-    }
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-    @Override
-    public String getTitle() {
-        return null;
-    }
+@Entity
+@Table(name = "biology_lib")
+public class BiologyExerciseEntity extends BaseExerciseEntity {
 
-    @Override
-    public String getContent() {
-        return null;
-    }
-
-    @Override
-    public String getErji() {
-        return null;
-    }
-
-    @Override
-    public String getYiji() {
-        return null;
-    }
 }

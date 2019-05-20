@@ -5,7 +5,7 @@ import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListCon
 import com.eduwechat.backend.backend.controller.base.CanGetSummaryTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetTopicTitleListController;
 import com.eduwechat.backend.backend.controller.base.BaseCommonController;
-import com.eduwechat.backend.backend.service.common.HighSchoolChineseService;
+import com.eduwechat.backend.backend.service.common.HighSchoolChineseCommonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class ChineseControllerBase extends BaseCommonController implements CanGe
 {
 
     @Autowired
-    private HighSchoolChineseService highSchoolChineseService;
+    private HighSchoolChineseCommonService highSchoolChineseService;
 
     @ApiOperation(value = "获取语文知识点" ,  notes="指定分页获取语文知识点")
     @ResponseBody

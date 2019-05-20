@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.service.search.impl;
 
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import com.eduwechat.backend.backend.repository.common.HighSchoolMathRepository;
-import com.eduwechat.backend.backend.service.base.SearchService;
+import com.eduwechat.backend.backend.service.base.BaseSearchService;
 import com.eduwechat.backend.backend.service.base.inner.search.SearchResult;
 import com.eduwechat.backend.backend.service.search.FullSearchable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +12,12 @@ import org.springframework.stereotype.Service;
 
 /**
  * @program: backend
- * @description: MathSearchService
+ * @description: MathBaseSearchService
  * @author: Vaskka
  * @create: 2019/5/15 3:01 AM
  **/
 @Service
-public class MathSearchService extends SearchService implements FullSearchable {
+public class MathBaseSearchService extends BaseSearchService implements FullSearchable {
     @Autowired
     private HighSchoolMathRepository searchDao;
 

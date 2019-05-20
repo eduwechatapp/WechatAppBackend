@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.service.search.impl;
 
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import com.eduwechat.backend.backend.repository.common.HighSchoolBiologicalRepository;
-import com.eduwechat.backend.backend.service.base.SearchService;
+import com.eduwechat.backend.backend.service.base.BaseSearchService;
 import com.eduwechat.backend.backend.service.base.inner.search.SearchResult;
 import com.eduwechat.backend.backend.service.search.FullSearchable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BiologicalSearchService extends SearchService implements FullSearchable {
+public class BiologicalBaseSearchService extends BaseSearchService implements FullSearchable {
 
     @Autowired
     private HighSchoolBiologicalRepository searchDao;

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 服务层基类
  */
-public class BaseService {
+public class BaseCommonService {
 
     /**
      * Page转List
