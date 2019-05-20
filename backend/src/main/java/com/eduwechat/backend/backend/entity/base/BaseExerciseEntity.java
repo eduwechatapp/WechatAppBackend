@@ -1,4 +1,4 @@
 package com.eduwechat.backend.backend.entity.base;
 
-public class BaseEntity {
+public class BaseExerciseEntity {
 }
