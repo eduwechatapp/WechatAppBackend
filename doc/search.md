@@ -20,7 +20,6 @@ POST
 
 #### 传入参数
 
-
 + **openid**：用户openid
 + **keyWord**：搜索关键字
 + **number_every_page**：分页每页的大小
