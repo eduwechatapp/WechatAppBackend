@@ -18,7 +18,7 @@ GET
 
 /exercise/get/yiji/{openid}/{subject}
 
-+ **subject**: 传入中文学科名返回对应学科的以及标题列表和一级标题的id。
++ **subject**: 传入中文学科名。
     + 可用的学科名
         + 数学
         + 语文
@@ -64,7 +64,7 @@ GET
 
 /exercise/get/erji/{openid}/{subject}/{yiji_id}
 
-+ **subject**: 传入中文学科名返回对应学科的以及标题列表和一级标题的id。
++ **subject**: 传入中文学科名。
     + 可用的学科名
         + 数学
         + 语文
@@ -113,7 +113,7 @@ GET
 /exercise/get/title/{openid}/{subject}/{yiji_id}/{erji_id}/{number_every_page}/{page_offset}
 
 + **openid**: openid
-+ **subject**: 传入中文学科名返回对应学科的以及标题列表和一级标题的id。
++ **subject**: 传入中文学科名。
     + 可用的学科名
         + 数学
         + 语文
@@ -164,7 +164,7 @@ GET
 /exercise/get/detail/{openid}/{subject}/{yiji_id}/{erji_id}/{title_id}
 
 + **openid**: openid
-+ **subject**: 传入中文学科名返回对应学科的以及标题列表和一级标题的id。
++ **subject**: 传入中文学科名。
     + 可用的学科名
         + 数学
         + 语文
