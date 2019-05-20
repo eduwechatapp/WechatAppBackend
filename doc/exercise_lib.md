@@ -187,6 +187,7 @@ GET
     "msg": "success",
     "data": {
         "id": 23,                // 题目id
+        "type": "选择题",         // 题目类型，可能的值：选择题、非选择题
         "content": "题目题干",    // 题目题干，选择题不包括选项，非选择题包含全部题目
         "choose": [
             "A. lalalal",
@@ -194,7 +195,7 @@ GET
             "C. ddddddd",
             "D. mmmmmmm"
         ],                       // 题目的选项，非选择题为空list
-        "answer": 3,             // 题目答案
+        "answer": "3",           // 题目答案，选择题中的数字代表chooes中的第几个为正确答案，非选择题就是正常文字答案 
         "analysis": "analysis"   // 解析
     }
 }
