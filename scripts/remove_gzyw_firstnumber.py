@@ -16,7 +16,7 @@ connection = pymysql.connect(host='localhost',
 
 
 cursor = connection.cursor()
-
+ 
 cursor.execute("SELECT * FROM `gzyw` where erji='高考建议背诵篇目'")
 
 res = cursor.fetchall()
@@ -48,8 +48,3 @@ connection.commit()
 cursor.close()
 
 connection.close()
-<<<<<<< HEAD
-=======
-
-print("ok")
->>>>>>> dev
