@@ -194,7 +194,7 @@ GET
             "C. ddddddd",
             "D. mmmmmmm"
         ],                       // 题目的选项，非选择题为空list
-        "answer": "D",           // 题目答案
+        "answer": 3,             // 题目答案
         "analysis": "analysis"   // 解析
     }
 }
