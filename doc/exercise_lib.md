@@ -2,7 +2,7 @@
 
 > 2019/05/19
 > 
-> 先获取一级标题列表拿到**一级标题id**，再用一级id获取二级标题列表拿到**二级标题id**，再用二级标题id获取title list拿到**题目id**，在用以上三个id（一级、二级、三级）共同确定某道题的具体内容。
+> 先获取一级标题列表拿到**一级标题id**，再用一级id获取二级标题列表拿到**二级标题id**，再用二级标题id获取title list拿到**题目id**，再用得到的真实题目id确定某道题的具体内容。
 
 ## 获取学科的一级标题列表
 
@@ -138,7 +138,7 @@ GET
     "data": [
         {
             "id": 23,
-            "title": "zzz"
+            "title": "zzz" // title 中包含题干个选项等，作为一个预览，点击进去获取详细内容
         },
         {
             "id": 24,
@@ -161,7 +161,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/detail/{openid}/{subject}/{yiji_id}/{erji_id}/{title_id}
+/exercise/get/detail/{openid}/{subject}/{title_id}
 
 + **openid**: openid
 + **subject**: 传入中文学科名。
@@ -175,8 +175,6 @@ GET
         + 地理
         + 历史
         + 政治
-+ **yiji_id**: 传入一级标题的id，使用**第一个接口**获取
-+ **erji_id**: 传入二级标题的id，使用**第二个接口**获取
 + **title_id**: 传入标题的id，使用**第三个接口**获取
 
 ### 返回参数
