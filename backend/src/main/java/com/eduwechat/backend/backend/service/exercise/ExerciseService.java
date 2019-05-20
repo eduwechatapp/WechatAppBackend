@@ -29,7 +29,7 @@ public class ExerciseService extends BaseExerciseService {
     }
 
     @Override
-    public List<ExerciseDetailResultItem> getExerciseDetail(String subject, Integer yijiId, Integer erjiId, String exerciseId) {
+    public ExerciseDetailResultItem getExerciseDetail(String subject, Integer yijiId, Integer erjiId, String exerciseId) {
         return null;
     }
 }

@@ -74,41 +74,53 @@ public abstract class BaseExerciseService {
      * @param yijiId 一级id
      * @param erjiId 二级id
      * @param exerciseId 具体联系id
-     * @return List&lt;ExerciseDetailResultItem&gt;
+     * @return ExerciseDetailResultItem
      */
-    public abstract List<ExerciseDetailResultItem> getExerciseDetail(String subject, Integer yijiId, Integer erjiId, String exerciseId);
+    public abstract ExerciseDetailResultItem getExerciseDetail(String subject, Integer yijiId, Integer erjiId, String exerciseId);
 
+    /**
+     * 获取yiji标题及编号
+     * @param subject 学科中文
+     * @return List&lt;ExerciseTitleResultItem&gt;
+     * @throws SubjectDoesNotSupportedException 不支持此学科的查询
+     */
     protected List<ExerciseTitleResultItem> fromSubjectGetYijiResult(String subject) throws SubjectDoesNotSupportedException {
 
-        List<ExerciseTitleResultItem> result = new ArrayList<>();
+        List<ExerciseTitleResultItem> result;
 
         switch (subject) {
             case "语文":
-
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(chineseExerciseDao.findYijiTitleList());
                 break;
             case "数学":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(mathExerciseDao.findYijiTitleList());
                 break;
             case "英语":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(englishExerciseDao.findYijiTitleList());
                 break;
             case "物理":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(physicsExerciseDao.findYijiTitleList());
                 break;
             case "化学":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(chemistryExerciseDao.findYijiTitleList());
                 break;
             case "生物":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(biologyExerciseDao.findYijiTitleList());
                 break;
             case "地理":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(geographyExerciseDao.findYijiTitleList());
                 break;
             case "历史":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(historyExerciseDao.findYijiTitleList());
                 break;
             case "政治":
+                result = ExerciseTitleResultItem.fromStringListGetTitleResultList(politicsExerciseDao.findYijiTitleList());
                 break;
             default:
                 throw new SubjectDoesNotSupportedException(subject);
-                break;
         }
 
-
-
+        return result;
     }
 
 }
