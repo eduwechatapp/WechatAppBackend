@@ -1,10 +1,10 @@
 package com.eduwechat.backend.backend.service.exercise;
 
-import com.eduwechat.backend.backend.repository.exercise.*;
+import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
+import com.eduwechat.backend.backend.exceptions.exercise.YijiIdCanNotFoundException;
 import com.eduwechat.backend.backend.service.base.BaseExerciseService;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseDetailResultItem;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseTitleResultItem;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,13 +14,13 @@ public class ExerciseService extends BaseExerciseService {
 
 
     @Override
-    public List<ExerciseTitleResultItem> getYijiTitleList(String subject) {
-        return null;
+    public List<ExerciseTitleResultItem> getYijiTitleList(String subject) throws SubjectDoesNotSupportedException {
+        return this.fromSubjectGetYijiResult(subject);
     }
 
     @Override
-    public List<ExerciseTitleResultItem> getErjiTitleList(String subject, Integer yijiId) {
-        return null;
+    public List<ExerciseTitleResultItem> getErjiTitleList(String subject, Integer yijiId) throws YijiIdCanNotFoundException, SubjectDoesNotSupportedException {
+        return this.fromSubjectAndYijiIdGetResult(subject, yijiId);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ExerciseService extends BaseExerciseService {
     }
 
     @Override
-    public ExerciseDetailResultItem getExerciseDetail(String subject, Integer yijiId, Integer erjiId, String exerciseId) {
+    public ExerciseDetailResultItem getExerciseDetail(String subject, String exerciseId) {
         return null;
     }
 }
