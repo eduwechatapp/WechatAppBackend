@@ -98,18 +98,14 @@ GET
         {
             "id": 23,
             "content": "zzz",      // 题目内容
-            "answer": "hahah",     // 答案
             "yiji": "yiji",        // 一级标题名称
             "erji": "erji",        // 二级标题名称
-            "analysis": "analysis" // 解析
         },
         {
             "id": 24,
             "content": "yyy",
-            "answer": "heiheihei",
             "yiji": "yiji",
             "erji": "erji",
-            "analysis": "analysis"
         },
         ...
     ]
