@@ -2,13 +2,13 @@
 
 > 2019/05/19
 > 
-> 先获取一级标题列表拿到**一级标题id**，再用一级id获取二级标题列表拿到**二级标题id**，再用二级标题id获取title list拿到**题目id**，再用得到的真实题目id确定某道题的具体内容。
+> 先获取总体标题列表，再获取题目，再获取题目具体信息。
 
-## 获取学科的一级标题列表
+## 获取学科的标题列表
 
 ### 接口简介
 
-返回某个学科的一级标题列表
+返回某个学科的标题列表
 
 ### url方法
 
@@ -16,7 +16,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/yiji/{openid}/{subject}
+/exercise/get/title/{openid}/{subject}
 
 + **subject**: 传入中文学科名。
     + 可用的学科名
@@ -38,59 +38,18 @@ GET
     "data": [
         {
             "title": "xxx",      // 一级标题
-            "id": 0           // 一级标题id
+            "child": [
+                "hahah",         // 其下二级标题
+                "lalal"
+            ]
         },
-               {
-            "title": "yyy",
-            "id": 1
-        },
-        ...
-    ]
-
-}
-```
-
-## 获取学科的二级标题列表
-
-### 接口简介
-
-返回某个学科的一级标题下的二级标题列表
-
-### url方法
-
-GET
-
-### 传入参数/url
-
-/exercise/get/erji/{openid}/{subject}/{yiji_id}
-
-+ **subject**: 传入中文学科名。
-    + 可用的学科名
-        + 数学
-        + 语文
-        + 英语
-        + 物理
-        + 化学
-        + 生物
-        + 地理
-        + 历史
-        + 政治
-+ **yiji_id**: 传入一级标题的id，使用第一个接口获取
-
-### 返回参数
-
-```json
-{
-    "code": 0,
-    "msg": "success",
-    "data": [
         {
-            "title": "xxx",      // 二级级标题
-            "id": 0           // 二级标题id
-        },
-               {
-            "title": "yyy",
-            "id": 1
+            "title": "xxx",      // 一级标题
+            "child": [
+                "hahah",         // 其下二级标题
+                "lalal",
+                "heihei"
+            ]  
         },
         ...
     ]
@@ -98,11 +57,11 @@ GET
 }
 ```
 
-## 获取学科的题目list
+## 分页获取某个二级标题下题目
 
 ### 接口简介
 
-返回某个学科的一级标题下的二级标题下的题目的标题list，分页返回
+分页获取某个二级标题下题目
 
 ### url方法
 
@@ -110,7 +69,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/title/{openid}/{subject}/{yiji_id}/{erji_id}/{number_every_page}/{page_offset}
+/exercise/get/list/{openid}/{subject}/{yiji}/{erji}/{number_every_page}/{page_offset}
 
 + **openid**: openid
 + **subject**: 传入中文学科名。
@@ -124,8 +83,8 @@ GET
         + 地理
         + 历史
         + 政治
-+ **yiji_id**: 传入一级标题的id，使用第一个接口获取
-+ **erji_id**: 传入二级标题的id，使用第二个接口获取
++ **yiji**: 传入一级标题名字
++ **erji**: 传入二级标题名字
 + **number_everY_page**: 传入每页的数量
 + **page_offset**: 页偏移量
 
@@ -138,11 +97,19 @@ GET
     "data": [
         {
             "id": 23,
-            "title": "zzz" // title 中包含题干个选项等，作为一个预览，点击进去获取详细内容
+            "content": "zzz",      // 题目内容
+            "answer": "hahah",     // 答案
+            "yiji": "yiji",        // 一级标题名称
+            "erji": "erji",        // 二级标题名称
+            "analysis": "analysis" // 解析
         },
         {
             "id": 24,
-            "title": "zzz"
+            "content": "yyy",
+            "answer": "heiheihei",
+            "yiji": "yiji",
+            "erji": "erji",
+            "analysis": "analysis"
         },
         ...
     ]
@@ -161,7 +128,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/detail/{openid}/{subject}/{title_id}
+/exercise/get/detail/{openid}/{subject}/{id}
 
 + **openid**: openid
 + **subject**: 传入中文学科名。
@@ -175,7 +142,7 @@ GET
         + 地理
         + 历史
         + 政治
-+ **title_id**: 传入标题的id，使用**第三个接口**获取
++ **id**: 传入题目id
 
 ### 返回参数
 
@@ -185,7 +152,6 @@ GET
     "msg": "success",
     "data": {
         "id": 23,                // 题目id
-        "type": "选择题",         // 题目类型，可能的值：选择题、非选择题
         "content": "题目题干",    // 题目题干，选择题不包括选项，非选择题包含全部题目
         "choose": [
             "A. lalalal",
