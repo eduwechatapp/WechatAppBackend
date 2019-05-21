@@ -8,6 +8,8 @@ public abstract class BaseExerciseController {
 
     public abstract Map<String, Object> getExerciseList(String openid, String subject, String yiji, String erji, Integer size, Integer page);
 
+    public abstract Map<String, Object> getExerciseDetail(String openid, String subject, Integer id);
+
     /**
      * 设置错误的json Mapping对象
      * @param errorMap 错误Mapping
@@ -18,4 +20,6 @@ public abstract class BaseExerciseController {
         errorMap.put("msg", errorMsg);
         errorMap.put("data", null);
     }
+
+
 }

@@ -17,6 +17,34 @@ public class MathExerciseEntity extends BaseExerciseEntity {
 
     protected String yiji;
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public String getYiji() {
+        return yiji;
+    }
+
+    @Override
+    public String getErji() {
+        return erji;
+    }
+
+    @Override
+    public String getContent() {
+        return content;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public String getAnalysis() {
+        return analysis;
+    }
+
     protected String erji;
 
     @Lob

@@ -1,9 +1,55 @@
 package com.eduwechat.backend.backend.utils;
 
+import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
 import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
-import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseTitleResultItem;
+import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseSimpleResultItem;
+import java.util.List;
+
+import java.util.ArrayList;
 
 public class CommonUtil {
+
+    /**
+     * 根据选项判断答案的位置
+     * @param c 答案选项字符
+     * @return 索引字符串
+     */
+    public static Integer fromCharGetIntegerString(char c) {
+        if (c >= 65 && c <= 90) {
+            return c - 65;
+        }
+        else if (c >= 97 && c <= 122) {
+            return c - 97;
+        }
+
+        return null;
+    }
+
+    /**
+     * 转化题库实体list到返回对象list
+     * @param entityList 题库实体list
+     * @return 返回对象list
+     */
+    public static List<ExerciseSimpleResultItem> fromEntityListGetResultItem(List<BaseExerciseEntity> entityList) {
+
+        List<ExerciseSimpleResultItem> res = new ArrayList<>();
+
+        for (BaseExerciseEntity entity : entityList) {
+            res.add(fromExerciseEntityGetResultItem(entity));
+        }
+
+        return res;
+    }
+
+    /**
+     * 转化题库实体到返回对象
+     * @param entity 题库实体
+     * @return 返回对象
+     */
+    private static ExerciseSimpleResultItem fromExerciseEntityGetResultItem(BaseExerciseEntity entity) {
+        ExerciseSimpleResultItem item = new ExerciseSimpleResultItem(entity.getId(), entity.getYiji(), entity.getErji(), entity.getContent());
+        return item;
+    }
 
     /**
      * 中文学科名返回表名

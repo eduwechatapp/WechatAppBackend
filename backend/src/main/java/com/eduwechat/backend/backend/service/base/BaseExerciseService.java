@@ -6,7 +6,9 @@ import com.eduwechat.backend.backend.exceptions.exercise.ExerciseIdDoesNotExistE
 import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
 import com.eduwechat.backend.backend.repository.exercise.*;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseDetailResultItem;
+import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseSimpleResultItem;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseTitleResultItem;
+import com.eduwechat.backend.backend.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 
@@ -60,7 +62,7 @@ public abstract class BaseExerciseService {
      * @param page 页偏移量
      * @return List&lt;ExerciseTitleResultItem&gt;
      */
-    public abstract List<BaseExerciseEntity> getExerciseList(String subject,
+    public abstract List<ExerciseSimpleResultItem> getExerciseList(String subject,
                                                                   String yiji,
                                                                   String erji,
                                                                   Integer size,
@@ -72,7 +74,7 @@ public abstract class BaseExerciseService {
      * @param exerciseId 具体联系id
      * @return ExerciseDetailResultItem
      */
-    public abstract ExerciseDetailResultItem getExerciseDetail(String subject, Integer exerciseId);
+    public abstract ExerciseDetailResultItem getExerciseDetail(String subject, Integer exerciseId) throws ExerciseIdDoesNotExistException, SubjectDoesNotSupportedException;
 
     /**
      * 获取yiji标题及编号
@@ -117,26 +119,26 @@ public abstract class BaseExerciseService {
      * @return List&lt;BaseExerciseEntity&gt;
      * @throws SubjectDoesNotSupportedException 学科不合法
      */
-    protected List<BaseExerciseEntity> fromSubejctAndPageableGetExerciseEntity(String subject, String yiji, String erji, int size, int page) throws SubjectDoesNotSupportedException {
+    protected List<ExerciseSimpleResultItem> fromSubjectAndPageableGetExerciseEntity(String subject, String yiji, String erji, int size, int page) throws SubjectDoesNotSupportedException {
         switch (subject) {
             case "语文":
-                return  chineseExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(chineseExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "数学":
-                return mathExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(mathExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "英语":
-                return englishExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(englishExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "物理":
-                return physicsExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(physicsExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "化学":
-                return chemistryExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(chemistryExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "生物":
-                return biologyExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(biologyExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "地理":
-                return geographyExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(geographyExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "历史":
-                return historyExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(historyExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             case "政治":
-                return politicsExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size));
+                return CommonUtil.fromEntityListGetResultItem(politicsExerciseDao.findByYijiAndErji(yiji, erji, PageRequest.of(page, size)));
             default:
                 throw new SubjectDoesNotSupportedException(subject);
         }

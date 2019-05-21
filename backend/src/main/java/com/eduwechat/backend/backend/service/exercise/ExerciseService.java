@@ -1,9 +1,11 @@
 package com.eduwechat.backend.backend.service.exercise;
 
 import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
+import com.eduwechat.backend.backend.exceptions.exercise.ExerciseIdDoesNotExistException;
 import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
 import com.eduwechat.backend.backend.service.base.BaseExerciseService;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseDetailResultItem;
+import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseSimpleResultItem;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseTitleResultItem;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +27,12 @@ public class ExerciseService extends BaseExerciseService {
     }
 
     @Override
-    public List<BaseExerciseEntity> getExerciseList(String subject, String yiji, String erji, Integer size, Integer page) throws SubjectDoesNotSupportedException {
-        return this.fromSubejctAndPageableGetExerciseEntity(subject, yiji, erji, size, page);
+    public List<ExerciseSimpleResultItem> getExerciseList(String subject, String yiji, String erji, Integer size, Integer page) throws SubjectDoesNotSupportedException {
+        return this.fromSubjectAndPageableGetExerciseEntity(subject, yiji, erji, size, page);
     }
 
     @Override
-    public ExerciseDetailResultItem getExerciseDetail(String subject, Integer exerciseId) {
-        return null;
+    public ExerciseDetailResultItem getExerciseDetail(String subject, Integer exerciseId) throws ExerciseIdDoesNotExistException, SubjectDoesNotSupportedException {
+        return this.fromSubjectAndIdGetExerciseDetail(subject, exerciseId);
     }
 }

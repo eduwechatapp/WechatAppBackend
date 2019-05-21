@@ -15,6 +15,34 @@ public class EnglishExerciseEntity extends BaseExerciseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Integer id;
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public String getYiji() {
+        return yiji;
+    }
+
+    @Override
+    public String getErji() {
+        return erji;
+    }
+
+    @Override
+    public String getContent() {
+        return content;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public String getAnalysis() {
+        return analysis;
+    }
+
     protected String yiji;
 
     protected String erji;

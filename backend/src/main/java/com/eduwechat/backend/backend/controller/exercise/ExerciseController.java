@@ -2,6 +2,7 @@ package com.eduwechat.backend.backend.controller.exercise;
 
 import com.eduwechat.backend.backend.controller.base.BaseExerciseController;
 import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
+import com.eduwechat.backend.backend.exceptions.exercise.ExerciseIdDoesNotExistException;
 import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseTitleResultItem;
 import com.eduwechat.backend.backend.service.exercise.ExerciseService;
@@ -61,10 +62,9 @@ public class ExerciseController extends BaseExerciseController {
         Map<String, Object> result = new HashMap<>();
 
         try {
-            List<BaseExerciseEntity> data = service.getExerciseList(subject, yiji, erji, size, page);
             result.put("code", 0);
             result.put("msg", "success");
-            result.put("data", data);
+            result.put("data", service.getExerciseList(subject, yiji, erji, size, page));
         } catch (SubjectDoesNotSupportedException e) {
             this.getExerciseErrorMap(result, e.getMessage());
             e.printStackTrace();
@@ -72,4 +72,26 @@ public class ExerciseController extends BaseExerciseController {
 
         return result;
     }
+
+    @Override
+    @ApiOperation(value = "题库获取指定题目的详细信息" ,  notes="给定id返回题目的详细信息")
+    @ResponseBody
+    @GetMapping("/detail/{openid}/{subject}/{id}")
+    public Map<String, Object> getExerciseDetail(@PathVariable(value = "openid") String openid,
+                                                 @PathVariable(value = "subject") String subject,
+                                                 @PathVariable(value = "id") Integer id) {
+        Map<String, Object> result = new HashMap<>();
+
+        try {
+            result.put("code", 0);
+            result.put("msg", "success");
+            result.put("data", service.getExerciseDetail(subject, id));
+        } catch (SubjectDoesNotSupportedException | ExerciseIdDoesNotExistException e) {
+            this.getExerciseErrorMap(result, e.getMessage());
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 }

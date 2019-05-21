@@ -23,6 +23,34 @@ public class GeographyExerciseEntity extends BaseExerciseEntity {
     @Column(columnDefinition = "text")
     protected String content;
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public String getYiji() {
+        return yiji;
+    }
+
+    @Override
+    public String getErji() {
+        return erji;
+    }
+
+    @Override
+    public String getContent() {
+        return content;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public String getAnalysis() {
+        return analysis;
+    }
+
     @Lob
     @Column(columnDefinition = "text")
     protected String answer;

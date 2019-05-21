@@ -29,5 +29,32 @@ public class BiologyExerciseEntity extends BaseExerciseEntity {
     @Column(columnDefinition = "text")
     protected String analysis;
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public String getYiji() {
+        return yiji;
+    }
+
+    @Override
+    public String getErji() {
+        return erji;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public String getAnalysis() {
+        return analysis;
+    }
+
     public BiologyExerciseEntity() {}
 }
