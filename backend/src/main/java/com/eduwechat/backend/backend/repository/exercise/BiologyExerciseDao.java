@@ -1,5 +1,6 @@
 package com.eduwechat.backend.backend.repository.exercise;
 
+import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
 import com.eduwechat.backend.backend.entity.exercise.BiologyExerciseEntity;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,10 +9,18 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface BiologyExerciseDao extends JpaRepository<BiologyExerciseEntity, Integer> {
+
+    /**
+     * 分页获取题目list
+     * @param yiji 一级id
+     * @param erji 二级id
+     * @param pageable 可分页接口
+     * @return List&lt;BiologyExerciseEntity&gt;
+     */
+    List<BaseExerciseEntity> findByYijiAndErji(String yiji, String erji, Pageable pageable);
 
     /**
      * 找一级标题list
@@ -27,14 +36,5 @@ public interface BiologyExerciseDao extends JpaRepository<BiologyExerciseEntity,
      */
     @Query(value = "SELECT erji FROM biology_lib WHERE yiji = :yiji GROUP BY erji", nativeQuery = true)
     List<String> findErjiTitleList(@Param("yiji") String yiji);
-
-    /**
-     * 分页获取题目list
-     * @param yiji 一级id
-     * @param erji 二级id
-     * @param pageable 可分页接口
-     * @return List&lt;BiologyExerciseEntity&gt;
-     */
-    List<BiologyExerciseEntity> findByYijiAndErji(String yiji, String erji, Pageable pageable);
 
 }

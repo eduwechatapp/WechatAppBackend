@@ -1,5 +1,8 @@
 package com.eduwechat.backend.backend.service.base.inner.exercise;
 
+import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
+import com.eduwechat.backend.backend.repository.exercise.*;
+import com.eduwechat.backend.backend.utils.CommonUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,27 +14,192 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class ExerciseTitleResultItem extends ExerciseBaseResultItem {
+@AllArgsConstructor
+public class ExerciseTitleResultItem  {
 
     private String title;
 
-    public ExerciseTitleResultItem(Integer id, String title) {
-        super(id);
-        this.title = title;
-    }
+    private List<String> children;
 
-    /**
-     * 转换字符串list到标题结果list
-     * @param stringList 字符串list
-     * @return 标题结果list
-     */
-    public static List<ExerciseTitleResultItem> fromStringListGetTitleResultList(List<String> stringList) {
 
-        List<ExerciseTitleResultItem> list = new ArrayList<>(stringList.size());
-        for (int i = 0; i < stringList.size(); i++) {
-            ExerciseTitleResultItem item = new ExerciseTitleResultItem(i, stringList.get(i));
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetBiologyTitleResultList(String subject, BiologyExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
         }
 
-        return list;
+        return result;
+    }
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetChemistryTitleResultList(String subject, ChemistryExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
+    }
+
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetChineseTitleResultList(String subject, ChineseExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
+    }
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetEnglishTitleResultList(String subject, EnglishExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
+    }
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetGeographyTitleResultList(String subject, GeographyExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
+    }
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetHistoryTitleResultList(String subject, HistoryExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
+    }
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetMathTitleResultList(String subject, MathExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
+    }
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetPhysicsTitleResultList(String subject, PhysicsExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
+    }
+
+    public static List<ExerciseTitleResultItem>
+    fromStringListGetPoliticsTitleResultList(String subject, PoliticsExerciseDao dao) {
+
+        // 查询得到一级标题
+        List<String> yijiList = dao.findYijiTitleList();
+
+        List<ExerciseTitleResultItem> result = new ArrayList<>(yijiList.size());
+
+        // 遍历一级标题查二级标题
+        for (String title : yijiList) {
+            List<String> children = dao.findErjiTitleList(title);
+
+            // 构造item
+            ExerciseTitleResultItem item = new ExerciseTitleResultItem(title, children);
+            result.add(item);
+        }
+
+        return result;
     }
 }

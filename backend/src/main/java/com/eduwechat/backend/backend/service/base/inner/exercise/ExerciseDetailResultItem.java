@@ -1,6 +1,9 @@
 package com.eduwechat.backend.backend.service.base.inner.exercise;
 
 import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
+import com.eduwechat.backend.backend.entity.exercise.*;
+import com.eduwechat.backend.backend.exceptions.exercise.ExerciseIdDoesNotExistException;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,8 +17,10 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class ExerciseDetailResultItem extends ExerciseBaseResultItem {
+@AllArgsConstructor
+public class ExerciseDetailResultItem {
 
+    private Integer id;
 
     private String type;
 
@@ -27,48 +32,40 @@ public class ExerciseDetailResultItem extends ExerciseBaseResultItem {
 
     private String analysis;
 
-    public ExerciseDetailResultItem(Integer id, String type, String content, List<String> choose, String answer, String analysis) {
-        super(id);
-        this.analysis = analysis;
-        this.answer = answer;
-        this.choose = choose;
-        this.content = content;
-        this.type = type;
+    public static ExerciseDetailResultItem fromEntityGetBiologyDetailItem(BiologyExerciseEntity entity) {
+        return null;
     }
 
-    public static ExerciseDetailResultItem fromEntityGetDetailItem(BaseExerciseEntity entity) {
-        Integer id = entity.getId();
-
-        String type;
-
-        List<String> choose = new ArrayList<>();
-
-        // 根据content是否包含table标签判断是否是选择题
-        if (!entity.getContent().contains("<table>")) {
-            type = "非选择题";
-        }
-        else {
-            type = "选择题";
-
-            // xpath提取选项
-
-            HtmlCleaner hc = new HtmlCleaner();
-            TagNode tn = hc.clean(entity.getContent());
-
-            // 待验证
-            String xpath = "//table/tr/td";
-
-            try {
-                Object[] objects = tn.evaluateXPath(xpath);
-
-                for (Object o : objects) {
-                    choose.add(o.toString());
-                }
-            } catch (XPatherException e) {
-                e.printStackTrace();
-            }
-        }
-
-
+    public static ExerciseDetailResultItem fromEntityGetChemistryDetailItem(ChemistryExerciseEntity entity) {
+        return null;
     }
+
+    public static ExerciseDetailResultItem fromEntityGetChineseDetailItem(ChineseExerciseEntity entity) {
+        return null;
+    }
+
+    public static ExerciseDetailResultItem fromEntityGetEnglishDetailItem(EnglishExerciseEntity entity) {
+        return null;
+    }
+
+    public static ExerciseDetailResultItem fromEntityGetGeographyDetailItem(GeographyExerciseEntity entity) {
+        return null;
+    }
+
+    public static ExerciseDetailResultItem fromEntityGetHistoryDetailItem(HistoryExerciseEntity entity) {
+        return null;
+    }
+
+    public static ExerciseDetailResultItem fromEntityGetMathDetailItem(MathExerciseEntity entity) {
+        return null;
+    }
+
+    public static ExerciseDetailResultItem fromEntityGetPhysicsDetailItem(PhysicsExerciseEntity entity) {
+        return null;
+    }
+
+    public static ExerciseDetailResultItem fromEntityGetPoliticsDetailItem(PoliticsExerciseEntity entity) {
+        return null;
+    }
+
 }

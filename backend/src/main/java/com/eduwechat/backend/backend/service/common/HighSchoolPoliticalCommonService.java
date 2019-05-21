@@ -4,6 +4,7 @@ package com.eduwechat.backend.backend.service.common;
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
 import com.eduwechat.backend.backend.repository.common.HighSchoolPoliticalRepository;
+import com.eduwechat.backend.backend.service.base.BaseCommonService;
 import com.eduwechat.backend.backend.service.base.inner.common.Content;
 import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CommonService extends CommonService {
+public class HighSchoolPoliticalCommonService extends BaseCommonService {
 
     @Autowired
     private HighSchoolPoliticalRepository repository;

@@ -1,7 +1,46 @@
 package com.eduwechat.backend.backend.utils;
 
+import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
+import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseTitleResultItem;
+
 public class CommonUtil {
 
+    /**
+     * 中文学科名返回表名
+     * @param subject 学科中文名
+     * @return 表名
+     * @throws SubjectDoesNotSupportedException 学科未找到异常
+     */
+    public static String fromSubjectGetExerciseTableName(String subject) throws SubjectDoesNotSupportedException {
+        switch (subject) {
+            case "语文":
+                return "chinese_lib";
+            case "数学":
+                return "math_lib";
+            case "英语":
+                return "english_lib";
+            case "物理":
+                return "physics_lib";
+            case "化学":
+                return "chemistry_lib";
+            case "生物":
+                return "biology_lib";
+            case "地理":
+                return "geography_lib";
+            case "历史":
+                return "history_lib";
+            case "政治":
+                return "politics_lib";
+            default:
+                throw new SubjectDoesNotSupportedException(subject);
+        }
+    }
+
+    /**
+     * 从简写学科返回真正学科
+     * @param simple 简写学科
+     * @return 真正学科
+     */
     public static String fromSimpleStrGetChinese(String simple) {
 
         switch (simple) {

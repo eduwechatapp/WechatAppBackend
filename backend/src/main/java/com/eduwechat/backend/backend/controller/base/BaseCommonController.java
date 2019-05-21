@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.base;
 
 
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
-import com.eduwechat.backend.backend.service.base.inner.common.CommonService;
+import com.eduwechat.backend.backend.service.base.BaseCommonService;
 import com.eduwechat.backend.backend.service.base.inner.common.Content;
 import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
 
@@ -35,7 +35,7 @@ public class BaseCommonController {
      * @param page_offset page
      * @return Map&lt;String, Object&gt;
      */
-    protected Map<String, Object> innerGetKnowledge(CommonService service, Integer which, Integer number_every_page, Integer page_offset) {
+    protected Map<String, Object> innerGetKnowledge(BaseCommonService service, Integer which, Integer number_every_page, Integer page_offset) {
         return this.innerCommonFromListGetMap(service.getKnowledge(which, number_every_page, page_offset));
     }
 
@@ -47,7 +47,7 @@ public class BaseCommonController {
      * @param subjectType String 学科类型 zz hx yy yw sx ls dl sw wl
      * @return Map&lt;String, Object&gt;
      */
-    protected Map<String, Object> innerGetTitleMappingFromListGetMap(CommonService service,
+    protected Map<String, Object> innerGetTitleMappingFromListGetMap(BaseCommonService service,
                                                                      String yijiString,
                                                                      String yijiType,
                                                                      String subjectType) {

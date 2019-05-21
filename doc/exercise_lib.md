@@ -16,7 +16,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/title/{openid}/{subject}
+/exercise/title/{openid}/{subject}
 
 + **subject**: 传入中文学科名。
     + 可用的学科名
