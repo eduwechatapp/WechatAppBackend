@@ -31,8 +31,7 @@ public class UserController {
         if(returnResult.getInt("errcode")==0){
             String OpenID = returnResult.getString("openid");
             String SessionKey = returnResult.getString("session_key");
-            String Skey = userService.EncodeSessionKey(SessionKey);
-            userService.UpdateSkey(OpenID, Skey);
+            userService.UpdateSkey(OpenID, SessionKey);
             map.put("errcode",returnResult.getInt("errcode"));
             map.put("skey",Skey);
         }
