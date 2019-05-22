@@ -33,10 +33,11 @@ public class UserController {
             String SessionKey = returnResult.getString("session_key");
             String Skey = userService.EncodeSessionKey(SessionKey);
             userService.UpdateSkey(OpenID, Skey);
+            map.put("errcode",returnResult.getInt("errcode"));
             map.put("skey",Skey);
         }
         else{
-            map.put("errcode",returnResult.getString("errcode"));
+            map.put("errcode",returnResult.getInt("errcode"));
             map.put("errmsg",returnResult.getString("errmsg"));
         }
         return map;
