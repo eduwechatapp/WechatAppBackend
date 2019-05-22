@@ -62,19 +62,20 @@ public class UserService {
         return json;
     }
 
-    public void UpdateSkey(String OpenID, String Skey){
+    public void UpdateSkey(String OpenID, String SessionKey){
+        String Skey = EncodeSessionKey(SessionKey);
         if(repository.findUserByOpenID(OpenID).isEmpty()){
-            insertOpenIDAndSkey(OpenID, Skey);
+            insertOpenIDAndSkey(OpenID, SessionKey,Skey);
         }
         else{
-            setSkeyByOpenID(OpenID, Skey);
+            setSkeyByOpenID(OpenID, SessionKey, Skey);
         }
     }
 
-    public void setSkeyByOpenID(String openID, String Skey){
-        repository.updateSkeyByOpenID(openID, Skey);
+    public void setSkeyByOpenID(String openID, String SessionKey, String Skey){
+        repository.updateSkeyByOpenID(openID, SessionKey, Skey);
     }
-    public void insertOpenIDAndSkey(String OpenID, String Skey){repository.insertOpenIDAndSkey(OpenID,Skey);}
+    public void insertOpenIDAndSkey(String OpenID, String SessionKey, String Skey){repository.insertOpenIDAndSkey(OpenID, SessionKey, Skey);}
     public String EncodeSessionKey(String SessionKey){
         return DigestUtils.sha1Hex(SessionKey);
     }

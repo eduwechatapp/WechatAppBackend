@@ -15,12 +15,12 @@ import java.util.List;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
-    @Query(value = "update user set skey = :skey where openid= :openid", nativeQuery = true)
-    void updateSkeyByOpenID(@Param("openid") String OpenID, @Param("skey") String skey);
+    @Query(value = "update user set session_key= :sessionkey, skey = :skey where openid= :openid", nativeQuery = true)
+    void updateSkeyByOpenID(@Param("openid") String OpenID, @Param("sessionkey") String SessionKey, @Param("skey") String skey);
 
     @Modifying
-    @Query(value = "insert into user(openid, skey) values (':openid', ':skey')", nativeQuery = true)
-    void insertOpenIDAndSkey(@Param("openid") String OpenID, @Param("skey") String skey);
+    @Query(value = "insert into user(openid, session_key, skey) values (:openid, :sessionkey, :skey)", nativeQuery = true)
+    void insertOpenIDAndSkey(@Param("openid") String OpenID, @Param("sessionkey") String SessionKey, @Param("skey") String skey);
 
     @Query(value = "select openid from user where openid = :openid", nativeQuery = true)
     List<String> findUserByOpenID(@Param("openid") String OpenID);
