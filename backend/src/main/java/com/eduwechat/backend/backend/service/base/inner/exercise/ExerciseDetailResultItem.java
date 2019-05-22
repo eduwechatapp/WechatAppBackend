@@ -106,6 +106,11 @@ public class ExerciseDetailResultItem {
             choose.add(StringUtils.strip(o.toString()));
         }
 
+        // 处理答案为空
+        if (answer.length() == 0) {
+            return new ExerciseDetailResultItem(id, "选择题", content, choose, answer, null, analysis);
+        }
+
         // 计算选项
         answerIndex = CommonUtil.fromCharGetIntegerString(StringUtils.strip(entity.getAnswer()).charAt(0));
         if (answerIndex == null) {
