@@ -1,4 +1,4 @@
-package com.eduwechat.backend.backend.repository.exercise.aggregation.set;
+package com.eduwechat.backend.backend.repository.base.set;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

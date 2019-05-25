@@ -1,5 +1,6 @@
 package com.eduwechat.backend.backend.utils;
 
+
 import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
 import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
 import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseSimpleResultItem;
@@ -8,6 +9,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CommonUtil {
+
+    /**
+     * 提取带标签字符串中纯文本。
+     * @param markedText String 带标签的字符串
+     * @return String 提取的纯文本
+     */
+    public static String fromMarkedGetPureText(String markedText) {
+        return markedText.replaceAll("<[^>]*>","").replaceAll("&nbsp","");
+    }
 
     /**
      * 根据选项判断答案的位置
@@ -47,8 +57,8 @@ public class CommonUtil {
      * @return 返回对象
      */
     private static ExerciseSimpleResultItem fromExerciseEntityGetResultItem(BaseExerciseEntity entity) {
-        ExerciseSimpleResultItem item = new ExerciseSimpleResultItem(entity.getId(), entity.getYiji(), entity.getErji(), entity.getContent());
-        return item;
+//        ExerciseSimpleResultItem item = new ExerciseSimpleResultItem(entity.getId(), entity.getYiji(), entity.getErji(), entity.getContent());
+        return null;
     }
 
     /**

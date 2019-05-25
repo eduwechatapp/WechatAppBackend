@@ -1,4 +1,4 @@
-package com.eduwechat.backend.backend.repository.exercise.aggregation.set;
+package com.eduwechat.backend.backend.repository.base.set;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,8 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 public class TotalTitleResultItem {
-    private String yiji;
+    private String title;
 
-    private List<String> erji;
+    private List<String> children;
 
 }

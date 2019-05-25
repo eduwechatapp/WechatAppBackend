@@ -1,8 +1,9 @@
-package com.eduwechat.backend.backend.repository.exercise.aggregation.impl;
+package com.eduwechat.backend.backend.repository.exercise.aggregation;
 
 import com.eduwechat.backend.backend.entity.exercise.BiologyExerciseEntity;
-import com.eduwechat.backend.backend.repository.exercise.aggregation.AggregationExerciseDao;
-import com.eduwechat.backend.backend.repository.exercise.aggregation.set.TotalTitleResultItem;
+import com.eduwechat.backend.backend.repository.base.AggregationExerciseDao;
+import com.eduwechat.backend.backend.repository.base.set.SingleResultItem;
+import com.eduwechat.backend.backend.repository.base.set.TotalTitleResultItem;
 
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,11 @@ public class BiologyAggregationImpl extends AggregationExerciseDao {
 
     @Override
     public List<TotalTitleResultItem> getTotalTitle() {
-        return this.fromEntityGetTitalList(BiologyExerciseEntity.class);
+        return this.fromEntityGetTotalList(BiologyExerciseEntity.class);
+    }
+
+    @Override
+    public List<String> getTotalType() {
+        return SingleResultItem.getSimpleStringList(this.fromEntityGetExerciseType(BiologyExerciseEntity.class));
     }
 }

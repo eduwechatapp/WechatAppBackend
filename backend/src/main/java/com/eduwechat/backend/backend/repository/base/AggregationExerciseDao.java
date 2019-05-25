@@ -1,7 +1,7 @@
-package com.eduwechat.backend.backend.repository.exercise.aggregation;
+package com.eduwechat.backend.backend.repository.base;
 
-import com.eduwechat.backend.backend.repository.exercise.aggregation.set.SingleResultItem;
-import com.eduwechat.backend.backend.repository.exercise.aggregation.set.TotalTitleResultItem;
+import com.eduwechat.backend.backend.repository.base.set.SingleResultItem;
+import com.eduwechat.backend.backend.repository.base.set.TotalTitleResultItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
@@ -16,12 +16,27 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.grou
 
 public abstract class AggregationExerciseDao {
 
+    /**
+     * 得到总标题列表
+     * @return List&lt;TotalTitleResultItem&gt;
+     */
     public abstract List<TotalTitleResultItem> getTotalTitle();
+
+    /**
+     * 得到题型列表
+     * @return List&lt;String&gt;
+     */
+    public abstract List<String> getTotalType();
 
     @Autowired
     MongoTemplate mongoTemplate;
 
-    protected List<TotalTitleResultItem> fromEntityGetTitalList(Class<?> inputType) {
+    /**
+     * 获取题库学科标题列表
+     * @param inputType 学科实体类对象
+     * @return List&lt;TotalTitleResultItem&gt;
+     */
+    protected List<TotalTitleResultItem> fromEntityGetTotalList(Class<?> inputType) {
 
         // 得到以及标题
         Aggregation agg = newAggregation(
@@ -60,5 +75,24 @@ public abstract class AggregationExerciseDao {
 
         return result;
     }
+
+    /**
+     * 得到题库题型列表
+     * @param inputType 学科实体类对象
+     * @return List&lt;TotalTitleResultItem&gt;
+     */
+    protected List<SingleResultItem> fromEntityGetExerciseType(Class<?> inputType) {
+        Aggregation aggregation = newAggregation(
+                group("type")
+        );
+
+        // get result list
+        AggregationResults<SingleResultItem> typeGroupResults
+                = mongoTemplate.aggregate(aggregation, inputType, SingleResultItem.class);
+
+        return typeGroupResults.getMappedResults();
+    }
+
+
 
 }

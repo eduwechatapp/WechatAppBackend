@@ -1,60 +1,67 @@
 package com.eduwechat.backend.backend.entity.exercise;
 
 import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
-import lombok.AllArgsConstructor;
+import com.eduwechat.backend.backend.entity.exercise.inner.AnalysisSet;
+import lombok.ToString;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+import java.util.List;
 
-@Entity
-@Table(name = "biology_lib")
-@AllArgsConstructor
+
+@Document(collection = "biology_lib")
+@ToString
 public class BiologyExerciseEntity extends BaseExerciseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Integer id;
 
-    protected String yiji;
-
-    protected String erji;
-
-    @Lob
-    @Column(columnDefinition = "text")
-    protected String content;
-
-    @Lob
-    @Column(columnDefinition = "text")
-    protected String answer;
-
-    @Lob
-    @Column(columnDefinition = "text")
-    protected String analysis;
 
     @Override
-    public Integer getId() {
-        return id;
+    public String getId() {
+        return this._id;
     }
 
     @Override
     public String getYiji() {
-        return yiji;
+        return this.yiji;
     }
 
     @Override
     public String getErji() {
-        return erji;
+        return this.erji;
     }
 
+    @Override
     public String getContent() {
-        return content;
+        return this.content;
     }
 
+    @Override
     public String getAnswer() {
-        return answer;
+        return this.answer;
     }
 
-    public String getAnalysis() {
-        return analysis;
+    @Override
+    public String getType() {
+        return this.type;
     }
 
-    public BiologyExerciseEntity() {}
+    @Override
+    public AnalysisSet getAnalysis() {
+        return this.analysis;
+    }
+
+    @Override
+    public List<String> getChoose() {
+        return this.choose;
+    }
+
+    @Override
+    public List<Integer> getAnswer_index() {
+        return this.answer_index;
+    }
+
+    public BiologyExerciseEntity() {
+    }
+
+    public BiologyExerciseEntity(String _id, String yiji, String erji, String content, String answer, String type, AnalysisSet analysis, List<String> choose, List<Integer> answer_index) {
+        super(_id, yiji, erji, content, answer, type, analysis, choose, answer_index);
+    }
 }
