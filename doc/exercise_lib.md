@@ -38,14 +38,14 @@ GET
     "data": [
         {
             "title": "xxx",      // 一级标题
-            "child": [
+            "children": [
                 "hahah",         // 其下二级标题
                 "lalal"
             ]
         },
         {
             "title": "xxx",      // 一级标题
-            "child": [
+            "children": [
                 "hahah",         // 其下二级标题
                 "lalal",
                 "heihei"
