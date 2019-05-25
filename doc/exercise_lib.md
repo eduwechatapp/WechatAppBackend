@@ -69,7 +69,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/list/{openid}/{subject}/{yiji}/{erji}/{type}/{shrink}/{number_every_page}/{page_offset}
+/exercise/list/{openid}/{subject}/{yiji}/{erji}/{type}/{shrink}/{number_every_page}/{page_offset}
 
 + **openid**: openid
 + **subject**: 传入中文学科名。
@@ -122,7 +122,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/detail/{openid}/{id}
+/exercise/detail/{openid}/{id}
 
 + **openid**: openid
 + **id**: 传入题目id
