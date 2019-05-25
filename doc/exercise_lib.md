@@ -61,7 +61,7 @@ GET
 
 ### 接口简介
 
-分页获取某个二级标题下题目, 19年5月25日更改：content变为缩略，只显示前**11**个字。
+分页获取某个二级标题下题目, 19年5月25日更改：可以指定是否是缩略模式，content变为缩略，只显示前**11**个字。
 
 ### url方法
 
@@ -69,7 +69,7 @@ GET
 
 ### 传入参数/url
 
-/exercise/get/list/{openid}/{subject}/{yiji}/{erji}/{type}/{number_every_page}/{page_offset}
+/exercise/get/list/{openid}/{subject}/{yiji}/{erji}/{type}/{shrink}/{number_every_page}/{page_offset}
 
 + **openid**: openid
 + **subject**: 传入中文学科名。
@@ -86,6 +86,7 @@ GET
 + **yiji**: 传入一级标题名字
 + **erji**: 传入二级标题名字
 + **type**: 题型过滤
++ **shrink**: 是否为缩略模式
 + **number_everY_page**: 传入每页的数量
 + **page_offset**: 页偏移量
 
@@ -124,17 +125,6 @@ GET
 /exercise/get/detail/{openid}/{id}
 
 + **openid**: openid
-+ **subject**: 传入中文学科名。
-    + 可用的学科名
-        + 数学
-        + 语文
-        + 英语
-        + 物理
-        + 化学
-        + 生物
-        + 地理
-        + 历史
-        + 政治
 + **id**: 传入题目id
 
 ### 返回参数
