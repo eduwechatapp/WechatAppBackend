@@ -38,11 +38,10 @@ public class BackendApplicationTests {
 		System.out.println("测试结束-----------------");
 	}
 
-//	@Test
-//	public void testMongo() {
-//		List<TotalTitleResultItem> resultSetList =  dao.getTotalTitle();
-//		System.out.println(resultSetList);
-//	}
+	@Test
+	public void test() {
+		System.out.println("done");
+	}
 //
 //	@Test
 //	public void testServiceTitleList() throws SubjectDoesNotSupportedException {
