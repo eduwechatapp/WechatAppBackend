@@ -2,12 +2,14 @@ package com.eduwechat.backend.backend.controller.message;
 
 import com.eduwechat.backend.backend.controller.base.BaseMessageController;
 import com.eduwechat.backend.backend.exceptions.message.MessageNotFoundException;
+import com.eduwechat.backend.backend.exceptions.message.ReplyNotFoundException;
 import com.eduwechat.backend.backend.service.message.MessageService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +29,11 @@ public class MessageController extends BaseMessageController {
      * @return json
      */
     @Override
-    public Map<String, Object> createMessage(String openid, JSONObject body) {
+    @ApiOperation(value = "创建留言" ,  notes="创建留言")
+    @ResponseBody
+    @PostMapping("/create/{openid}")
+    public Map<String, Object> createMessage(@PathVariable(value = "openid") String openid,
+                                             @RequestBody JSONObject body) {
 
         Map<String, Object> map = new HashMap<>();
 
@@ -57,7 +63,13 @@ public class MessageController extends BaseMessageController {
      * @return json
      */
     @Override
-    public Map<String, Object> getMessageList(String openid, String type, Integer size, Integer page) {
+    @ApiOperation(value = "分页获取指定板块的留言列表" ,  notes="分页获取指定板块的留言列表")
+    @ResponseBody
+    @PostMapping("/get/{openid}/{type}/{number_every_page}/{page_offset}")
+    public Map<String, Object> getMessageList(@PathVariable(value = "openid") String openid,
+                                              @PathVariable(value = "type") String type,
+                                              @PathVariable(value = "number_every_page") Integer size,
+                                              @PathVariable(value = "page_offset") Integer page) {
 
         Map<String, Object> map = new HashMap<>();
 
@@ -75,7 +87,11 @@ public class MessageController extends BaseMessageController {
      * @return json
      */
     @Override
-    public Map<String, Object> getMessageTextDetail(String openid, String id) {
+    @ApiOperation(value = "获取指定某条留言详细内容" ,  notes="获取指定某条留言详细内容")
+    @ResponseBody
+    @PostMapping("/detail/{openid}/{id}")
+    public Map<String, Object> getMessageTextDetail(@PathVariable(value = "openid") String openid,
+                                                    @PathVariable(value = "id") String id) {
         Map<String, Object> map = new HashMap<>();
 
         try {
@@ -88,7 +104,6 @@ public class MessageController extends BaseMessageController {
             map.put("msg", e.getMessage());
         }
 
-
         return map;
     }
 
@@ -99,8 +114,23 @@ public class MessageController extends BaseMessageController {
      * @return json
      */
     @Override
-    public Map<String, Object> getMessageReplyDetail(String openid, String id) {
-        return null;
+    @ApiOperation(value = "获取指定某条留言的全部回复" ,  notes="获取指定某条留言的全部回复")
+    @ResponseBody
+    @PostMapping("/reply/get/{openid}/{id}")
+    public Map<String, Object> getMessageReplyDetail(@PathVariable(value = "openid") String openid,
+                                                     @PathVariable(value = "id") String id) {
+        Map<String, Object> map = new HashMap<>();
+        try {
+            map.put("data", service.getReply(id));
+            map.put("code", 0);
+            map.put("msg", "success");
+        } catch (MessageNotFoundException e) {
+            map.put("data", null);
+            map.put("code", e.getErrorCode());
+            map.put("msg", e.getMessage());
+        }
+
+        return map;
     }
 
     /**
@@ -110,8 +140,25 @@ public class MessageController extends BaseMessageController {
      * @return json
      */
     @Override
-    public Map<String, Object> createMessageReply(String openid, String id) {
-        return null;
+    @ApiOperation(value = "创建某个文章的留言" ,  notes="创建某个文章的留言")
+    @ResponseBody
+    @PostMapping("/reply/create/message/{openid}/{message_id}")
+    public Map<String, Object> createMessageReply(@PathVariable(value = "openid") String openid,
+                                                  @PathVariable(value = "message_id") String id,
+                                                  @RequestBody JSONObject body) {
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            service.createReplyWithMessage(id,  body.get("time").toString(), body.get("name").toString(), body.get("content").toString());
+            map.put("code", 0);
+            map.put("msg", "success");
+        } catch (MessageNotFoundException e) {
+            map.put("data", null);
+            map.put("code", e.getErrorCode());
+            map.put("msg", e.getMessage());
+        }
+
+        return map;
     }
 
     /**
@@ -121,7 +168,24 @@ public class MessageController extends BaseMessageController {
      * @return json
      */
     @Override
-    public Map<String, Object> createReplyReply(String openid, String id) {
-        return null;
+    @ApiOperation(value = "创建留言的留言" ,  notes="为某个文章下面的某个回复创建回复")
+    @ResponseBody
+    @PostMapping("/reply/create/reply/{openid}/{reply_id}")
+    public Map<String, Object> createReplyReply(@PathVariable(value = "openid") String openid,
+                                                @PathVariable(value = "reply_id") String id,
+                                                @RequestBody JSONObject body) {
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            service.createReplyWithReply(id, body.get("time").toString(), body.get("name").toString(), body.get("content").toString());
+        } catch (ReplyNotFoundException e) {
+            map.put("data", null);
+            map.put("code", e.getErrorCode());
+            map.put("msg", e.getMessage());
+        }
+        map.put("code", 0);
+        map.put("msg", "success");
+
+        return map;
     }
 }

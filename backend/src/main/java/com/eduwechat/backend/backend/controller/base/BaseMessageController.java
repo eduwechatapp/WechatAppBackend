@@ -46,7 +46,7 @@ public abstract class BaseMessageController {
      * @param id 留言id
      * @return json
      */
-    public abstract Map<String, Object> createMessageReply(String openid, String id);
+    public abstract Map<String, Object> createMessageReply(String openid, String id, JSONObject body);
 
     /**
      * 创建留言的留言
@@ -54,6 +54,6 @@ public abstract class BaseMessageController {
      * @param id 回复id
      * @return json
      */
-    public abstract Map<String, Object> createReplyReply(String openid, String id);
+    public abstract Map<String, Object> createReplyReply(String openid, String id, JSONObject body);
 
 }
