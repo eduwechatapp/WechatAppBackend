@@ -37,7 +37,7 @@ public class MessageService extends BaseMessageService {
      * @param content 内容
      */
     @Override
-    public void createMessage(String picIndex, String type, String time, String location, String name, String title, String content) {
+    public void createMessage(Integer picIndex, String type, String time, String location, String name, String title, String content) {
         MessageEntity newEntity = new MessageEntity(new ArrayList<>(), CommonUtil.getMD5(String.valueOf(new Date().getTime())),
                 time,
                 title,

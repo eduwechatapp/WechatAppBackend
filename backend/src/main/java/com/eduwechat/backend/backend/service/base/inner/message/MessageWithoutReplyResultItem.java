@@ -20,7 +20,7 @@ public class MessageWithoutReplyResultItem {
 
     private String location;
 
-    private String index;
+    private Integer index;
 
     private String type;
 

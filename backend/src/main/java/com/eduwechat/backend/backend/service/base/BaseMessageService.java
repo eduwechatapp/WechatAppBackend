@@ -27,7 +27,7 @@ public abstract class BaseMessageService {
      * @param title 标题
      * @param content 内容
      */
-    public abstract void createMessage(String picIndex, String type, String time, String location, String name, String title, String content);
+    public abstract void createMessage(Integer picIndex, String type, String time, String location, String name, String title, String content);
 
     /**
      * 获取指定类型的留言简列表

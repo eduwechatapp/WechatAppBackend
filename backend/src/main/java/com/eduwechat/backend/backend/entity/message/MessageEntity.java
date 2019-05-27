@@ -29,11 +29,11 @@ public class MessageEntity extends BaseMessageEntity {
 
     private String location;
 
-    private String index;
+    private Integer index;
 
     private String type;
 
-    public MessageEntity(List<String> replyIdList, String _id, String createTime, String title, String content, String name, String location, String index, String type) {
+    public MessageEntity(List<String> replyIdList, String _id, String createTime, String title, String content, String name, String location, Integer index, String type) {
         super(replyIdList);
         this._id = _id;
         this.createTime = createTime;
