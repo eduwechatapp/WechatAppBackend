@@ -194,7 +194,7 @@ POST
 
 ### url
 
-/reply/create/message/{openid}/{message_id}
+/message/reply/create/message/{openid}/{message_id}
 
 ### 传入参数
 
@@ -230,7 +230,7 @@ POST
 
 ### url
 
-/reply/create/reply/{openid}/{reply_id}
+/message/reply/create/reply/{openid}/{reply_id}
 
 ### 传入参数
 
