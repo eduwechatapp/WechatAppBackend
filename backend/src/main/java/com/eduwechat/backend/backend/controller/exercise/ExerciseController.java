@@ -36,7 +36,7 @@ public class ExerciseController extends BaseExerciseController {
             map.put("msg", "success");
             map.put("code", 0);
         } catch (SubjectDoesNotSupportedException e) {
-            this.getExerciseErrorMap(map, SubjectDoesNotSupportedException.getErrorCode() , e.getMessage());
+            this.getExerciseErrorMap(map, e.getErrorCode() , e.getMessage());
         }
 
         return map;
@@ -54,7 +54,7 @@ public class ExerciseController extends BaseExerciseController {
             map.put("msg", "success");
             map.put("code", 0);
         } catch (SubjectDoesNotSupportedException e) {
-            this.getExerciseErrorMap(map, SubjectDoesNotSupportedException.getErrorCode() , e.getMessage());
+            this.getExerciseErrorMap(map, e.getErrorCode() , e.getMessage());
         }
 
         return map;
@@ -78,7 +78,7 @@ public class ExerciseController extends BaseExerciseController {
             map.put("msg", "success");
             map.put("code", 0);
         } catch (SubjectDoesNotSupportedException e) {
-            this.getExerciseErrorMap(map, SubjectDoesNotSupportedException.getErrorCode() , e.getMessage());
+            this.getExerciseErrorMap(map, e.getErrorCode() , e.getMessage());
         }
 
         return map;
@@ -97,7 +97,7 @@ public class ExerciseController extends BaseExerciseController {
             map.put("msg", "success");
             map.put("code", 0);
         } catch (SubjectDoesNotSupportedException e) {
-            this.getExerciseErrorMap(map, SubjectDoesNotSupportedException.getErrorCode() , e.getMessage());
+            this.getExerciseErrorMap(map, e.getErrorCode() , e.getMessage());
         }
 
         return map;

@@ -8,6 +8,7 @@ import com.eduwechat.backend.backend.repository.base.BaseMessageDao;
 import com.eduwechat.backend.backend.repository.message.ReplyDao;
 import com.eduwechat.backend.backend.service.base.inner.message.MessageWithoutReplyAndContentResultItem;
 import com.eduwechat.backend.backend.service.base.inner.message.MessageWithoutReplyResultItem;
+import com.eduwechat.backend.backend.service.base.inner.message.ReplyWithReplyList;
 import com.eduwechat.backend.backend.utils.CommonUtil;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public abstract class BaseMessageService {
      * @param id 留言id
      * @return 留言列表
      */
-    public abstract List<ReplyEntity> getReply(String id);
+    public abstract List<ReplyWithReplyList> getReply(String id) throws MessageNotFoundException;
 
     /**
      * 创建留言的回复
@@ -71,6 +72,33 @@ public abstract class BaseMessageService {
      * @throws MessageNotFoundException 留言未找到异常
      */
     public abstract void createReplyWithReply(String replyId, String time, String name, String content) throws ReplyNotFoundException;
+
+    /**
+     * 递归展开一个回复列表
+     * @param dao ReplyDao
+     * @param replyIdList 只含有id的回复列表
+     * @return List&lt;ReplyWithReplyList&gt;展开后的列表
+     */
+    protected List<ReplyWithReplyList> fromReplyIdListGetResultList(ReplyDao dao, List<String> replyIdList) {
+
+        List<ReplyWithReplyList> result = new ArrayList<>(replyIdList.size());
+
+        for (String id : replyIdList) {
+            ReplyEntity entityItem = dao.findById(id).orElse(null);
+            if (entityItem == null) {
+                continue;
+            }
+
+            // 递归得到此实体下的全部回复
+            List<ReplyWithReplyList> replyList = fromReplyIdListGetResultList(dao, entityItem.getReplyIdList());
+
+            // 构造结果Item，添加进表
+            result.add(ReplyWithReplyList.fromReplyEntityGetThisItem(entityItem, replyList));
+        }
+
+        return result;
+
+    }
 
     /**
      * 新生成一个reply并更新父级实体

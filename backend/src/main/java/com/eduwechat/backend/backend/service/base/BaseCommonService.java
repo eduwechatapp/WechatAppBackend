@@ -1,6 +1,7 @@
 package com.eduwechat.backend.backend.service.base;
 
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
+import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
 import com.eduwechat.backend.backend.service.base.inner.common.Content;
 import com.eduwechat.backend.backend.service.base.inner.common.TitleListMapping;
@@ -37,6 +38,13 @@ public abstract class BaseCommonService {
      */
     public abstract List<TitleListMapping> getTitleList(String yijiString, String yijiType, String subjectType) throws TypeNotMatchException;
 
+    /**
+     * 根据二级和标题得到文章
+     * @param erji 二级标题
+     * @param title 标题
+     * @return BaseCommonEntity
+     */
+    public abstract BaseCommonEntity getArticleFromErjiAndTitle(String erji, String title) throws ArticleNotFoundException;
 
     /**
      * Page转List

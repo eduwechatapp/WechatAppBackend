@@ -15,4 +15,9 @@ public class ReplyNotFoundException extends EduRuntimeException {
     public String getMessage() {
         return super.getMessage() + "===未找到的reply_id:" + errorReplyId;
     }
+
+    @Override
+    public Integer getErrorCode() {
+        return 3002;
+    }
 }

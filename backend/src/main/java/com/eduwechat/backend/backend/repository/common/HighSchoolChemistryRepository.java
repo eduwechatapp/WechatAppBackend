@@ -2,9 +2,9 @@ package com.eduwechat.backend.backend.repository.common;
 
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
 import com.eduwechat.backend.backend.entity.common.HighSchoolChemistry;
+import com.eduwechat.backend.backend.repository.base.BaseCommonRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface HighSchoolChemistryRepository extends JpaRepository<HighSchoolChemistry, Integer> {
+public interface HighSchoolChemistryRepository extends BaseCommonRepository<HighSchoolChemistry, Integer> {
     /**
      * 根据二级标题分页查找
      * @param erji 二级标题

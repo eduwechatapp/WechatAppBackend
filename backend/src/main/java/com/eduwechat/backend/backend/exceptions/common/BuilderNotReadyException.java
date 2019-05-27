@@ -33,4 +33,9 @@ public class BuilderNotReadyException extends EduRuntimeException {
                 + "---预构建的实体:" + this.entityName
                 + "---缺失的属性:"  + this.missingAttr;
     }
+
+    @Override
+    public Integer getErrorCode() {
+        return 1002;
+    }
 }

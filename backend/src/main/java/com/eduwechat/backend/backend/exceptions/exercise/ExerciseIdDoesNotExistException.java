@@ -16,4 +16,8 @@ public class ExerciseIdDoesNotExistException extends EduRuntimeException {
         return super.getMessage() + "===不存在的id:" + String.valueOf(errorId);
     }
 
+    @Override
+    public Integer getErrorCode() {
+        return 2001;
+    }
 }

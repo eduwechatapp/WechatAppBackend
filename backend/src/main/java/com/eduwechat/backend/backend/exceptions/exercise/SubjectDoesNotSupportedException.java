@@ -6,10 +6,9 @@ public class SubjectDoesNotSupportedException extends EduRuntimeException {
 
     private String unsupportSuject;
 
-    private static final Integer errorCode = 1;
 
-    public static Integer getErrorCode() {
-        return errorCode;
+    public Integer getErrorCode() {
+        return 2003;
     }
 
     public SubjectDoesNotSupportedException(String unsupportSuject) {

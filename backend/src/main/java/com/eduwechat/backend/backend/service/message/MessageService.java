@@ -9,6 +9,7 @@ import com.eduwechat.backend.backend.repository.message.ReplyDao;
 import com.eduwechat.backend.backend.service.base.BaseMessageService;
 import com.eduwechat.backend.backend.service.base.inner.message.MessageWithoutReplyAndContentResultItem;
 import com.eduwechat.backend.backend.service.base.inner.message.MessageWithoutReplyResultItem;
+import com.eduwechat.backend.backend.service.base.inner.message.ReplyWithReplyList;
 import com.eduwechat.backend.backend.utils.CommonUtil;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -80,7 +81,6 @@ public class MessageService extends BaseMessageService {
         Optional<MessageEntity> rawEntity = messageDao.findById(id);
 
         return rawEntity.map(MessageWithoutReplyResultItem::fromMessageEntityGetThisResultItem).orElseThrow(() -> new MessageNotFoundException("留言未找到", id));
-
     }
 
     /**
@@ -89,8 +89,11 @@ public class MessageService extends BaseMessageService {
      * @return List&lt;ReplyEntity&gt;
      */
     @Override
-    public List<ReplyEntity> getReply(String id) {
-        return null;
+    public List<ReplyWithReplyList> getReply(String id) throws MessageNotFoundException {
+        MessageEntity root = messageDao.findById(id).orElseThrow(() -> new MessageNotFoundException("留言未找到", id));
+
+        // 递归展开根节点下全部回复
+        return this.fromReplyIdListGetResultList(replyDao, root.getReplyIdList());
     }
 
     /**

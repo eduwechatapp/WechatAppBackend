@@ -1,6 +1,8 @@
 package com.eduwechat.backend.backend.exceptions.message;
 
-public class MessageNotFoundException extends RuntimeException {
+import com.eduwechat.backend.backend.exceptions.base.EduRuntimeException;
+
+public class MessageNotFoundException extends EduRuntimeException {
 
     private String errorMessageId;
 
@@ -12,5 +14,10 @@ public class MessageNotFoundException extends RuntimeException {
     @Override
     public String getMessage() {
         return super.getMessage() + "===未找到的message_id:" + errorMessageId;
+    }
+
+    @Override
+    public Integer getErrorCode() {
+        return 3001;
     }
 }

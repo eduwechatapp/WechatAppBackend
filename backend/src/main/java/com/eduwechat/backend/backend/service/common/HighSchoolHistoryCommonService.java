@@ -2,6 +2,8 @@ package com.eduwechat.backend.backend.service.common;
 
 
 import com.eduwechat.backend.backend.entity.base.BaseCommonEntity;
+import com.eduwechat.backend.backend.entity.common.HighSchoolHistory;
+import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
 import com.eduwechat.backend.backend.exceptions.common.TypeNotMatchException;
 import com.eduwechat.backend.backend.repository.common.HighSchoolHistoryRepository;
 import com.eduwechat.backend.backend.service.base.BaseCommonService;
@@ -68,5 +70,21 @@ public class HighSchoolHistoryCommonService extends BaseCommonService {
         return this.innerGetTitleList(repository.findByTitleList(yijiString), yijiType, subjectType);
     }
 
+    /**
+     * 根据二级和title得到文章
+     * @param erji 二级标题
+     * @param title 标题
+     * @return BaseCommonEntity
+     * @throws ArticleNotFoundException 文章未找到
+     */
+    @Override
+    public HighSchoolHistory getArticleFromErjiAndTitle(String erji, String title) throws ArticleNotFoundException {
+        List<BaseCommonEntity> list = repository.findByErjiAndTitle(erji, title);
 
+        if (list.size() == 0) {
+            throw new ArticleNotFoundException("文章未找到");
+        }
+
+        return (HighSchoolHistory) list.get(0);
+    }
 }

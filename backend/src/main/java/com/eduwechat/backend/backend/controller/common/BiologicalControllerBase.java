@@ -38,4 +38,6 @@ public class BiologicalControllerBase extends BaseCommonController implements Ca
         return this.innerGetTitleMappingFromListGetMap(service, "知识点", "knowledge", "sw");
     }
 
+
+
 }
