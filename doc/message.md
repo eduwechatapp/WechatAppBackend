@@ -104,8 +104,7 @@ GET
 {
     "code": 0,
     "msg": "success",
-    "data": [
-        {
+    "data":{
             "_id": "xc82bdrfsd",
             "createTime": "2019-03-03",
             "title": "标题",
@@ -113,17 +112,7 @@ GET
             "name": "用户昵称",
             "location": "城市名字",
             "index": "图片id"
-        },
-        {
-            "_id": "xc82bdrfsd",
-            "createTime": "2019-03-03",
-            "title": "标题",
-            "content": "正文",
-            "name": "用户昵称",
-            "location": "城市名字",
-            "index": "图片id"
-        }
-    ]
+    }
 }
 ```
 
@@ -205,7 +194,7 @@ POST
 
 ### url
 
-/reply/create/{openid}/{message_id}
+/reply/create/message/{openid}/{message_id}
 
 ### 传入参数
 
@@ -233,7 +222,7 @@ body
 
 ## 为某个文章下面的某个回复创建回复
 
-> 给回复写回复，只需要指定文章id和回复id即可（两个id后台已确保全局唯一）
+> 给回复写回复，只需要回复id即可
 
 ### 接口方法
 
@@ -241,7 +230,7 @@ POST
 
 ### url
 
-/reply/create/{openid}/{message_id}/{reply_id}
+/reply/create/reply/{openid}/{reply_id}
 
 ### 传入参数
 
