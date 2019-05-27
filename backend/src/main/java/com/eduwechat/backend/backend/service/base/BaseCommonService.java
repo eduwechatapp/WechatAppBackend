@@ -44,7 +44,7 @@ public abstract class BaseCommonService {
      * @param title 标题
      * @return BaseCommonEntity
      */
-    public abstract BaseCommonEntity getArticleFromErjiAndTitle(String erji, String title) throws ArticleNotFoundException;
+    public abstract BaseCommonEntity getArticleFromErjiAndTitle(String title) throws ArticleNotFoundException;
 
     /**
      * Page转List

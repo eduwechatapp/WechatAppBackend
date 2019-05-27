@@ -50,16 +50,15 @@ public class UsualController {
 
     @ApiOperation(value = "根据二级标题和标题获取文章" ,  notes="根据二级标题和标题获取文章")
     @ResponseBody
-    @RequestMapping(value = "/common/erji-title/{openid}/{subject}/{erji}/{title}", method = RequestMethod.GET)
+    @RequestMapping(value = "/common/erji-title/{openid}/{subject}/{title}", method = RequestMethod.GET)
     public Map<String, Object> fromErjiAndTitleGetArticle(@PathVariable(value = "openid") String openid,
                                                           @PathVariable(value = "subject") String subject,
-                                                          @PathVariable(value = "erji") String erji,
                                                           @PathVariable(value = "title") String title) {
 
         Map<String, Object> map = new HashMap<>();
 
         try {
-            map.put("data", this.fromSubjectErjiTitleGetEntity(subject, erji, title));
+            map.put("data", this.fromSubjectErjiTitleGetEntity(subject, title));
             map.put("msg", "success");
             map.put("code", 0);
         } catch (SubjectDoesNotSupportedException e) {
@@ -78,32 +77,31 @@ public class UsualController {
     /**
      * 根据学科和二级、标题获取文章内容跟
      * @param subject 学科
-     * @param erji 二级标题
      * @param title 标题
      * @return BaseCommonEntity
      * @throws SubjectDoesNotSupportedException 学科不支持
      * @throws ArticleNotFoundException 文章未找到
      */
-    private BaseCommonEntity fromSubjectErjiTitleGetEntity(String subject, String erji, String title) throws SubjectDoesNotSupportedException, ArticleNotFoundException {
+    private BaseCommonEntity fromSubjectErjiTitleGetEntity(String subject, String title) throws SubjectDoesNotSupportedException, ArticleNotFoundException {
         switch (subject) {
             case "语文":
-                return  chineseCommonService.getArticleFromErjiAndTitle(erji, title);
+                return  chineseCommonService.getArticleFromErjiAndTitle(title);
             case "数学":
-                return mathCommonService.getArticleFromErjiAndTitle(erji, title);
+                return mathCommonService.getArticleFromErjiAndTitle(title);
             case "英语":
-                return englishCommonService.getArticleFromErjiAndTitle(erji, title);
+                return englishCommonService.getArticleFromErjiAndTitle(title);
             case "物理":
-                return physicsCommonService.getArticleFromErjiAndTitle(erji, title);
+                return physicsCommonService.getArticleFromErjiAndTitle(title);
             case "化学":
-                return chemistryCommonService.getArticleFromErjiAndTitle(erji, title);
+                return chemistryCommonService.getArticleFromErjiAndTitle(title);
             case "生物":
-                return biologicalCommonService.getArticleFromErjiAndTitle(erji, title);
+                return biologicalCommonService.getArticleFromErjiAndTitle(title);
             case "地理":
-                return geographyCommonService.getArticleFromErjiAndTitle(erji, title);
+                return geographyCommonService.getArticleFromErjiAndTitle(title);
             case "历史":
-                return historyCommonService.getArticleFromErjiAndTitle(erji, title);
+                return historyCommonService.getArticleFromErjiAndTitle(title);
             case "政治":
-                return politicalCommonService.getArticleFromErjiAndTitle(erji, title);
+                return politicalCommonService.getArticleFromErjiAndTitle(title);
             default:
                 throw new SubjectDoesNotSupportedException(subject);
         }

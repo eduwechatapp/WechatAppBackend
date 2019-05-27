@@ -12,9 +12,8 @@ public interface BaseCommonRepository<TD, I> extends JpaRepository<TD, I> {
 
     /**
      * 根据二级标题和标题返回查询结果
-     * @param erji 二级标题
      * @param title 标题
      * @return Optional&lt;BaseCommonEntity&gt;
      */
-    List<BaseCommonEntity> findByErjiAndTitle(String erji, String title);
+    List<BaseCommonEntity> findByTitle(String title);
 }

@@ -71,14 +71,13 @@ public class HighSchoolPhysicsCommonService extends BaseCommonService {
 
     /**
      * 根据二级和title得到文章
-     * @param erji 二级标题
      * @param title 标题
      * @return BaseCommonEntity
      * @throws ArticleNotFoundException 文章未找到
      */
     @Override
-    public HighSchoolPhysics getArticleFromErjiAndTitle(String erji, String title) throws ArticleNotFoundException {
-        List<BaseCommonEntity> list = repository.findByErjiAndTitle(erji, title);
+    public HighSchoolPhysics getArticleFromErjiAndTitle(String title) throws ArticleNotFoundException {
+        List<BaseCommonEntity> list = repository.findByTitle(title);
 
         if (list.size() == 0) {
             throw new ArticleNotFoundException("文章未找到");

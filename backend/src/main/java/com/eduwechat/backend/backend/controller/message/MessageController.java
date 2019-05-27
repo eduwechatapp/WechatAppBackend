@@ -1,6 +1,7 @@
 package com.eduwechat.backend.backend.controller.message;
 
 import com.eduwechat.backend.backend.controller.base.BaseMessageController;
+import com.eduwechat.backend.backend.exceptions.message.MessageNotFoundException;
 import com.eduwechat.backend.backend.service.message.MessageService;
 import io.swagger.annotations.Api;
 import net.minidev.json.JSONObject;
@@ -57,7 +58,14 @@ public class MessageController extends BaseMessageController {
      */
     @Override
     public Map<String, Object> getMessageList(String openid, String type, Integer size, Integer page) {
-        return null;
+
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("data", service.getMessageList(type, size, page));
+        map.put("code", 0);
+        map.put("msg", "success");
+
+        return map;
     }
 
     /**
@@ -68,7 +76,20 @@ public class MessageController extends BaseMessageController {
      */
     @Override
     public Map<String, Object> getMessageTextDetail(String openid, String id) {
-        return null;
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            map.put("data", service.getDetail(id));
+            map.put("code", 0);
+            map.put("msg", "success");
+        } catch (MessageNotFoundException e) {
+            map.put("data", null);
+            map.put("code", e.getErrorCode());
+            map.put("msg", e.getMessage());
+        }
+
+
+        return map;
     }
 
     /**
