@@ -40,4 +40,8 @@ public class UserController {
         }
         return map;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
