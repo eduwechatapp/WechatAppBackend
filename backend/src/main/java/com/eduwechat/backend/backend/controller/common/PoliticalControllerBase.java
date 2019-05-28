@@ -3,7 +3,7 @@ package com.eduwechat.backend.backend.controller.common;
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetSummaryTitleListController;
 import com.eduwechat.backend.backend.controller.base.BaseCommonController;
-import com.eduwechat.backend.backend.service.common.HighSchoolPoliticalService;
+import com.eduwechat.backend.backend.service.common.HighSchoolPoliticalCommonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class PoliticalControllerBase extends BaseCommonController implements Can
 {
 
     @Autowired
-    private HighSchoolPoliticalService service;
+    private HighSchoolPoliticalCommonService service;
 
     @ApiOperation(value = "获取政治知识点" ,  notes="指定分页获取政治知识点")
     @ResponseBody

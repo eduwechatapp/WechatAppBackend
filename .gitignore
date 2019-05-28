@@ -1,0 +1,7 @@
+
+sql/*.dump
+sql/*.db
+
+scripts/download/*.json
+scripts/download/tukipic
+

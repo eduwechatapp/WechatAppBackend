@@ -24,20 +24,20 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/get/{code}",method = RequestMethod.GET)
-    public Map<String, String> getInfo(@PathVariable String code) throws IOException, JSONException {
+    public Map<String, Object> getInfo(@PathVariable String code) throws IOException, JSONException {
         JSONObject returnResult;
         returnResult = userService.GetSessionOpenID(code);
-        Map<String, String> map = new HashMap<>();
-        if(returnResult.getInt("errcode")==0){
+        Map<String, Object> map = new HashMap<>();
+        if (returnResult.getInt("errcode") == 0) {
             String OpenID = returnResult.getString("openid");
             String SessionKey = returnResult.getString("session_key");
             userService.UpdateSkey(OpenID, SessionKey);
-            map.put("errcode",returnResult.getInt("errcode"));
-            map.put("skey",Skey);
-        }
-        else{
-            map.put("errcode",returnResult.getInt("errcode"));
-            map.put("errmsg",returnResult.getString("errmsg"));
+            map.put("errcode", returnResult.getInt("errcode"));
+            map.put("skey", SessionKey);
+        } else {
+            map.put("errcode", returnResult.getInt("errcode"));
+            map.put("errmsg", returnResult.getString("errmsg"));
         }
         return map;
+    }
 }

@@ -2,7 +2,7 @@ package com.eduwechat.backend.backend.controller.common;
 
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.BaseCommonController;
-import com.eduwechat.backend.backend.service.common.HighSchoolMathService;
+import com.eduwechat.backend.backend.service.common.HighSchoolMathCommonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class MathControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController {
 
     @Autowired
-    HighSchoolMathService service;
+    HighSchoolMathCommonService service;
 
     @ApiOperation(value = "获取理科、文科数学知识点" ,  notes="指定文理科类型和章节获取数学知识点")
     @ResponseBody

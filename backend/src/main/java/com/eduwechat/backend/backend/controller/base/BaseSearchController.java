@@ -40,7 +40,7 @@ public abstract class BaseSearchController {
 
     /* 2019-05-15 ==== 9科的内部查询接口，代码过于冗余后续一定要重构（搜索模块服务层设计不合理)  */
 
-    protected SearchResult fromSearchDataGetBiologicalSearchResult(BiologicalSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException, NullPointerException {
+    protected SearchResult fromSearchDataGetBiologicalSearchResult(BiologicalBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException, NullPointerException {
 
         // 获取查询数据
         Object title = data.get("title");
@@ -77,7 +77,7 @@ public abstract class BaseSearchController {
 
     }
 
-    protected SearchResult fromSearchDataGetChemistrySearchResult(ChemistrySearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+    protected SearchResult fromSearchDataGetChemistrySearchResult(ChemistryBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
 
 
         // 获取查询数据
@@ -114,7 +114,7 @@ public abstract class BaseSearchController {
         }
     }
 
-    protected SearchResult fromSearchDataGetChineseSearchResult(ChineseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+    protected SearchResult fromSearchDataGetChineseSearchResult(ChineseBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
 
 
         // 获取查询数据
@@ -151,45 +151,7 @@ public abstract class BaseSearchController {
         }
     }
 
-    protected SearchResult fromSearchDataGetEnglishSearchResult(EnglishSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
-
-
-        // 获取查询数据
-        Object title = data.get("title");
-
-        Object content = data.get("content");
-
-        Object erji = data.get("erji");
-
-        // 分类
-        if (title == null && content == null && erji == null) {
-            throw new SearchParamMissingException("请输入至少一种搜索关键字");
-        }
-        else if (title != null && content != null && erji != null) {
-            return searchService.fullSearch(erji.toString(), title.toString(), content.toString(), size, page);
-        }
-        else if (erji == null && title != null && content != null) {
-            return searchService.withTitleOrContentSearch(title.toString(), content.toString(), size, page);
-        }
-        else if (title != null && erji == null) {
-            return searchService.withTitleSearch(title.toString(), size, page);
-        }
-        else if (content != null && erji == null) {
-            return searchService.withContentSearch(content.toString(), size, page);
-        }
-        else if (title == null && content == null) {
-            return searchService.withErjiSearch(erji.toString(), size, page);
-        }
-        else {
-            if (content == null) {
-                throw new NullPointerException("不支持的查询");
-            }
-            return searchService.withContentSearch(content.toString(), size, page);
-        }
-
-    }
-
-    protected SearchResult fromSearchDataGetGeographySearchResult(GeographySearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+    protected SearchResult fromSearchDataGetEnglishSearchResult(EnglishBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
 
 
         // 获取查询数据
@@ -227,81 +189,7 @@ public abstract class BaseSearchController {
 
     }
 
-    protected SearchResult fromSearchDataGetHistorySearchResult(HistorySearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
-
-        // 获取查询数据
-        Object title = data.get("title");
-
-        Object content = data.get("content");
-
-        Object erji = data.get("erji");
-
-        // 分类
-        if (title == null && content == null && erji == null) {
-            throw new SearchParamMissingException("请输入至少一种搜索关键字");
-        }
-        else if (title != null && content != null && erji != null) {
-            return searchService.fullSearch(erji.toString(), title.toString(), content.toString(), size, page);
-        }
-        else if (erji == null && title != null && content != null) {
-            return searchService.withTitleOrContentSearch(title.toString(), content.toString(), size, page);
-        }
-        else if (title != null && erji == null) {
-            return searchService.withTitleSearch(title.toString(), size, page);
-        }
-        else if (content != null && erji == null) {
-            return searchService.withContentSearch(content.toString(), size, page);
-        }
-        else if (title == null && content == null) {
-            return searchService.withErjiSearch(erji.toString(), size, page);
-        }
-        else {
-            if (content == null) {
-                throw new NullPointerException("不支持的查询");
-            }
-            return searchService.withContentSearch(content.toString(), size, page);
-        }
-
-    }
-
-    protected SearchResult fromSearchDataGetMathSearchResult(MathSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
-
-
-        // 获取查询数据
-        Object title = data.get("title");
-
-        Object content = data.get("content");
-
-        Object erji = data.get("erji");
-
-        // 分类
-        if (title == null && content == null && erji == null) {
-            throw new SearchParamMissingException("请输入至少一种搜索关键字");
-        }
-        else if (title != null && content != null && erji != null) {
-            return searchService.fullSearch(erji.toString(), title.toString(), content.toString(), size, page);
-        }
-        else if (erji == null && title != null && content != null) {
-            return searchService.withTitleOrContentSearch(title.toString(), content.toString(), size, page);
-        }
-        else if (title != null && erji == null) {
-            return searchService.withTitleSearch(title.toString(), size, page);
-        }
-        else if (content != null && erji == null) {
-            return searchService.withContentSearch(content.toString(), size, page);
-        }
-        else if (title == null && content == null) {
-            return searchService.withErjiSearch(erji.toString(), size, page);
-        }
-        else {
-            if (content == null) {
-                throw new NullPointerException("不支持的查询");
-            }
-            return searchService.withContentSearch(content.toString(), size, page);
-        }
-    }
-
-    protected SearchResult fromSearchDataGetPhysicsSearchResult(PhysicsSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+    protected SearchResult fromSearchDataGetGeographySearchResult(GeographyBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
 
 
         // 获取查询数据
@@ -339,7 +227,119 @@ public abstract class BaseSearchController {
 
     }
 
-    protected SearchResult fromSearchDataGetPoliticalSearchResult(PoliticalSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+    protected SearchResult fromSearchDataGetHistorySearchResult(HistoryBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+
+        // 获取查询数据
+        Object title = data.get("title");
+
+        Object content = data.get("content");
+
+        Object erji = data.get("erji");
+
+        // 分类
+        if (title == null && content == null && erji == null) {
+            throw new SearchParamMissingException("请输入至少一种搜索关键字");
+        }
+        else if (title != null && content != null && erji != null) {
+            return searchService.fullSearch(erji.toString(), title.toString(), content.toString(), size, page);
+        }
+        else if (erji == null && title != null && content != null) {
+            return searchService.withTitleOrContentSearch(title.toString(), content.toString(), size, page);
+        }
+        else if (title != null && erji == null) {
+            return searchService.withTitleSearch(title.toString(), size, page);
+        }
+        else if (content != null && erji == null) {
+            return searchService.withContentSearch(content.toString(), size, page);
+        }
+        else if (title == null && content == null) {
+            return searchService.withErjiSearch(erji.toString(), size, page);
+        }
+        else {
+            if (content == null) {
+                throw new NullPointerException("不支持的查询");
+            }
+            return searchService.withContentSearch(content.toString(), size, page);
+        }
+
+    }
+
+    protected SearchResult fromSearchDataGetMathSearchResult(MathBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+
+
+        // 获取查询数据
+        Object title = data.get("title");
+
+        Object content = data.get("content");
+
+        Object erji = data.get("erji");
+
+        // 分类
+        if (title == null && content == null && erji == null) {
+            throw new SearchParamMissingException("请输入至少一种搜索关键字");
+        }
+        else if (title != null && content != null && erji != null) {
+            return searchService.fullSearch(erji.toString(), title.toString(), content.toString(), size, page);
+        }
+        else if (erji == null && title != null && content != null) {
+            return searchService.withTitleOrContentSearch(title.toString(), content.toString(), size, page);
+        }
+        else if (title != null && erji == null) {
+            return searchService.withTitleSearch(title.toString(), size, page);
+        }
+        else if (content != null && erji == null) {
+            return searchService.withContentSearch(content.toString(), size, page);
+        }
+        else if (title == null && content == null) {
+            return searchService.withErjiSearch(erji.toString(), size, page);
+        }
+        else {
+            if (content == null) {
+                throw new NullPointerException("不支持的查询");
+            }
+            return searchService.withContentSearch(content.toString(), size, page);
+        }
+    }
+
+    protected SearchResult fromSearchDataGetPhysicsSearchResult(PhysicsBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
+
+
+        // 获取查询数据
+        Object title = data.get("title");
+
+        Object content = data.get("content");
+
+        Object erji = data.get("erji");
+
+        // 分类
+        if (title == null && content == null && erji == null) {
+            throw new SearchParamMissingException("请输入至少一种搜索关键字");
+        }
+        else if (title != null && content != null && erji != null) {
+            return searchService.fullSearch(erji.toString(), title.toString(), content.toString(), size, page);
+        }
+        else if (erji == null && title != null && content != null) {
+            return searchService.withTitleOrContentSearch(title.toString(), content.toString(), size, page);
+        }
+        else if (title != null && erji == null) {
+            return searchService.withTitleSearch(title.toString(), size, page);
+        }
+        else if (content != null && erji == null) {
+            return searchService.withContentSearch(content.toString(), size, page);
+        }
+        else if (title == null && content == null) {
+            return searchService.withErjiSearch(erji.toString(), size, page);
+        }
+        else {
+            if (content == null) {
+                throw new NullPointerException("不支持的查询");
+            }
+            return searchService.withContentSearch(content.toString(), size, page);
+        }
+
+    }
+
+    protected SearchResult fromSearchDataGetPoliticalSearchResult(PoliticalBaseSearchService searchService, JSONObject data, Integer size, Integer page) throws SearchParamMissingException {
 
         // 获取查询数据
         Object title = data.get("title");

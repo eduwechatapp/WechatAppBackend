@@ -1,7 +1,133 @@
 package com.eduwechat.backend.backend.utils;
 
+
+import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
+import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
+import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseSimpleResultItem;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.util.Date;
+import java.util.List;
+
+import java.util.ArrayList;
+
 public class CommonUtil {
 
+    /**
+     * 得到唯一id
+     * @return String 计算结果
+     */
+    public static String getUniqueId() {
+        return CommonUtil.getMD5(String.valueOf(new Date().getTime()));
+    }
+
+    /**
+     * MD5
+     * @param str 带计算字符串
+     * @return String 计算结果
+     */
+    public static String getMD5(String str) {
+        try {
+            // 生成一个MD5加密计算摘要
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // 计算md5函数
+            md.update(str.getBytes());
+
+            return new BigInteger(1, md.digest()).toString(16);
+        } catch (Exception e) {
+            // 出现异常返回时间戳
+           return String.valueOf(new Date().getTime());
+        }
+    }
+
+    /**
+     * 提取带标签字符串中纯文本。
+     * @param markedText String 带标签的字符串
+     * @return String 提取的纯文本
+     */
+    public static String fromMarkedGetPureText(String markedText) {
+        return markedText.replaceAll("<[^>]*>","").replaceAll("&nbsp","");
+    }
+
+    /**
+     * 根据选项判断答案的位置
+     * @param c 答案选项字符
+     * @return 索引字符串
+     */
+    public static Integer fromCharGetIntegerString(char c) {
+        if (c >= 65 && c <= 90) {
+            return c - 65;
+        }
+        else if (c >= 97 && c <= 122) {
+            return c - 97;
+        }
+
+        return null;
+    }
+
+    /**
+     * 转化题库实体list到返回对象list
+     * @param entityList 题库实体list
+     * @return 返回对象list
+     */
+    public static List<ExerciseSimpleResultItem> fromEntityListGetResultItem(List<BaseExerciseEntity> entityList) {
+
+        List<ExerciseSimpleResultItem> res = new ArrayList<>();
+
+        for (BaseExerciseEntity entity : entityList) {
+            res.add(fromExerciseEntityGetResultItem(entity));
+        }
+
+        return res;
+    }
+
+    /**
+     * 转化题库实体到返回对象
+     * @param entity 题库实体
+     * @return 返回对象
+     */
+    private static ExerciseSimpleResultItem fromExerciseEntityGetResultItem(BaseExerciseEntity entity) {
+//        ExerciseSimpleResultItem item = new ExerciseSimpleResultItem(entity.getId(), entity.getYiji(), entity.getErji(), entity.getContent());
+        return null;
+    }
+
+    /**
+     * 中文学科名返回表名
+     * @param subject 学科中文名
+     * @return 表名
+     * @throws SubjectDoesNotSupportedException 学科未找到异常
+     */
+    public static String fromSubjectGetExerciseTableName(String subject) throws SubjectDoesNotSupportedException {
+        switch (subject) {
+            case "语文":
+                return "chinese_lib";
+            case "数学":
+                return "math_lib";
+            case "英语":
+                return "english_lib";
+            case "物理":
+                return "physics_lib";
+            case "化学":
+                return "chemistry_lib";
+            case "生物":
+                return "biology_lib";
+            case "地理":
+                return "geography_lib";
+            case "历史":
+                return "history_lib";
+            case "政治":
+                return "politics_lib";
+            default:
+                throw new SubjectDoesNotSupportedException(subject);
+        }
+    }
+
+    /**
+     * 从简写学科返回真正学科
+     * @param simple 简写学科
+     * @return 真正学科
+     */
     public static String fromSimpleStrGetChinese(String simple) {
 
         switch (simple) {
