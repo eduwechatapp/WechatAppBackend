@@ -1,7 +1,5 @@
 package com.eduwechat.backend.backend.service.user;
 
-import com.eduwechat.backend.backend.repository.UserRepository;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
