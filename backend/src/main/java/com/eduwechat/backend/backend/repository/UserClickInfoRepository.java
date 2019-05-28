@@ -1,6 +1,6 @@
 package com.eduwechat.backend.backend.repository;
 
-import com.eduwechat.backend.backend.entity.savaInfo.UserClickInfo;
+import com.eduwechat.backend.backend.entity.saveInfo.UserClickInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

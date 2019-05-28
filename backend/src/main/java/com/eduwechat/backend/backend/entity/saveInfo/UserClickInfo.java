@@ -1,4 +1,4 @@
-package com.eduwechat.backend.backend.entity.savaInfo;
+package com.eduwechat.backend.backend.entity.saveInfo;
 
 import javax.persistence.*;
 
