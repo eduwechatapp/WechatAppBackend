@@ -1,7 +1,6 @@
 package com.eduwechat.backend.backend.service.user;
 
 import com.eduwechat.backend.backend.repository.UserRepository;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -10,6 +9,9 @@ import javax.annotation.Resource;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by H on 2019/5/22.
@@ -27,7 +29,6 @@ public class UserService {
         String SECRET = "db74c007e991c0d29a0719a440710bb7\n";
         String USER_AGENT = "Mozilla/5.0";
 
-
         String url = "https://api.weixin.qq.com/sns/jscode2session";
 
         URL obj = new URL(url);
@@ -36,7 +37,7 @@ public class UserService {
         con.setDoOutput(true);
         con.setDoInput(true);
         con.setUseCaches(false);
-
+        // 设置请求方式（GET/POST）
         con.setRequestMethod("GET");
         con.setRequestProperty("content-type", "application/x-www-form-urlencoded");
 
@@ -55,29 +56,38 @@ public class UserService {
         }
         bufferedReader.close();
         inputStreamReader.close();
-
+        // 释放资源
         inputStream.close();
         con.disconnect();
         JSONObject json = new JSONObject(buffer.toString());
         return json;
     }
 
-    public void UpdateSkey(String OpenID, String SessionKey){
-        String Skey = EncodeSessionKey(SessionKey);
+    public void UpdateSkey(String OpenID, String Session,String Skey){
         if(repository.findUserByOpenID(OpenID).isEmpty()){
-            insertOpenIDAndSkey(OpenID, SessionKey,Skey);
+            insertOpenIDAndSkey(OpenID, Session, Skey);
         }
         else{
-            setSkeyByOpenID(OpenID, SessionKey, Skey);
+            setSkeyByOpenID(OpenID,Session, Skey);
         }
     }
 
-    public void setSkeyByOpenID(String openID, String SessionKey, String Skey){
-        repository.updateSkeyByOpenID(openID, SessionKey, Skey);
-    }
-    public void insertOpenIDAndSkey(String OpenID, String SessionKey, String Skey){repository.insertOpenIDAndSkey(OpenID, SessionKey, Skey);}
-    public String EncodeSessionKey(String SessionKey){
-        return DigestUtils.sha1Hex(SessionKey);
+
+    public List<String> getUser(String OpenID){
+        return repository.findUserByOpenID(OpenID);
     }
 
+    public void setSkeyByOpenID(String openID,String session, String Skey){
+        repository.updateSkeyByOpenID(openID, Skey,session);
+    }
+    public void insertOpenIDAndSkey(String OpenID, String Session, String Skey){repository.insertOpenIDAndSkey(OpenID,Session, Skey);}
+
+    public String getOpenIdBySkey(String Skey){return repository.getOpenIdBySkey(Skey).get(0);}
+
+    public Map<String, String> getBasicInfo(String Skey){
+        Map<String, String> result = new HashMap<>();
+        result.put("grade",repository.getGradeBySkey(Skey).get(0).toString());
+        result.put("subject",repository.getSubjectBySkey(Skey).get(0));
+        return result;
+    }
 }
