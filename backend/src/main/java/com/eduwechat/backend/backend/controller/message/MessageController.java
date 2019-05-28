@@ -65,7 +65,7 @@ public class MessageController extends BaseMessageController {
     @Override
     @ApiOperation(value = "分页获取指定板块的留言列表" ,  notes="分页获取指定板块的留言列表")
     @ResponseBody
-    @PostMapping("/get/{openid}/{type}/{number_every_page}/{page_offset}")
+    @GetMapping("/get/{openid}/{type}/{number_every_page}/{page_offset}")
     public Map<String, Object> getMessageList(@PathVariable(value = "openid") String openid,
                                               @PathVariable(value = "type") String type,
                                               @PathVariable(value = "number_every_page") Integer size,
@@ -89,7 +89,7 @@ public class MessageController extends BaseMessageController {
     @Override
     @ApiOperation(value = "获取指定某条留言详细内容" ,  notes="获取指定某条留言详细内容")
     @ResponseBody
-    @PostMapping("/detail/{openid}/{id}")
+    @GetMapping("/detail/{openid}/{id}")
     public Map<String, Object> getMessageTextDetail(@PathVariable(value = "openid") String openid,
                                                     @PathVariable(value = "id") String id) {
         Map<String, Object> map = new HashMap<>();
@@ -116,7 +116,7 @@ public class MessageController extends BaseMessageController {
     @Override
     @ApiOperation(value = "获取指定某条留言的全部回复" ,  notes="获取指定某条留言的全部回复")
     @ResponseBody
-    @PostMapping("/reply/get/{openid}/{id}")
+    @GetMapping("/reply/get/{openid}/{id}")
     public Map<String, Object> getMessageReplyDetail(@PathVariable(value = "openid") String openid,
                                                      @PathVariable(value = "id") String id) {
         Map<String, Object> map = new HashMap<>();
