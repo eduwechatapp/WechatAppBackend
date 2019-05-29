@@ -13,6 +13,7 @@ import com.eduwechat.backend.backend.service.base.inner.message.ReplyWithReplyLi
 import com.eduwechat.backend.backend.utils.CommonUtil;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,8 +23,10 @@ import java.util.Optional;
 @Service
 public class MessageService extends BaseMessageService {
 
+    @Autowired
     private MessageDao messageDao;
 
+    @Autowired
     private ReplyDao replyDao;
 
     /**
