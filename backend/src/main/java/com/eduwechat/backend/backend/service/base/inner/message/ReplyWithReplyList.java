@@ -7,7 +7,6 @@ import lombok.Getter;
 import java.util.List;
 
 @Getter
-@AllArgsConstructor
 public class ReplyWithReplyList {
 
     private String _id;
@@ -36,5 +35,13 @@ public class ReplyWithReplyList {
      */
     public static ReplyWithReplyList fromReplyEntityGetThisItem(ReplyEntity entity, List<ReplyWithReplyList> reply) {
         return new ReplyWithReplyList(entity.get_id(), entity.getName(), entity.getContent(), entity.getTime(), reply);
+    }
+
+    public ReplyWithReplyList(String _id, String name, String content, String time, List<ReplyWithReplyList> reply) {
+        this._id = _id;
+        this.name = name;
+        this.content = content;
+        this.time = time;
+        this.reply = reply;
     }
 }

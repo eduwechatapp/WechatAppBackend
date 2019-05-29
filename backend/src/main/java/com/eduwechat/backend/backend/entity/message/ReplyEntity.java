@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Getter
 @Setter
 @NoArgsConstructor
 @Document(collection = "reply")
@@ -30,5 +29,21 @@ public class ReplyEntity extends BaseMessageEntity {
         this.name = name;
         this.content = content;
         this.time = time;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getTime() {
+        return time;
     }
 }
