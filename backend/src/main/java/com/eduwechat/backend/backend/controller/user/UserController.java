@@ -2,6 +2,8 @@ package com.eduwechat.backend.backend.controller.user;
 
 import com.eduwechat.backend.backend.service.saveInfo.UserClickInfoService;
 import com.eduwechat.backend.backend.service.user.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ import java.util.UUID;
 /**
  * Created by H on 2019/5/21.
  */
+@Api(description = "鉴权接口")
 @RestController
 @RequestMapping(value = "/session")
 public class UserController {
@@ -31,12 +34,13 @@ public class UserController {
         return "Hello Spring-Boot";
     }
 
-
+    @ApiOperation(value = "temp")
     @RequestMapping(value = "/test/{openid}",method = RequestMethod.GET)
     public String  test(@PathVariable String openid){
         return userService.getUser(openid).toString();
     }
 
+    @ApiOperation(value = "temp")
     @RequestMapping(value = "/testsaveButton/{skey}/{type}/{content}")
     public void testsaveUserClicked(@PathVariable String skey, @PathVariable String type, @PathVariable String content){
         int Type = Integer.parseInt(type);
@@ -48,8 +52,7 @@ public class UserController {
 
     }
 
-
-
+    @ApiOperation(value = "temp")
     @RequestMapping(value = "/getSkey/{code}",method = RequestMethod.GET)
     public Map<String, String> getInfo(@PathVariable String code) throws IOException, JSONException {
         JSONObject returnResult;

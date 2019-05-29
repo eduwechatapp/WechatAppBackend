@@ -11,6 +11,7 @@ import com.eduwechat.backend.backend.service.base.inner.message.MessageWithoutRe
 import com.eduwechat.backend.backend.service.base.inner.message.MessageWithoutReplyResultItem;
 import com.eduwechat.backend.backend.service.base.inner.message.ReplyWithReplyList;
 import com.eduwechat.backend.backend.utils.CommonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
