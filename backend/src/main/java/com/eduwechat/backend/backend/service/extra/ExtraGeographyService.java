@@ -1,32 +1,33 @@
 package com.eduwechat.backend.backend.service.extra;
 
 import com.eduwechat.backend.backend.entity.extra.ChemistryEntity;
+import com.eduwechat.backend.backend.entity.extra.GeographyEntity;
 import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
 import com.eduwechat.backend.backend.repository.base.set.TotalTitleResultItem;
-import com.eduwechat.backend.backend.repository.extra.ExtraChemistryDao;
-import com.eduwechat.backend.backend.repository.extra.aggregation.ExtraChemistryAggregationImpl;
+import com.eduwechat.backend.backend.repository.extra.ExtraGeographyDao;
+import com.eduwechat.backend.backend.repository.extra.aggregation.ExtraGeographyAggregationImpl;
 import com.eduwechat.backend.backend.service.base.BaseExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @program: backend
- * @description: ExtraChemistryService
+ * @description: ExtraGeographyService
  * @author: Vaskka
- * @create: 2019/5/31 1:01 AM
+ * @create: 2019/5/31 3:17 AM
  **/
 @Service
-public class ExtraChemistryService extends BaseExtraService<ChemistryEntity> {
+public class ExtraGeographyService extends BaseExtraService<GeographyEntity> {
+
 
     @Autowired
-    private ExtraChemistryDao commonDao;
+    private ExtraGeographyDao commonDao;
 
     @Autowired
-    private ExtraChemistryAggregationImpl aggregationDao;
+    private ExtraGeographyAggregationImpl aggregationDao;
 
     /**
      * 分页获取新知识点的全部数据
@@ -35,9 +36,10 @@ public class ExtraChemistryService extends BaseExtraService<ChemistryEntity> {
      * @return List
      */
     @Override
-    public List<ChemistryEntity> getNewKnowledge(int size, int page) {
+    public List<GeographyEntity> getNewKnowledge(int size, int page) {
         return commonDao.findAll(PageRequest.of(page, size)).getContent();
     }
+
 
     /**
      * 获取标题映射
@@ -49,15 +51,15 @@ public class ExtraChemistryService extends BaseExtraService<ChemistryEntity> {
     }
 
     /**
-     * 根据yiji、title拿数据
+     * 根据yiji和title筛选数据
      * @param yiji yiji
      * @param size 页大小
      * @param page 页偏移
-     * @return ChemistryEntity
+     * @return GeographyEntity
      */
     @Override
-    public List<ChemistryEntity> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
-        List<ChemistryEntity> res = commonDao.findByYiji(yiji, PageRequest.of(page, size));
+    public List<GeographyEntity> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
+        List<GeographyEntity> res = commonDao.findByYiji(yiji, PageRequest.of(page, size));
 
         if (res.size() == 0) {
             throw new ArticleNotFoundException("文章未找到");
@@ -65,4 +67,6 @@ public class ExtraChemistryService extends BaseExtraService<ChemistryEntity> {
 
         return res;
     }
+
+
 }

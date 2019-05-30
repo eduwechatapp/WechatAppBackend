@@ -8,16 +8,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @program: backend
- * @description: ChemistryEntity
+ * @description: GeographyEntity
  * @author: Vaskka
- * @create: 2019/5/31 12:55 AM
+ * @create: 2019/5/31 2:47 AM
  **/
 
 @Setter
 @Getter
 @NoArgsConstructor
-@Document(collection = "new_chemistry")
-public class ChemistryEntity extends BaseExtraEntity {
+@Document(collection = "new_geography")
+public class GeographyEntity extends BaseExtraEntity {
 
     private String id;
 
@@ -27,7 +27,7 @@ public class ChemistryEntity extends BaseExtraEntity {
 
     private String content;
 
-    public ChemistryEntity(String id, String title, String yiji, String content) {
+    public GeographyEntity(String id, String title, String yiji, String content) {
         this.id = id;
         this.title = title;
         this.yiji = yiji;

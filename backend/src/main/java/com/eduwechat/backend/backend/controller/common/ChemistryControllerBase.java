@@ -3,6 +3,7 @@ package com.eduwechat.backend.backend.controller.common;
 import com.eduwechat.backend.backend.controller.base.CanGetKnowledgeTitleListController;
 import com.eduwechat.backend.backend.controller.base.CanGetTemplateTitleListController;
 import com.eduwechat.backend.backend.controller.base.BaseCommonController;
+import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
 import com.eduwechat.backend.backend.service.common.HighSchoolChemistryCommonService;
 import com.eduwechat.backend.backend.service.extra.ExtraChemistryService;
 import io.swagger.annotations.Api;
@@ -84,4 +85,38 @@ public class ChemistryControllerBase extends BaseCommonController implements Can
         return r;
     }
 
+    @ApiOperation(value = "获取化学新的知识点标题列表" ,  notes="拿到标题list")
+    @ResponseBody
+    @RequestMapping(value = "/new/title/get/{openid}", method = RequestMethod.GET)
+    public Map<String, Object> getNewTitle(@PathVariable("openid") String openid) {
+        Map<String, Object> r = new HashMap<>();
+
+        r.put("code", 0);
+        r.put("msg", "success");
+        r.put("data", extraService.getTotalList());
+
+        return r;
+    }
+
+    @ApiOperation(value = "根据标题筛选化学新的知识点列表" ,  notes="拿到分页数据")
+    @ResponseBody
+    @RequestMapping(value = "/new/title/get/{openid}/{yiji}/{number_every_page}/{page_offset}", method = RequestMethod.GET)
+    public Map<String, Object> getFromYiji(@PathVariable("openid") String openid,
+                                                   @PathVariable("yiji") String yiji,
+                                                   @PathVariable("number_every_page") Integer size,
+                                                   @PathVariable("page_offset") Integer page) {
+        Map<String, Object> r = new HashMap<>();
+
+        try {
+            r.put("data", extraService.getNewKNowledgeFromYiji(yiji, size, page));
+            r.put("code", 0);
+            r.put("msg", "success");
+        } catch (ArticleNotFoundException e) {
+            r.put("data", null);
+            r.put("code", e.getErrorCode());
+            r.put("msg", e.getMessage());
+        }
+
+        return r;
+    }
 }
