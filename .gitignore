@@ -5,3 +5,4 @@ sql/*.db
 scripts/download/*.json
 scripts/download/tukipic
 
+.vscode

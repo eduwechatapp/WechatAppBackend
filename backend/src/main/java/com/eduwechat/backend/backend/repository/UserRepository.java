@@ -15,14 +15,23 @@ import java.util.List;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
-    @Query(value = "update user set session_key= :sessionkey, skey = :skey where openid= :openid", nativeQuery = true)
-    void updateSkeyByOpenID(@Param("openid") String OpenID, @Param("sessionkey") String SessionKey, @Param("skey") String skey);
+    @Query(value = "update user set skey = :skey, session_key = :session where openid= :openid", nativeQuery = true)
+    void updateSkeyByOpenID(@Param("openid") String OpenID, @Param("skey") String skey, @Param("session") String session);
 
     @Modifying
-    @Query(value = "insert into user(openid, session_key, skey) values (:openid, :sessionkey, :skey)", nativeQuery = true)
-    void insertOpenIDAndSkey(@Param("openid") String OpenID, @Param("sessionkey") String SessionKey, @Param("skey") String skey);
+    @Query(value = "insert into user(openid,session_key,skey) values (:openid, :session, :skey)", nativeQuery = true)
+    void insertOpenIDAndSkey(@Param("openid") String OpenID,@Param("session") String session, @Param("skey") String skey);
 
     @Query(value = "select openid from user where openid = :openid", nativeQuery = true)
     List<String> findUserByOpenID(@Param("openid") String OpenID);
+
+    @Query(value = "select openid from user where skey = :skey", nativeQuery = true)
+    List<String> getOpenIdBySkey(@Param("skey")String Skey);
+
+    @Query(value = "select subject from user where skey = :skey", nativeQuery = true)
+    List<String> getSubjectBySkey(@Param("skey")String Skey);
+
+    @Query(value = "select grade from user where skey = :skey", nativeQuery = true)
+    List<Integer> getGradeBySkey(@Param("skey")String Skey);
 
 }
