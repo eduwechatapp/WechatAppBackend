@@ -7,7 +7,7 @@ import time
 
 
 def change(s):
-	return s.replace('<o:p></o:p>', '')
+	return "<" + s
 	pass
 
 client = pymongo.MongoClient(host='localhost', port=27017)
