@@ -1,8 +1,6 @@
 package com.eduwechat.backend.backend.service.exercise;
 
 import com.eduwechat.backend.backend.entity.base.BaseExerciseEntity;
-import com.eduwechat.backend.backend.exceptions.exercise.ExerciseIdDoesNotExistException;
-import com.eduwechat.backend.backend.exceptions.exercise.ExerciseTypeNotSupportedException;
 import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
 import com.eduwechat.backend.backend.repository.base.set.TotalTitleResultItem;
 import com.eduwechat.backend.backend.service.base.BaseExerciseService;
