@@ -1,12 +1,14 @@
+import os
 import re
 import json
 import pymongo
+import hashlib
+import time
 
 
 def change(s):
-	return s.strip('<o:p>').strip('</o:p>')
+	return s.replace('<o:p></o:p>', '')
 	pass
-
 
 client = pymongo.MongoClient(host='localhost', port=27017)
 
