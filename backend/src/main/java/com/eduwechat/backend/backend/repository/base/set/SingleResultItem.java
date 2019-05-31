@@ -8,7 +8,6 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @Setter
 @AllArgsConstructor
 @ToString
@@ -30,5 +29,9 @@ public class SingleResultItem {
         }
 
         return res;
+    }
+
+    public String get_id() {
+        return _id;
     }
 }
