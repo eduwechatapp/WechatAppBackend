@@ -16,8 +16,8 @@ for item in res:
 	item["title"] = re.subn('第.*?节-|第.*?节', '', item["title"])[0].strip()
 	
 	item['content'] = re.subn('<!\[.*?\]>', '', item['content'])[0].strip()
-	item['content'] = re.subn('<st1.*?>', '', item['content'])[0]
-	item['content'] = re.subn('</st1.*?>', '', item['content'])[0]
+	item['content'] = re.subn('<st.*?>', '', item['content'])[0]
+	item['content'] = re.subn('</st.*?>', '', item['content'])[0]
 	item["content"] = re.subn('<spanlang=.*?>', '', item['content'])[0]
 	item["content"] = re.subn('<spanstyle.*?>', '', item['content'])[0]
 
