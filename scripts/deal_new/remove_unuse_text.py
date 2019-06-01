@@ -125,14 +125,18 @@ for r in res_m:
 
     for td in tds:
         attrs = td.attrib
-        attrs["style"] = attrs["style"] + ";flex:1;padding:5px;font-size:28rpx;border-left:1px solid #e0e0e0;word-break: break-all;overflow: auto;"
-
+        if "style" in attrs:
+            attrs["style"] = attrs["style"] + ";flex:1;padding:5px;font-size:28rpx;border-left:1px solid #e0e0e0;word-break: break-all;overflow: auto;"
+        else:
+            attrs["style"] =  "flex:1;padding:5px;font-size:28rpx;border-left:1px solid #e0e0e0;word-break: break-all;overflow: auto;"
     trs = parser.xpath("//tr")
 
     for tr in trs:
         attrs = tr.attrib
-        attrs["style"] = attrs["style"] + ";display: flex;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;border-top:1px solid #e0e0e0;overflow: auto;"
-
+        if "style" in attrs:
+            attrs["style"] = attrs["style"] + ";display: flex;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;border-top:1px solid #e0e0e0;overflow: auto;"
+        else:
+            attrs["style"] = "display: flex;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;border-top:1px solid #e0e0e0;overflow: auto;"
     _id = r["_id"]
  
     after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("&#13;", '').replace("\\n", '')
@@ -166,13 +170,19 @@ for r in res_c:
 
     for td in tds:
         attrs = td.attrib
-        attrs["style"] = attrs["style"] + ";flex:1;padding:5px;font-size:28rpx;border-left:1px solid #e0e0e0;word-break: break-all;overflow: auto;"
+        if "style" in attrs:
+            attrs["style"] = attrs["style"] + ";flex:1;padding:5px;font-size:28rpx;border-left:1px solid #e0e0e0;word-break: break-all;overflow: auto;"
+        else:
+            attrs["style"] =  "flex:1;padding:5px;font-size:28rpx;border-left:1px solid #e0e0e0;word-break: break-all;overflow: auto;"
 
     trs = parser.xpath("//tr")
 
     for tr in trs:
         attrs = tr.attrib
-        attrs["style"] = attrs["style"] + ";display: flex;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;border-top:1px solid #e0e0e0;overflow: auto;"
+        if "style" in attrs:
+            attrs["style"] = attrs["style"] + ";display: flex;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;border-top:1px solid #e0e0e0;overflow: auto;"
+        else:
+            attrs["style"] = "display: flex;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0;border-top:1px solid #e0e0e0;overflow: auto;"
 
     _id = r["_id"]
  
