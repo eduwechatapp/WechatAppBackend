@@ -55,7 +55,7 @@ for r in res_g:
     if str(_id) == '5cf0e3ca72ba86a819adfbbf':
         continue
  
-    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("\\n, ''")
+    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("&#13;", '').replace("\\n", '')
 
     col_g.update_one({"_id": _id}, {"$set": {'content': after}})
 
@@ -95,7 +95,7 @@ for r in res_p:
 
     _id = r["_id"]
  
-    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("\\n, ''")
+    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("&#13;", '').replace("\\n", '')
 
     col_p.update_one({"_id": _id}, {"$set": {'content': after}})
 
@@ -135,7 +135,7 @@ for r in res_m:
 
     _id = r["_id"]
  
-    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("\\n, ''")
+    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("&#13;", '').replace("\\n", '')
 
     col_m.update_one({"_id": _id}, {"$set": {'content': after}})
 
@@ -176,6 +176,6 @@ for r in res_c:
 
     _id = r["_id"]
  
-    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("\\n, ''")
+    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("&#10;", '').replace("&#13;", '').replace("\\n", '')
 
     col_c.update_one({"_id": _id}, {"$set": {'content': after}})
