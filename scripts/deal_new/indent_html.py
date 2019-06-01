@@ -8,11 +8,13 @@ mydb = myclient["exercise_lib"]
 col_g = mydb["new_geography"]
 col_p = mydb["new_physics"]
 col_m = mydb["new_math"]
+col_c = mydb["new_chemistry"]
 
 
 res_g = col_g.find()
 res_p = col_p.find()
 res_m = col_m.find()
+res_c = col_c.find()
 
 
 for r in res_g:
@@ -44,3 +46,14 @@ for r in res_m:
     _id = r["_id"]
 
     col_m.update_one({"_id": _id}, {"$set": {'content': after}})
+
+
+for r in res_c:
+
+    parser = etree.HTML(r["content"])
+
+    after = etree.tostring(parser, encoding="utf-8").decode("utf-8").replace("\n", '').replace("\r", '').replace("\t", '')
+
+    _id = r["_id"]
+
+    col_c.update_one({"_id": _id}, {"$set": {'content': after}})
