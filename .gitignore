@@ -1,6 +1,5 @@
 
-sql/*.dump
-sql/*.db
+sql
 
 scripts/download/*.json
 scripts/download/tukipic
