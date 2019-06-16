@@ -9,16 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.eduwechat.backend</groupId>
-    <artifactId>backend</artifactId>
-    <version>1.0.6-DEV</version>
+    <artifactId>edu</artifactId>
+    <version>1.0.7-DEV</version>
     <name>backend</name>
-    <description>Demo project for Spring Boot</description>
+    <description>WechatAppForEducation-Backend</description>
 
     <properties>
         <java.version>1.8</java.version>
-
-        <docker.image.prefix>springboot</docker.image.prefix>
-
     </properties>
 
     <dependencies>
