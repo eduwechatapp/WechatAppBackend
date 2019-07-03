@@ -3,7 +3,7 @@ package com.eduwechat.backend.backend.service.extra;
 import com.eduwechat.backend.backend.entity.extra.PhysicsEntity;
 import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
 import com.eduwechat.backend.backend.repository.extra.ExtraPhysicsDao;
-import com.eduwechat.backend.backend.repository.extra.aggregation.ExtraPhysicsAggregationImpl;
+import com.eduwechat.backend.backend.repository.extra.impl.ExtraPhysicsAggregationImpl;
 import com.eduwechat.backend.backend.service.base.BaseExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

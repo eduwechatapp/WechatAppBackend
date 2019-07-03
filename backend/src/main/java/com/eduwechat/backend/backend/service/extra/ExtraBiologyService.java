@@ -4,7 +4,7 @@ package com.eduwechat.backend.backend.service.extra;
 import com.eduwechat.backend.backend.entity.extra.BiologyEntity;
 import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
 import com.eduwechat.backend.backend.repository.extra.ExtraBiologyDao;
-import com.eduwechat.backend.backend.repository.extra.aggregation.ExtraBiologyAggregationImpl;
+import com.eduwechat.backend.backend.repository.extra.impl.ExtraBiologyAggregationImpl;
 import com.eduwechat.backend.backend.service.base.BaseExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

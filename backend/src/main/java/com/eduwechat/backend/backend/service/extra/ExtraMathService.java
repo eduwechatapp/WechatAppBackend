@@ -3,7 +3,7 @@ package com.eduwechat.backend.backend.service.extra;
 import com.eduwechat.backend.backend.entity.extra.MathEntity;
 import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
 import com.eduwechat.backend.backend.repository.extra.ExtraMathDao;
-import com.eduwechat.backend.backend.repository.extra.aggregation.ExtraMathAggregationImpl;
+import com.eduwechat.backend.backend.repository.extra.impl.ExtraMathAggregationImpl;
 import com.eduwechat.backend.backend.service.base.BaseExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;

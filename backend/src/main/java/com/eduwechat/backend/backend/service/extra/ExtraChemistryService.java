@@ -2,13 +2,11 @@ package com.eduwechat.backend.backend.service.extra;
 
 import com.eduwechat.backend.backend.entity.extra.ChemistryEntity;
 import com.eduwechat.backend.backend.exceptions.common.ArticleNotFoundException;
-import com.eduwechat.backend.backend.repository.base.set.TotalTitleResultItem;
 import com.eduwechat.backend.backend.repository.extra.ExtraChemistryDao;
-import com.eduwechat.backend.backend.repository.extra.aggregation.ExtraChemistryAggregationImpl;
+import com.eduwechat.backend.backend.repository.extra.impl.ExtraChemistryAggregationImpl;
 import com.eduwechat.backend.backend.service.base.BaseExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

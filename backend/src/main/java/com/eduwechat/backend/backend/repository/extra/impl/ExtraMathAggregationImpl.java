@@ -1,6 +1,5 @@
-package com.eduwechat.backend.backend.repository.extra.aggregation;
+package com.eduwechat.backend.backend.repository.extra.impl;
 
-import com.eduwechat.backend.backend.entity.extra.GeographyEntity;
 import com.eduwechat.backend.backend.entity.extra.MathEntity;
 import com.eduwechat.backend.backend.repository.base.AggregationNewKnowledgeDao;
 import org.springframework.stereotype.Repository;

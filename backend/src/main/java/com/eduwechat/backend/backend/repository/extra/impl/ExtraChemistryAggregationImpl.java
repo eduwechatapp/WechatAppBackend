@@ -1,8 +1,7 @@
-package com.eduwechat.backend.backend.repository.extra.aggregation;
+package com.eduwechat.backend.backend.repository.extra.impl;
 
 import com.eduwechat.backend.backend.entity.extra.ChemistryEntity;
 import com.eduwechat.backend.backend.repository.base.AggregationNewKnowledgeDao;
-import com.eduwechat.backend.backend.repository.base.set.TotalTitleResultItem;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

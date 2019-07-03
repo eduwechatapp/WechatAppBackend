@@ -42,7 +42,7 @@ public abstract class AggregationNewKnowledgeDao {
                 group("yiji")
         );
 
-        //Convert the aggregation result into a List
+        //Convert the impl result into a List
         AggregationResults<SingleResultItem> yijiGroupResults
                 = mongoTemplate.aggregate(agg, inputType, SingleResultItem.class);
 
