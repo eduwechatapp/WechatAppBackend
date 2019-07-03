@@ -1,13 +1,16 @@
 package com.eduwechat.backend.backend;
 
+import com.eduwechat.backend.backend.exceptions.user.UserAlreadyRegisterException;
+import com.eduwechat.backend.backend.exceptions.user.UserTypeNotSupportException;
+import com.eduwechat.backend.backend.service.v2.user.UserV2Service;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BackendApplication.class)
@@ -18,6 +21,9 @@ public class BackendApplicationTests {
 //
 //	@Autowired
 //	ExerciseService service;
+
+	@Autowired
+	UserV2Service userV2Service;
 
 	private void l(Object o) {
 		System.out.println(o);
@@ -42,6 +48,32 @@ public class BackendApplicationTests {
     public void getPics() {
     }
 //
+
+	@Test
+	public void normal ()  {
+
+//		try {
+//			userV2Service.register("openid-1", "volunteer", "name-1");
+//		} catch (UserAlreadyRegisterException e) {
+//			e.printStackTrace();
+//		} catch (UserTypeNotSupportException e) {
+//			e.printStackTrace();
+//		}
+//		try {
+//			userV2Service.register("openid-2", "student", "name-2");
+//		} catch (UserAlreadyRegisterException e) {
+//			e.printStackTrace();
+//		} catch (UserTypeNotSupportException e) {
+//			e.printStackTrace();
+//		}
+//		try {
+//			userV2Service.register("openid-3", "www", "name-3");
+//		} catch (UserAlreadyRegisterException e) {
+//			e.printStackTrace();
+//		} catch (UserTypeNotSupportException e) {
+//			e.printStackTrace();
+//		}
+	}
 //	@Test
 //	public void testServiceTitleList() throws SubjectDoesNotSupportedException {
 //

@@ -7,12 +7,12 @@ import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseSimpleR
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.util.Date;
-import java.util.List;
-
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class CommonUtil {
+
+    private static Random random = new Random(getUniqueId().hashCode());
 
     /**
      * 得到唯一id
@@ -20,6 +20,14 @@ public class CommonUtil {
      */
     public static String getUniqueId() {
         return CommonUtil.getMD5(String.valueOf(new Date().getTime()));
+    }
+
+    /**
+     * 获取随机数
+     * @return int
+     */
+    public static long rand() {
+        return random.nextLong();
     }
 
     /**
@@ -154,6 +162,17 @@ public class CommonUtil {
                 return "";
         }
 
+    }
+
+    /**
+     * 获取本地日期String
+     * @return String
+     */
+    public static String getNowDate() {
+
+        Calendar cal = java.util.Calendar.getInstance(java.util.Locale.CHINA);
+        SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd");
+        return sf.format(cal.getTime());
     }
 
     /**
