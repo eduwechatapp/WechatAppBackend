@@ -1,9 +1,5 @@
 package com.eduwechat.backend.backend;
 
-import com.eduwechat.backend.backend.utils.cos.COSUtil;
-import com.qcloud.cos.exception.CosClientException;
-import com.qcloud.cos.exception.CosServiceException;
-import com.qcloud.cos.model.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
