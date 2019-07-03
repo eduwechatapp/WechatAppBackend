@@ -47,20 +47,29 @@ public class ExtraChemistryService extends BaseExtraService<ChemistryEntity> {
     }
 
     /**
-     * 根据yiji、title拿数据
+     * 根据yiji、title拿标题列表
      * @param yiji yiji
      * @param size 页大小
      * @param page 页偏移
      * @return ChemistryEntity
      */
     @Override
-    public List<ChemistryEntity> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
+    public List<String> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
         List<ChemistryEntity> res = commonDao.findByYiji(yiji, PageRequest.of(page, size));
 
-        if (res.size() == 0) {
-            throw new ArticleNotFoundException("文章未找到");
-        }
+        return fromEntityGetTitle(res);
+    }
 
-        return res;
+    /**
+     * 根据标题得到文章详情
+     * @param title 标题
+     * @return ChemistryEntity
+     * @throws ArticleNotFoundException 文章未找到
+     */
+    @Override
+    public ChemistryEntity getContentFromTitle(String title) throws ArticleNotFoundException {
+        List<ChemistryEntity> list = commonDao.findByTitle(title);
+
+        return this.fromListGetFirst(list);
     }
 }

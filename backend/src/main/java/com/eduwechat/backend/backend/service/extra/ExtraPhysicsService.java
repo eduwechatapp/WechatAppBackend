@@ -55,13 +55,22 @@ public class ExtraPhysicsService extends BaseExtraService<PhysicsEntity> {
      * @return PhysicsEntity
      */
     @Override
-    public List<PhysicsEntity> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
+    public List<String> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
         List<PhysicsEntity> res = commonDao.findByYiji(yiji, PageRequest.of(page, size));
 
-        if (res.size() == 0) {
-            throw new ArticleNotFoundException("文章未找到");
-        }
+        return fromEntityGetTitle(res);
+    }
 
-        return res;
+    /**
+     * 根据标题得到文章详情
+     * @param title 标题
+     * @return ChemistryEntity
+     * @throws ArticleNotFoundException 文章未找到
+     */
+    @Override
+    public PhysicsEntity getContentFromTitle(String title) throws ArticleNotFoundException {
+        List<PhysicsEntity> list = commonDao.findByTitle(title);
+
+        return this.fromListGetFirst(list);
     }
 }

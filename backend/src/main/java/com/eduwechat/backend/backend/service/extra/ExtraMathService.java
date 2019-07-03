@@ -54,13 +54,22 @@ public class ExtraMathService extends BaseExtraService<MathEntity> {
      * @return MathEntity
      */
     @Override
-    public List<MathEntity> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
+    public List<String> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
         List<MathEntity> res = commonDao.findByYiji(yiji, PageRequest.of(page, size));
 
-        if (res.size() == 0) {
-            throw new ArticleNotFoundException("文章未找到");
-        }
+        return fromEntityGetTitle(res);
+    }
 
-        return res;
+    /**
+     * 根据标题得到文章详情
+     * @param title 标题
+     * @return ChemistryEntity
+     * @throws ArticleNotFoundException 文章未找到
+     */
+    @Override
+    public MathEntity getContentFromTitle(String title) throws ArticleNotFoundException {
+        List<MathEntity> list = commonDao.findByTitle(title);
+
+        return this.fromListGetFirst(list);
     }
 }

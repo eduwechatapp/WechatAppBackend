@@ -56,15 +56,22 @@ public class ExtraGeographyService extends BaseExtraService<GeographyEntity> {
      * @return GeographyEntity
      */
     @Override
-    public List<GeographyEntity> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
+    public List<String> getNewKNowledgeFromYiji(String yiji, Integer size, Integer page) throws ArticleNotFoundException {
         List<GeographyEntity> res = commonDao.findByYiji(yiji, PageRequest.of(page, size));
 
-        if (res.size() == 0) {
-            throw new ArticleNotFoundException("文章未找到");
-        }
-
-        return res;
+        return fromEntityGetTitle(res);
     }
 
+    /**
+     * 根据标题得到文章详情
+     * @param title 标题
+     * @return ChemistryEntity
+     * @throws ArticleNotFoundException 文章未找到
+     */
+    @Override
+    public GeographyEntity getContentFromTitle(String title) throws ArticleNotFoundException {
+        List<GeographyEntity> list = commonDao.findByTitle(title);
 
+        return this.fromListGetFirst(list);
+    }
 }

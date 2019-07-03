@@ -1,4 +1,4 @@
-package com.eduwechat.backend.backend.entity.article.inner;
+package com.eduwechat.backend.backend.entity.v2.article.inner;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

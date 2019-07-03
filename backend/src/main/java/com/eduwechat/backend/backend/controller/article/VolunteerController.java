@@ -13,7 +13,7 @@ public class VolunteerController {
     @ApiOperation(value = "获取我的帮扶学生信息")
     @RequestMapping(value = "/get/student/{openid}/{uid}",method = RequestMethod.GET)
     public String  getMyStudent(@PathVariable(value = "openid") String openid,
-                          @PathVariable(value = "uid") String uid){
+                          @PathVariable(value = "uid") Long uid){
         return "{\n" +
                 "    \"code\": 0,   \n" +
                 "    \"msg\": \"success\",\n" +
@@ -29,7 +29,7 @@ public class VolunteerController {
     @ApiOperation(value = "获取某个帮扶学生的全部作文")
     @RequestMapping(value = "/get/article/{openid}/{uid}/{student_uid}/{number_every_page}/{page_offset}",method = RequestMethod.GET)
     public String  getStudentAllArticles(@PathVariable(value = "openid") String openid,
-                                         @PathVariable(value = "uid") String uid,
+                                         @PathVariable(value = "uid") Long uid,
                                          @PathVariable(value = "student_uid") String studentId,
                                          @PathVariable(value = "number_every_page") String size,
                                          @PathVariable(value = "page_offset") String page){
@@ -60,7 +60,7 @@ public class VolunteerController {
     @ApiOperation(value = "批改某篇作文")
     @RequestMapping(value = "/mark/{openid}/{uid}/{article_id}",method = RequestMethod.POST)
     public String mark(@PathVariable(value = "openid") String openid,
-                        @PathVariable(value = "uid") String uid,
+                        @PathVariable(value = "uid") Long uid,
                         @PathVariable(value = "article_id") String articleId,
                         @RequestBody JSONObject body){
         return "{\n" +

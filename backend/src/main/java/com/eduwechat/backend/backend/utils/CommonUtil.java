@@ -176,6 +176,31 @@ public class CommonUtil {
     }
 
     /**
+     * 获取本地时间String
+     * @return String
+     */
+    public static String getNowTime() {
+
+        Calendar cal = java.util.Calendar.getInstance(java.util.Locale.CHINA);
+        SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd_HH-mm-ss");
+        return sf.format(cal.getTime());
+    }
+
+    /**
+     * 根据文件名得到文件类型
+     * @param name 文件名
+     * @return 文件类型
+     */
+    public static String fromNameGetType(String name) {
+        String[] list = name.split("\\.");
+        if (list.length == 0) {
+            return null;
+        }
+
+        return list[list.length - 1];
+    }
+
+    /**
      * 首页html
      */
     public static final String indexFileContent = "<!DOCTYPE html>\n" +

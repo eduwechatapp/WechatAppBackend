@@ -1,5 +1,6 @@
 package com.eduwechat.backend.backend.entity.extra;
 
+import com.eduwechat.backend.backend.entity.base.BaseExtraEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @NoArgsConstructor
 @Document(collection = "new_physics")
-public class PhysicsEntity {
+public class PhysicsEntity extends BaseExtraEntity {
 
     private String id;
 

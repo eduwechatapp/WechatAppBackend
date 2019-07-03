@@ -1,6 +1,9 @@
-package com.eduwechat.backend.backend.entity.article;
+package com.eduwechat.backend.backend.entity.v2.article;
 
-import com.eduwechat.backend.backend.entity.article.inner.ArticleReply;
+import com.eduwechat.backend.backend.entity.v2.article.inner.ArticleReply;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
@@ -9,12 +12,15 @@ import java.util.List;
 
 @Document(collection = "article")
 @ToString
+@AllArgsConstructor
+@Setter
+@Getter
 public class StudentArticle {
 
     @Id
     private String _id;
 
-    private String creator;
+    private Long creator;
 
     // qcloud key
     private String key;
@@ -22,5 +28,7 @@ public class StudentArticle {
     private List<ArticleReply> replys;
 
     private String createtime;
+
+    public StudentArticle() {}
 }
 

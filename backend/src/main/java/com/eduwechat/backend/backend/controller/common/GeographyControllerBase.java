@@ -20,7 +20,7 @@ import java.util.Map;
 @Api(description = "地理接口")
 @Controller
 @RequestMapping(value = "/geography")
-public class GeographyControllerBase extends BaseCommonController implements CanGetKnowledgeTitleListController,
+public class GeographyControllerBase extends ExtraController implements CanGetKnowledgeTitleListController,
         CanGetTemplateTitleListController,
         CanGetSummaryTitleListController,
         CanGetTopicTitleListController
@@ -105,7 +105,7 @@ public class GeographyControllerBase extends BaseCommonController implements Can
         return this.innerGetTitleMappingFromListGetMap(service, "专题", "topic", "dl");
     }
 
-    @ApiOperation(value = "获取化学新的知识点接口" ,  notes="一起拿全，分页")
+    @ApiOperation(value = "获取化学新的知识点接口（一次全部获取，弃用）" ,  notes="一起拿全，分页")
     @ResponseBody
     @RequestMapping(value = "/new/knowledge/get/{openid}/{number_every_page}/{page_offset}", method = RequestMethod.GET)
     public Map<String, Object> getNewKnowledge(@PathVariable("openid") String openid,
@@ -120,39 +120,32 @@ public class GeographyControllerBase extends BaseCommonController implements Can
         return r;
     }
 
-    @ApiOperation(value = "获取化学新的知识点标题列表" ,  notes="拿到标题list")
+    @Override
+    @ApiOperation(value = "Step 1 --- 新的知识点最大标题（yiji标题）列表" ,  notes="拿到yiji标题list")
     @ResponseBody
     @RequestMapping(value = "/new/title/get/{openid}", method = RequestMethod.GET)
-    public Map<String, Object> getNewTitle(@PathVariable("openid") String openid) {
-        Map<String, Object> r = new HashMap<>();
-
-        r.put("code", 0);
-        r.put("msg", "success");
-        r.put("data", extraService.getTotalList());
-
-        return r;
+    public Map<String, Object> getNewYijiTitleList(@PathVariable("openid") String openid) {
+        return this.innerGetYijiList(extraService);
     }
 
-    @ApiOperation(value = "根据标题筛选化学新的知识点列表" ,  notes="拿到分页数据")
+    @Override
+    @ApiOperation(value = "Step 2 --- 获取yiji标题下title列表" ,  notes="拿到分页标题")
     @ResponseBody
     @RequestMapping(value = "/new/title/get/{openid}/{yiji}/{number_every_page}/{page_offset}", method = RequestMethod.GET)
     public Map<String, Object> getFromYiji(@PathVariable("openid") String openid,
-                                                   @PathVariable("yiji") String yiji,
-                                                   @PathVariable("number_every_page") Integer size,
-                                                   @PathVariable("page_offset") Integer page) {
-        Map<String, Object> r = new HashMap<>();
+                                           @PathVariable("yiji") String yiji,
+                                           @PathVariable("number_every_page") Integer size,
+                                           @PathVariable("page_offset") Integer page) {
+        return this.innerGetTitleList(yiji, size, page, extraService);
+    }
 
-        try {
-            r.put("data", extraService.getNewKNowledgeFromYiji(yiji, size, page));
-            r.put("code", 0);
-            r.put("msg", "success");
-        } catch (ArticleNotFoundException e) {
-            r.put("data", null);
-            r.put("code", e.getErrorCode());
-            r.put("msg", e.getMessage());
-        }
-
-        return r;
+    @Override
+    @ApiOperation(value = "Step 3 --- 根据标题获取指定化学新的知识点文章" ,  notes="获取指定title的文章")
+    @ResponseBody
+    @RequestMapping(value = "/new/content/get/{openid}/{title}", method = RequestMethod.GET)
+    public Map<String, Object> getFromTitle(@PathVariable("openid") String openid,
+                                            @PathVariable("title") String title) {
+        return this.innerGetContent(title, extraService);
     }
 }
 

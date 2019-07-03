@@ -17,4 +17,6 @@ import java.util.Optional;
 public interface BaseExtraDao<E, ID> extends MongoRepository<E, ID> {
 
     List<E> findByYiji(String yiji, Pageable pageable);
+
+    List<E> findByTitle(String title);
 }

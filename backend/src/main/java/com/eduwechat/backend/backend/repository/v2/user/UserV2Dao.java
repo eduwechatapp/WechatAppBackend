@@ -22,4 +22,12 @@ public interface UserV2Dao extends MongoRepository<UserV2Entity, String> {
      * @return List
      */
     List<UserV2Entity> findByUid(Long uid);
+
+    /**
+     * 根据uid 和 openid 查找
+     * @param uid uid
+     * @param openid openid
+     * @return List
+     */
+    List<UserV2Entity> findByUidAndOpenid(Long uid, String openid);
 }
