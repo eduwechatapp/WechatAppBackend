@@ -19,6 +19,8 @@ public class ArticleWithUrl {
 
     private String url;
 
+    private String title;
+
     private List<ArticleReply> reply;
 
     /**
@@ -30,6 +32,6 @@ public class ArticleWithUrl {
         // 换取url
         String url = COSUtil.getUrlFromObjectKey(article.getKey());
 
-        return new ArticleWithUrl(article.get_id(), url, article.getReplys());
+        return new ArticleWithUrl(article.get_id(), url, article.getTitle(), article.getReplys());
     }
 }

@@ -44,11 +44,12 @@ public class StudentArticleService extends BaseArticleService {
      * @param uid 创建者uid
      * @param fileInputStream 文件输入流
      * @param fileName 文件名
+     * @param title 作文标题
      * @throws NoSuchUserException 用户不存在
      * @throws TypeErrorException 用户类型有误
      * @throws ThirdPartException 第三方(COS)异常
      */
-    public void upload(String openid, Long uid, InputStream fileInputStream, String fileName) throws ThirdPartException, NoSuchUserException, TypeErrorException {
+    public void upload(String openid, Long uid, InputStream fileInputStream, String fileName, String title) throws ThirdPartException, NoSuchUserException, TypeErrorException {
 
         this.auth(openid, uid, "student");
 
@@ -56,7 +57,7 @@ public class StudentArticleService extends BaseArticleService {
         String key = CommonUtil.getUniqueId().substring(16) + "-" + CommonUtil.getNowTime() + "." + fileType;
 
         String _id = CommonUtil.getUniqueId();
-        String createtime = CommonUtil.getNowTime();
+        String createTime = CommonUtil.getNowTime();
 
         // upload
         try {
@@ -65,7 +66,7 @@ public class StudentArticleService extends BaseArticleService {
             throw new ThirdPartException("COS exception:" + e.getMessage());
         }
 
-        dao.save(new StudentArticle(_id, uid, key, new ArrayList<>(), createtime));
+        dao.save(new StudentArticle(_id, uid, title, key, new ArrayList<>(), createTime));
     }
 
     /**

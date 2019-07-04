@@ -21,6 +21,8 @@ public class StudentArticle {
 
     private Long creator;
 
+    private String title;
+
     // qcloud key
     private String key;
 

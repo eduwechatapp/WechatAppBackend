@@ -23,14 +23,15 @@ public class StudentController {
     private StudentArticleService service;
 
     @ApiOperation(value = "上传作文")
-    @RequestMapping(value = "/upload/{openid}/{uid}", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload/{openid}/{uid}/{title}", method = RequestMethod.POST)
     public Map<String, Object> upload(@PathVariable(value = "openid") String openid,
                                       @PathVariable(value = "uid") Long uid,
+                                      @PathVariable(value = "title") String title,
                                       @RequestParam("file") MultipartFile file){
         Map<String, Object> map = new HashMap<>();
 
         try {
-            service.upload(openid, uid, file.getInputStream(), file.getOriginalFilename());
+            service.upload(openid, uid, file.getInputStream(), file.getOriginalFilename(), title);
             map.put("code", 0);
             map.put("msg", "success");
 

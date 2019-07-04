@@ -11,6 +11,7 @@ import com.eduwechat.backend.backend.repository.v2.article.StudentArticleDao;
 import com.eduwechat.backend.backend.repository.v2.msg.MsgDao;
 import com.eduwechat.backend.backend.repository.v2.user.UserV2Dao;
 import com.eduwechat.backend.backend.service.base.inner.article.ArticleWithUrl;
+import com.eduwechat.backend.backend.service.base.inner.article.MessageWithIdAndName;
 import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndNameAndTime;
 import com.eduwechat.backend.backend.service.v2.base.AuthService;
 import com.eduwechat.backend.backend.utils.CommonUtil;
@@ -42,11 +43,19 @@ public class VolunteerArticleService extends BaseArticleService {
      * @throws NoSuchUserException 用户不存在
      * @throws TypeErrorException 用户类型有误
      */
-    public List<Message> getCoupleMsg(String openid, Long uid) throws NoSuchUserException, TypeErrorException {
+    public List<MessageWithIdAndName> getCoupleMsg(String openid, Long uid) throws NoSuchUserException, TypeErrorException {
         this.auth(openid, uid, "volunteer");
 
         // 获取未读的结对请求
-        return msgDao.findByStatusAndTypeAndToId(0, 1, uid);
+        List<Message> list = msgDao.findByStatusAndTypeAndToId(0, 1, uid);
+        List<MessageWithIdAndName> result = new ArrayList<>();
+
+        for (Message message : list) {
+            String name = userV2Dao.findByUid(message.getFromId()).get(0).getName();
+            result.add(MessageWithIdAndName.getInstanceFromEntity(message, name));
+        }
+
+        return result;
     }
 
     /**
@@ -146,7 +155,7 @@ public class VolunteerArticleService extends BaseArticleService {
      * 批改作文
      * @param openid openid
      * @param uid uid
-     * @param aid aid
+     * @param aid aids
      * @param content content
      * @throws NoSuchUserException 用户不存在
      * @throws TypeErrorException 用户类型有误

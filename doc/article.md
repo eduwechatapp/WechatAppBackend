@@ -79,7 +79,7 @@ POST
 
 ### url
 
-/article/student/upload/{openid}/{uid}
+/article/student/upload/{openid}/{uid}/{title}
 
 ### 接口方法
 
@@ -89,7 +89,7 @@ POST
 
 + openid: 用于数据统计
 + uid: 用于鉴权
-
++ title: 作文标题
 
 ### 返回参数
 
@@ -147,7 +147,7 @@ GET
 }
 ```
 
-## 发送志愿者请求
+## 发送志愿者请求（学生端）
 
 ### url
 
@@ -247,6 +247,7 @@ GET
         {
             "_id": "作文id",
             "url": "图片url",
+            "title": "title",
             "reply": {
                 "content": "批改人_意见",
                 "createTime": "创建时间"
@@ -255,6 +256,7 @@ GET
         {
             "_id": "作文id",
             "url": "图片url",
+            "title": "title",
             "reply": {
                 "content": "批改人_意见",
                 "createTime": "创建时间"
@@ -294,21 +296,13 @@ GET
     "data": [
         {
             "_id": "id",
-            "createTime": "2019-01-03_12:30:30",
             "content": "content",
-            "type": 1,            // 结对请求
-            "status": 0,          // 未读
-            "fromId": 12344,
-            "toId": 33445
+            "fromName": "Wechat Name"
         },
         {
             "_id": "id",
-            "createTime": "2019-01-03_12:30:30",
             "content": "content",
-            "type": 1,            // 结对请求
-            "status": 0,          // 未读
-            "fromId": 12344,
-            "toId": 33445
+            "fromName": "Wechat Name"
         },
     ]
 }
@@ -320,7 +314,7 @@ GET
 + 5001：用户未注册
 + 5002：用户类型有误，只有student才能获取未读消息
 
-## 同意某个结对
+## 同意某个结对（志愿者端）
 
 ### url
 
@@ -351,7 +345,7 @@ GET
 + 5001：用户未注册
 + 5002：用户类型有误，只有student才能同意
 
-## 不同意某个结对
+## 不同意某个结对（志愿者端）
 
 ### url
 
@@ -445,6 +439,7 @@ GET
         {
             "_id": "作文id",
             "url": "图片url",
+            "title": "title",
             "reply": [
                 {
                     "content": "批改人_意见",
@@ -455,6 +450,7 @@ GET
         {
             "_id": "作文id",
             "url": "图片url",
+            "title": "title",
             "reply": [
                 {
                     "content": "批改人_意见",
