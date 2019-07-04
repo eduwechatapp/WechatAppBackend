@@ -71,6 +71,79 @@ POST
 + 5001：用户未注册
 + 5002：用户类型有误，只有student才能上传作文
 
+
+## 查看全部志愿者（学生端）
+
+> 获取全部志愿者的信息以便结对
+
+### url
+
+/article/student/get/all/volunteer/{openid}/{uid}
+
+### 接口方法
+
+GET
+
+### 传入参数
+
++ openid: 用于数据统计
++ uid: 用于鉴权
+
+### 返回参数
+
+```json
+{
+    "code": 0,                       // 0-成功 其他表示失败，错误码对应具体错误
+    "msg": "success",
+    "data": [
+        {
+            "uid": "72113",
+            "name": "志愿者微信昵称"
+        },
+        {
+            "uid": "22113",
+            "name": "志愿者微信昵称"
+        },
+        {
+            "uid": "12113",
+            "name": "志愿者微信昵称"
+        }
+    ]
+}
+```
+
+## 发送志愿者请求
+
+### url
+
+/article/student/couple/volunteer/{openid}/{uid}/{vuid}
+
+### 接口方法
+
+GET
+
+### 传入参数
+
++ openid: 用于数据统计
++ uid: 用于鉴权
++ vuid: 志愿者uid
+
+### 返回参数
+
+```json
+{
+    "code": 0,                       // 0-成功 其他表示失败，错误码对应具体错误
+    "msg": "success"
+}
+```
+
+### 错误码
+
++ 0：成功
++ 5001：用户未注册
++ 5002：用户类型有误，只有student才能发送请求   
++ 10003：已经发送过请求
+
 ## 查看我的志愿者（学生端）
 
 > 获取结对人的信息
@@ -107,6 +180,7 @@ GET
 + 0：成功
 + 5001：用户未注册
 + 5002：用户类型有误，只有student才能获取我的结对人
++ 10002： 用户尚未结对
 
 ## 查看我的作文（学生端）
 
@@ -159,6 +233,118 @@ GET
 + 0：成功
 + 5001：用户未注册
 + 5002：用户类型有误，只有student才能获取我的作文
+
+## 获取未读消息
+
+### url
+
+/article/student/get/unread/{openid}/{uid}
+
+### 接口方法
+
+GET
+
+### 传入参数
+
++ openid: 用于数据统计
++ uid: 用于鉴权
+
+### 返回参数
+
+```json
+{
+    "code": 0,                       // 0-成功 其他表示失败，错误码对应具体错误
+    "msg": "success",
+    "data": [
+        {
+            "_id": "id",
+            "createTime": "2019-01-03_12:30:30",
+            "content": "content",
+            "type": 1,            // 结对请求
+            "status": 0,          // 未读
+            "fromId": 12344,
+            "toId": 33445
+        },
+        {
+            "_id": "id",
+            "createTime": "2019-01-03_12:30:30",
+            "content": "content",
+            "type": 1,            // 结对请求
+            "status": 0,          // 未读
+            "fromId": 12344,
+            "toId": 33445
+        },
+    ]
+}
+```
+
+### 错误码
+
++ 0：成功
++ 5001：用户未注册
++ 5002：用户类型有误，只有student才能获取未读消息
+
+## 同意某个结对
+
+### url
+
+/article/student/couple/confirm/{openid}/{uid}/{mid}
+
+### 接口方法
+
+GET
+
+### 传入参数
+
++ openid: 用于数据统计
++ uid: 用于鉴权
++ mid: message id
+
+### 返回参数
+
+```json
+{
+    "code": 0,                       // 0-成功 其他表示失败，错误码对应具体错误
+    "msg": "success"
+}
+```
+
+### 错误码
+
++ 0：成功
++ 5001：用户未注册
++ 5002：用户类型有误，只有student才能同意
+
+## 不同意某个结对
+
+### url
+
+/couple/cancel/{openid}/{uid}/{mid}
+
+### 接口方法
+
+GET
+
+### 传入参数
+
++ openid: 用于数据统计
++ uid: 用于鉴权
++ mid: message id
+
+### 返回参数
+
+```json
+{
+    "code": 0,                       // 0-成功 其他表示失败，错误码对应具体错误
+    "msg": "success"
+}
+```
+
+### 错误码
+
++ 0：成功
++ 5001：用户未注册
++ 5002：用户类型有误，只有student才能不同意
 
 ## 获取我的帮扶学生信息（志愿者端）
 
@@ -223,18 +409,22 @@ GET
         {
             "_id": "作文id",
             "url": "图片url",
-            "reply": {
-                "content": "批改人_意见",
-                "createTime": "创建时间"
-            }
+            "reply": [
+                {
+                    "content": "批改人_意见",
+                    "createTime": "创建时间"
+                }
+            ]
         },
         {
             "_id": "作文id",
             "url": "图片url",
-            "reply": {
-                "content": "批改人_意见",
-                "createTime": "创建时间"
-            }
+            "reply": [
+                {
+                    "content": "批改人_意见",
+                    "createTime": "创建时间"
+                }
+            ]
         }
     ]
 }
@@ -266,9 +456,6 @@ POST
 body：
 ```json
 {
-    "openid": "xzcv12jf",     // 用于数据统计
-    "uid": 21453,             // 用于鉴权
-    "article_id": "x823n545", // 文章的uid
     "content": "批改内容"      // 批改内容
 }
 ```

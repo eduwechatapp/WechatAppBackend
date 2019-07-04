@@ -1,7 +1,6 @@
 package com.eduwechat.backend.backend.service.v2.article;
 
 import com.eduwechat.backend.backend.entity.v2.article.StudentArticle;
-import com.eduwechat.backend.backend.entity.v2.article.ArticleReply;
 import com.eduwechat.backend.backend.entity.v2.msg.Message;
 import com.eduwechat.backend.backend.entity.v2.user.UserV2Entity;
 import com.eduwechat.backend.backend.exceptions.auth.AuthException;
