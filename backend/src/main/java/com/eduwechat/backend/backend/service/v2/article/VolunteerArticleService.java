@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class VolunteerArticleService extends AuthService {
+public class VolunteerArticleService extends BaseArticleService {
 
     @Resource
     private MsgDao msgDao;
@@ -139,14 +139,7 @@ public class VolunteerArticleService extends AuthService {
         this.auth(openid, uid, "volunteer");
 
         List<StudentArticle> r = studentArticleDao.findByCreator(sid, PageRequest.of(page, size));
-        List<ArticleWithUrl> result = new ArrayList<>();
-
-        // 转换实体表示形式
-        for (StudentArticle article : r) {
-            result.add(ArticleWithUrl.getInstanceFromEntity(article));
-        }
-
-        return result;
+        return this.fromEntityListGetArticleWithUrlList(r);
     }
 
     /**

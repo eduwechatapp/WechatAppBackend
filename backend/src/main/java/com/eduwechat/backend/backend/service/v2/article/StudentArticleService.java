@@ -11,6 +11,7 @@ import com.eduwechat.backend.backend.exceptions.base.ThirdPartException;
 import com.eduwechat.backend.backend.repository.v2.article.StudentArticleDao;
 import com.eduwechat.backend.backend.repository.v2.msg.MsgDao;
 import com.eduwechat.backend.backend.repository.v2.user.UserV2Dao;
+import com.eduwechat.backend.backend.service.base.inner.article.ArticleWithUrl;
 import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndName;
 import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndNameAndTime;
 import com.eduwechat.backend.backend.service.v2.base.AuthService;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StudentArticleService extends AuthService {
+public class StudentArticleService extends BaseArticleService {
 
     @Resource
     private StudentArticleDao dao;
@@ -177,11 +178,11 @@ public class StudentArticleService extends AuthService {
      * @throws NoSuchUserException openid uid 不存在
      * @throws TypeErrorException 类型不正确
      */
-    public List<StudentArticle> getMyArticle(String openid, Long uid, Integer page, Integer size) throws NoSuchUserException, TypeErrorException {
+    public List<ArticleWithUrl> getMyArticle(String openid, Long uid, Integer page, Integer size) throws NoSuchUserException, TypeErrorException {
 
         this.auth(openid, uid, "student");
 
-        return dao.findByCreator(uid, PageRequest.of(page, size));
+        return this.fromEntityListGetArticleWithUrlList(dao.findByCreator(uid, PageRequest.of(page, size)));
     }
 
 }

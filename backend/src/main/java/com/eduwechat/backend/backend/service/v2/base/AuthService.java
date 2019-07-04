@@ -26,7 +26,7 @@ public class AuthService {
     public void auth(String openid, Long uid, String shouldType) throws NoSuchUserException, TypeErrorException {
         switch (this.doAuth(openid, uid, shouldType)) {
             case 1:
-                throw new NoSuchUserException("openid或uid不存在");
+                throw new NoSuchUserException("openid或uid不存在或不正确");
             case 2:
                 throw new TypeErrorException("用户类型有误");
         }
