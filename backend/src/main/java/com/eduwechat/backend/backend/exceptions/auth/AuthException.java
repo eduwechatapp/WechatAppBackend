@@ -1,4 +1,6 @@
-package com.eduwechat.backend.backend.exceptions.base;
+package com.eduwechat.backend.backend.exceptions.auth;
+
+import com.eduwechat.backend.backend.exceptions.base.EduRuntimeException;
 
 public class AuthException extends EduRuntimeException {
 
@@ -8,6 +10,6 @@ public class AuthException extends EduRuntimeException {
 
     @Override
     public Integer getErrorCode() {
-        return 5001;
+        return 5000;
     }
 }

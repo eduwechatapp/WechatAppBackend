@@ -1,6 +1,5 @@
 package com.eduwechat.backend.backend.entity.v2.article;
 
-import com.eduwechat.backend.backend.entity.v2.article.inner.ArticleReply;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +26,7 @@ public class StudentArticle {
 
     private List<ArticleReply> replys;
 
-    private String createtime;
+    private String createTime;
 
     public StudentArticle() {}
 }

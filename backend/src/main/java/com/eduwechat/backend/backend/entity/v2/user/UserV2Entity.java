@@ -6,6 +6,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
+
+
 @Document(collection = "user")
 @AllArgsConstructor
 @Getter
@@ -25,6 +28,9 @@ public class UserV2Entity {
 
     // 类型
     private String type;
+
+    // 结对人
+    private CoupleSet couple;
 
     // 创建日期
     private String createDate;

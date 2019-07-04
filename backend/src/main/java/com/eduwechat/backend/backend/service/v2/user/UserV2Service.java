@@ -1,5 +1,6 @@
 package com.eduwechat.backend.backend.service.v2.user;
 
+import com.eduwechat.backend.backend.entity.v2.user.CoupleSet;
 import com.eduwechat.backend.backend.entity.v2.user.UserV2Entity;
 import com.eduwechat.backend.backend.exceptions.user.UserAlreadyRegisterException;
 import com.eduwechat.backend.backend.exceptions.user.UserTypeNotSupportException;
@@ -43,7 +44,7 @@ public class UserV2Service {
         long uid = getUID();
 
         // 插入新用户
-        UserV2Entity entity = new UserV2Entity(CommonUtil.getUniqueId(), uid, openid, name, type, CommonUtil.getNowDate());
+        UserV2Entity entity = new UserV2Entity(CommonUtil.getUniqueId(), uid, openid, name, type, new CoupleSet(-1L, ""),CommonUtil.getNowDate());
         userV2Dao.insert(entity);
 
         return uid;
