@@ -9,7 +9,7 @@ import com.eduwechat.backend.backend.exceptions.auth.TypeErrorException;
 import com.eduwechat.backend.backend.exceptions.base.ApplicationLevelException;
 import com.eduwechat.backend.backend.exceptions.base.ThirdPartException;
 import com.eduwechat.backend.backend.repository.v2.article.StudentArticleDao;
-import com.eduwechat.backend.backend.repository.v2.msg.MessageDao;
+import com.eduwechat.backend.backend.repository.v2.msg.MsgDao;
 import com.eduwechat.backend.backend.repository.v2.user.UserV2Dao;
 import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndName;
 import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndNameAndTime;
@@ -35,7 +35,7 @@ public class StudentArticleService extends AuthService {
     private UserV2Dao userV2Dao;
 
     @Resource
-    private MessageDao messageDao;
+    private MsgDao msgDao;
 
     /**
      * 上传作文图片
@@ -114,7 +114,7 @@ public class StudentArticleService extends AuthService {
         }
 
         // 检查是否已经发过请求
-        List<Message> r = messageDao.findByFromidAndToidAndStatusAndType(uid, vuid, 0, 1);
+        List<Message> r = msgDao.findByFromIdAndToIdAndStatusAndType(uid, vuid, 0, 1);
         if (r.size() > 0) {
             throw new ApplicationLevelException("您已经发送过请求，请耐心等待") {
                 @Override
@@ -126,7 +126,7 @@ public class StudentArticleService extends AuthService {
 
         Message msg = new Message(CommonUtil.getUniqueId(), CommonUtil.getNowTime(), String.format("学生:%s向您发送了结对请求。", stu.getName()), 1, 0, uid, vuid);
 
-        messageDao.save(msg);
+        msgDao.save(msg);
     }
 
     /**

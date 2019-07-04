@@ -3,6 +3,7 @@ package com.eduwechat.backend.backend.service.v2.user;
 import com.eduwechat.backend.backend.entity.v2.user.CoupleSet;
 import com.eduwechat.backend.backend.entity.v2.user.UserV2Entity;
 import com.eduwechat.backend.backend.exceptions.user.UserAlreadyRegisterException;
+import com.eduwechat.backend.backend.exceptions.user.UserDidNotRegisterException;
 import com.eduwechat.backend.backend.exceptions.user.UserTypeNotSupportException;
 import com.eduwechat.backend.backend.repository.v2.user.UserV2Dao;
 import com.eduwechat.backend.backend.service.v2.base.AuthService;
@@ -49,6 +50,23 @@ public class UserV2Service {
 
         return uid;
     }
+
+    /**
+     * 登录 返回uid
+     * @param openid openid
+     * @return UserV2Entity
+     * @throws UserDidNotRegisterException 用户未注册
+     */
+    public UserV2Entity login(String openid) throws UserDidNotRegisterException {
+        List<UserV2Entity> r = userV2Dao.findByOpenid(openid);
+
+        if (r.size() == 0) {
+            throw new UserDidNotRegisterException("用户还没注册");
+        }
+
+        return r.get(0);
+    }
+
 
     /**
      * 随机获取全局唯一长整性uid

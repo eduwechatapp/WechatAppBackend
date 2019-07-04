@@ -8,7 +8,7 @@ import com.eduwechat.backend.backend.exceptions.auth.NoSuchUserException;
 import com.eduwechat.backend.backend.exceptions.auth.TypeErrorException;
 import com.eduwechat.backend.backend.exceptions.base.ApplicationLevelException;
 import com.eduwechat.backend.backend.repository.v2.article.StudentArticleDao;
-import com.eduwechat.backend.backend.repository.v2.msg.MessageDao;
+import com.eduwechat.backend.backend.repository.v2.msg.MsgDao;
 import com.eduwechat.backend.backend.repository.v2.user.UserV2Dao;
 import com.eduwechat.backend.backend.service.base.inner.article.ArticleWithUrl;
 import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndNameAndTime;
@@ -26,7 +26,7 @@ import java.util.Optional;
 public class VolunteerArticleService extends AuthService {
 
     @Resource
-    private MessageDao messageDao;
+    private MsgDao msgDao;
 
     @Resource
     private UserV2Dao userV2Dao;
@@ -46,7 +46,7 @@ public class VolunteerArticleService extends AuthService {
         this.auth(openid, uid, "volunteer");
 
         // 获取未读的结对请求
-        return messageDao.findByStatusAndTypeAndToid(0, 1, uid);
+        return msgDao.findByStatusAndTypeAndToId(0, 1, uid);
     }
 
     /**
@@ -66,7 +66,7 @@ public class VolunteerArticleService extends AuthService {
         Long to = msg.getToId();
 
         msg.setStatus(1);
-        messageDao.save(msg);
+        msgDao.save(msg);
 
         // 为用户指定couple
         UserV2Entity fromUser = userV2Dao.findByUid(from).get(0);
@@ -93,7 +93,7 @@ public class VolunteerArticleService extends AuthService {
 
         Message msg = this.authAndGetMessage(openid, uid, mid);
         msg.setStatus(1);
-        messageDao.save(msg);
+        msgDao.save(msg);
     }
 
     /**
@@ -189,7 +189,7 @@ public class VolunteerArticleService extends AuthService {
     private Message authAndGetMessage(String openid, Long uid, String mid) throws ApplicationLevelException, NoSuchUserException, TypeErrorException {
         this.auth(openid, uid, "volunteer");
 
-        Optional<Message> op = messageDao.findById(mid);
+        Optional<Message> op = msgDao.findById(mid);
 
         if (!op.isPresent()) {
             throw new ApplicationLevelException("消息未找到") {

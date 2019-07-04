@@ -1,6 +1,8 @@
 package com.eduwechat.backend.backend.controller.user;
 
+import com.eduwechat.backend.backend.entity.v2.user.UserV2Entity;
 import com.eduwechat.backend.backend.exceptions.user.UserAlreadyRegisterException;
+import com.eduwechat.backend.backend.exceptions.user.UserDidNotRegisterException;
 import com.eduwechat.backend.backend.exceptions.user.UserTypeNotSupportException;
 import com.eduwechat.backend.backend.service.v2.user.UserV2Service;
 import io.swagger.annotations.Api;
@@ -52,6 +54,31 @@ public class UserV2 {
             map.put("code", 4002);
             map.put("msg", e.getMessage());
             map.put("uid", -1);
+        }
+
+        return map;
+    }
+
+
+    @ApiOperation(value = "用户注册")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public Map<String, Object> login(@RequestBody JSONObject body){
+        String openid = body.getAsString("openid");
+
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            UserV2Entity entity = service.login(openid);
+            map.put("code", 0);
+            map.put("msg", "success");
+            map.put("uid", entity.getUid());
+            map.put("type", entity.getType());
+
+        } catch (UserDidNotRegisterException e) {
+            map.put("code", e.getErrorCode());
+            map.put("msg", e.getMessage());
+            map.put("uid", -1);
+            map.put("type", null);
         }
 
         return map;
