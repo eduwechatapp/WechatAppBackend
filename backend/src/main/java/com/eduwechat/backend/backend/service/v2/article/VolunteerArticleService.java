@@ -119,7 +119,9 @@ public class VolunteerArticleService extends AuthService {
             };
         }
 
-        return UserWithUidAndNameAndTime.getInstanceFromUserV2Entity(entity);
+        UserV2Entity resultEntity = userV2Dao.findByUid(entity.getCouple().getCuid()).get(0);
+
+        return UserWithUidAndNameAndTime.getInstanceFromUserV2Entity(resultEntity);
     }
 
     /**

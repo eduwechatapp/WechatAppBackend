@@ -101,6 +101,18 @@ public class StudentArticleService extends AuthService {
 
         this.auth(openid, uid, "student");
 
+        // 检查vuid是否合法
+        List<UserV2Entity> vlist = userV2Dao.findByUid(vuid);
+        if (vlist.size() == 0) {
+            throw new NoSuchUserException("该志愿者不存在") {
+                @Override
+                public Integer getErrorCode() {
+                    return 5003;
+                }
+            };
+        }
+
+        // 检查是否已经结对
         UserV2Entity stu =  userV2Dao.findByUid(uid).get(0);
         Long coupleId = stu.getCouple().getCuid();
 

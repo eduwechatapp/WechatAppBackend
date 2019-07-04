@@ -20,7 +20,7 @@ public class VolunteerController {
     @Resource
     private VolunteerArticleService service;
 
-    @ApiOperation(value = "获取我的结对信息")
+    @ApiOperation(value = "获取我的未读结对信息")
     @RequestMapping(value = "/get/unread/{openid}/{uid}",method = RequestMethod.GET)
     public Map<String, Object> getMsg(@PathVariable(value = "openid") String openid,
                                       @PathVariable(value = "uid") Long uid){
