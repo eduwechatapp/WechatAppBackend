@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
-@Api(description = "鉴权V2接口")
+@Api(description = "获取视频url接口")
 @RestController
 @RequestMapping(value = "/video")
 public class VideoController {
