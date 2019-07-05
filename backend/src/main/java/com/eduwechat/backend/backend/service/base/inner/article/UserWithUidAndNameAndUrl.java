@@ -10,17 +10,19 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UserWithUidAndName {
+public class UserWithUidAndNameAndUrl {
     private Long uid;
 
     private String name;
 
+    private String url;
+
     /**
      * 实体转this
      * @param entity UserV2Entity
-     * @return UserWithUidAndName
+     * @return UserWithUidAndNameAndUrl
      */
-    public static UserWithUidAndName fromUserV2EntityGetThis(UserV2Entity entity) {
-        return new UserWithUidAndName(entity.getUid(), entity.getName());
+    public static UserWithUidAndNameAndUrl fromUserV2EntityGetThis(UserV2Entity entity) {
+        return new UserWithUidAndNameAndUrl(entity.getUid(), entity.getName(), entity.getUrl());
     }
 }

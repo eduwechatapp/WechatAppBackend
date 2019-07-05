@@ -30,6 +30,7 @@ public class UserV2 {
         String openid = body.getAsString("openid");
         String type = body.getAsString("type");
         String name = body.getAsString("name");
+        String url  = body.getAsString("url");
 
         Map<String, Object> map = new HashMap<>();
 

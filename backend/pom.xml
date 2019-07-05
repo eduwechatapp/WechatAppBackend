@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.eduwechat.backend</groupId>
     <artifactId>edu</artifactId>
-    <version>1.0.7-DEV</version>
+    <version>1.0.8-DEV</version>
     <name>backend</name>
     <description>WechatAppForEducation-Backend</description>
 

@@ -26,6 +26,9 @@ public class UserV2Entity {
     // 微信昵称
     private String name;
 
+    // 微信头像
+    private String url;
+
     // 类型
     private String type;
 

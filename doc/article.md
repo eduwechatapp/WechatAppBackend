@@ -18,7 +18,8 @@ POST
 {
     "type": "volunteer",             // 此字段只能为volunteer或者student，详见错误码
     "openid": "xc73bS7xcg1",
-    "name": "微信昵称" 
+    "name": "微信昵称",
+    "url": "https://wexin.xx.com/ssxxcc.jpg" // 前端获取的头像url，不传为默认
 }
 ```
 
@@ -133,15 +134,18 @@ GET
     "data": [
         {
             "uid": "72113",
-            "name": "志愿者微信昵称"
+            "name": "志愿者微信昵称",
+            "url": "https://wexin.xx.com/ssxxcc.jpg"
         },
         {
             "uid": "22113",
-            "name": "志愿者微信昵称"
+            "name": "志愿者微信昵称",
+            "url": "https://wexin.xx.com/ssxxcc.jpg"
         },
         {
             "uid": "12113",
-            "name": "志愿者微信昵称"
+            "name": "志愿者微信昵称",
+            "url": "https://vaskka.com/static/avatar.jpeg"
         }
     ]
 }

@@ -28,8 +28,13 @@ public class UserV2Service {
      * @throws UserAlreadyRegisterException 用户已经注册
      * @throws UserTypeNotSupportException 用户类型不正确
      */
-    public Long register(String openid, String type, String name) throws UserAlreadyRegisterException, UserTypeNotSupportException {
+    public Long register(String openid, String type, String name, String url) throws UserAlreadyRegisterException, UserTypeNotSupportException {
         List<UserV2Entity> list = userV2Dao.findByOpenid(openid);
+
+        // 设置头像url
+        if (url == null) {
+            url = "https://vaskka.com/static/avatar.jpeg";
+        }
 
         // 检查注册情况
         if (list.size() != 0) {
@@ -45,7 +50,7 @@ public class UserV2Service {
         long uid = getUID();
 
         // 插入新用户
-        UserV2Entity entity = new UserV2Entity(CommonUtil.getUniqueId(), uid, openid, name, type, new CoupleSet(-1L, ""),CommonUtil.getNowDate());
+        UserV2Entity entity = new UserV2Entity(CommonUtil.getUniqueId(), uid, openid, name, url, type, new CoupleSet(-1L, ""),CommonUtil.getNowDate());
         userV2Dao.insert(entity);
 
         return uid;

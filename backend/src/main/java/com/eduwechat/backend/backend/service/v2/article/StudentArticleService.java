@@ -12,9 +12,8 @@ import com.eduwechat.backend.backend.repository.v2.article.StudentArticleDao;
 import com.eduwechat.backend.backend.repository.v2.msg.MsgDao;
 import com.eduwechat.backend.backend.repository.v2.user.UserV2Dao;
 import com.eduwechat.backend.backend.service.base.inner.article.ArticleWithUrl;
-import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndName;
+import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndNameAndUrl;
 import com.eduwechat.backend.backend.service.base.inner.article.UserWithUidAndNameAndTime;
-import com.eduwechat.backend.backend.service.v2.base.AuthService;
 import com.eduwechat.backend.backend.utils.CommonUtil;
 import com.eduwechat.backend.backend.utils.cos.COSUtil;
 import org.springframework.data.domain.PageRequest;
@@ -76,15 +75,15 @@ public class StudentArticleService extends BaseArticleService {
      * @return List
      * @throws AuthException 鉴权异常
      */
-    public List<UserWithUidAndName> getAllVolunteer(String openid, Long uid) throws AuthException {
+    public List<UserWithUidAndNameAndUrl> getAllVolunteer(String openid, Long uid) throws AuthException {
 
         this.auth(openid, uid, "student");
 
-        List<UserWithUidAndName> result = new ArrayList<>();
+        List<UserWithUidAndNameAndUrl> result = new ArrayList<>();
         List<UserV2Entity> allVolunteersFull = userV2Dao.findByType("volunteer");
 
         for (UserV2Entity entity : allVolunteersFull) {
-            result.add(UserWithUidAndName.fromUserV2EntityGetThis(entity));
+            result.add(UserWithUidAndNameAndUrl.fromUserV2EntityGetThis(entity));
         }
 
         return result;
