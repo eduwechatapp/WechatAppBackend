@@ -6,7 +6,6 @@ import com.eduwechat.backend.backend.exceptions.user.UserAlreadyRegisterExceptio
 import com.eduwechat.backend.backend.exceptions.user.UserDidNotRegisterException;
 import com.eduwechat.backend.backend.exceptions.user.UserTypeNotSupportException;
 import com.eduwechat.backend.backend.repository.v2.user.UserV2Dao;
-import com.eduwechat.backend.backend.service.v2.base.AuthService;
 import com.eduwechat.backend.backend.utils.CommonUtil;
 import org.springframework.stereotype.Service;
 

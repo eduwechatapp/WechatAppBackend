@@ -137,7 +137,7 @@ public class StudentArticleService extends BaseArticleService {
             };
         }
 
-        Message msg = new Message(CommonUtil.getUniqueId(), CommonUtil.getNowTime(), String.format("学生:%s向您发送了结对请求。", stu.getName()), 1, 0, uid, vuid);
+        Message msg = new Message(CommonUtil.getUniqueId(), CommonUtil.getNowTime(), String.format("学生%s向您发送了结对请求", stu.getName()), 1, 0, uid, vuid);
 
         msgDao.save(msg);
     }
