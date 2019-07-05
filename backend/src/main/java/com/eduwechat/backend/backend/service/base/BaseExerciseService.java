@@ -44,7 +44,7 @@ public abstract class BaseExerciseService {
     @Autowired
     private PoliticsExerciseDao politicsExerciseDao;
 
-    // mongodb aggregation dao
+    // mongodb impl dao
 
     @Autowired
     private BiologyAggregationImpl biologyAggregation;

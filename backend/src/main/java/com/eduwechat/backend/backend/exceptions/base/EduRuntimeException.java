@@ -10,6 +10,11 @@ public abstract class EduRuntimeException extends BaseEduException {
         super(message);
     }
 
+    @Override
+    public String getMessage() {
+        return super.getMessage() + "--errorCode:" + String.valueOf(getErrorCode());
+    }
+
     public EduRuntimeException() {
     }
 }

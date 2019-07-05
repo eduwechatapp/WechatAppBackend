@@ -2,7 +2,6 @@ package com.eduwechat.backend.backend.entity.message;
 
 
 import com.eduwechat.backend.backend.entity.base.BaseMessageEntity;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;

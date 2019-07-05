@@ -1,9 +1,8 @@
 package com.eduwechat.backend.backend;
 
-import com.eduwechat.backend.backend.exceptions.exercise.SubjectDoesNotSupportedException;
-import com.eduwechat.backend.backend.repository.exercise.aggregation.BiologyAggregationImpl;
-import com.eduwechat.backend.backend.repository.base.set.TotalTitleResultItem;
-import com.eduwechat.backend.backend.service.exercise.ExerciseService;
+import com.eduwechat.backend.backend.service.v2.user.UserV2Service;
+import com.eduwechat.backend.backend.utils.CommonUtil;
+import com.eduwechat.backend.backend.utils.cos.COSUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BackendApplication.class)
@@ -23,6 +21,9 @@ public class BackendApplicationTests {
 //
 //	@Autowired
 //	ExerciseService service;
+
+	@Autowired
+	UserV2Service userV2Service;
 
 	private void l(Object o) {
 		System.out.println(o);
@@ -39,10 +40,19 @@ public class BackendApplicationTests {
 	}
 
 	@Test
-	public void test() {
-		System.out.println("done");
+	public void getBuctet() {
+
 	}
+
+	@Test
+    public void getPics() {
+    }
 //
+
+	@Test
+	public void normal ()  {
+		System.out.println(CommonUtil.getNowTime());
+	}
 //	@Test
 //	public void testServiceTitleList() throws SubjectDoesNotSupportedException {
 //

@@ -7,12 +7,12 @@ import com.eduwechat.backend.backend.service.base.inner.exercise.ExerciseSimpleR
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.util.Date;
-import java.util.List;
-
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class CommonUtil {
+
+    private static Random random = new Random(getUniqueId().hashCode());
 
     /**
      * 得到唯一id
@@ -20,6 +20,14 @@ public class CommonUtil {
      */
     public static String getUniqueId() {
         return CommonUtil.getMD5(String.valueOf(new Date().getTime()));
+    }
+
+    /**
+     * 获取随机数
+     * @return int
+     */
+    public static long rand() {
+        return random.nextLong();
     }
 
     /**
@@ -154,6 +162,75 @@ public class CommonUtil {
                 return "";
         }
 
+    }
+
+    /**
+     * 从真正学科返回学科英文全称
+     * @param simple 简写学科
+     * @return 真正学科
+     */
+    public static String fromFullChineseNameGetFullEnglishName(String simple) {
+
+        switch (simple) {
+
+            case "数学":
+                return "math";
+            case "语文":
+                return "chinese";
+            case "英语":
+                return "english";
+            case "物理":
+                return "physics";
+            case "化学":
+                return "chemistry";
+            case "生物":
+                return "biology";
+            case "地理":
+                return "geography";
+            case "历史":
+                return "history";
+            case "政治":
+                return "politics";
+            default:
+                return null;
+        }
+
+    }
+
+    /**
+     * 获取本地日期String
+     * @return String
+     */
+    public static String getNowDate() {
+
+        Calendar cal = java.util.Calendar.getInstance(java.util.Locale.CHINA);
+        SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd");
+        return sf.format(cal.getTime());
+    }
+
+    /**
+     * 获取本地时间String
+     * @return String
+     */
+    public static String getNowTime() {
+
+        Calendar cal = java.util.Calendar.getInstance(java.util.Locale.CHINA);
+        SimpleDateFormat sf = new SimpleDateFormat("YYYY-MM-dd_HH-mm-ss");
+        return sf.format(cal.getTime());
+    }
+
+    /**
+     * 根据文件名得到文件类型
+     * @param name 文件名
+     * @return 文件类型
+     */
+    public static String fromNameGetType(String name) {
+        String[] list = name.split("\\.");
+        if (list.length == 0) {
+            return null;
+        }
+
+        return list[list.length - 1];
     }
 
     /**
