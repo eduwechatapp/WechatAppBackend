@@ -88,6 +88,7 @@ public class COSUtil {
 
         cosClient.shutdown();
 
-        return url.toString();
+        return url.toString().replace("http", "https");
     }
+
 }
