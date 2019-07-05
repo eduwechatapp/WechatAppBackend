@@ -165,6 +165,39 @@ public class CommonUtil {
     }
 
     /**
+     * 从真正学科返回学科英文全称
+     * @param simple 简写学科
+     * @return 真正学科
+     */
+    public static String fromFullChineseNameGetFullEnglishName(String simple) {
+
+        switch (simple) {
+
+            case "数学":
+                return "math";
+            case "语文":
+                return "chinese";
+            case "英语":
+                return "english";
+            case "物理":
+                return "physics";
+            case "化学":
+                return "chemistry";
+            case "生物":
+                return "biology";
+            case "地理":
+                return "geography";
+            case "历史":
+                return "history";
+            case "政治":
+                return "politics";
+            default:
+                return null;
+        }
+
+    }
+
+    /**
      * 获取本地日期String
      * @return String
      */

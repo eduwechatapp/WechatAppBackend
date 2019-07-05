@@ -8,9 +8,9 @@ import com.eduwechat.backend.backend.service.v2.user.UserV2Service;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.minidev.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -21,11 +21,11 @@ import java.util.logging.Logger;
 @RequestMapping(value = "/user")
 public class UserV2 {
 
-    @Autowired
+    @Resource
     private UserV2Service service;
 
     @ApiOperation(value = "用户注册")
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public Map<String, Object> register(@RequestBody JSONObject body){
         String openid = body.getAsString("openid");
         String type = body.getAsString("type");
