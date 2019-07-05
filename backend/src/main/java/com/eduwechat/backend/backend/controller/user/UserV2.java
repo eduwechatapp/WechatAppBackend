@@ -35,7 +35,7 @@ public class UserV2 {
         Map<String, Object> map = new HashMap<>();
 
         try {
-            Long uid = service.register(openid, type, name);
+            Long uid = service.register(openid, type, name, url);
             map.put("code", 0);
             map.put("msg", "success");
             map.put("uid", uid);
