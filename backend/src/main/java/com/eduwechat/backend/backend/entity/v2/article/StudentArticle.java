@@ -26,7 +26,7 @@ public class StudentArticle {
     // qcloud key
     private String key;
 
-    private List<ArticleReply> replys;
+    private ArticleReply reply;
 
     private String createTime;
 

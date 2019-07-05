@@ -21,7 +21,7 @@ public class ArticleWithUrl {
 
     private String title;
 
-    private List<ArticleReply> reply;
+    private ArticleReply reply;
 
     /**
      * 从实体得到this
@@ -32,6 +32,6 @@ public class ArticleWithUrl {
         // 换取url
         String url = COSUtil.getUrlFromObjectKey(article.getKey());
 
-        return new ArticleWithUrl(article.get_id(), url, article.getTitle(), article.getReplys());
+        return new ArticleWithUrl(article.get_id(), url, article.getTitle(), article.getReply());
     }
 }

@@ -175,8 +175,9 @@ public class VolunteerArticleService extends BaseArticleService {
         }
 
         StudentArticle article = articleOptional.get();
-        ArticleReply reply = new ArticleReply(uid, content, CommonUtil.getNowTime());
-        article.getReplys().add(reply);
+
+        // 新的评论覆盖旧的
+        article.setReply(new ArticleReply(uid, content, CommonUtil.getNowTime()));
         studentArticleDao.save(article);
     }
 

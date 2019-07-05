@@ -65,7 +65,7 @@ public class StudentArticleService extends BaseArticleService {
             throw new ThirdPartException("COS exception:" + e.getMessage());
         }
 
-        dao.save(new StudentArticle(_id, uid, title, key, new ArrayList<>(), createTime));
+        dao.save(new StudentArticle(_id, uid, title, key, null, createTime));
     }
 
     /**
